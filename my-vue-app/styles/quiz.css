@@ -1,0 +1,111 @@
+.quizcontainer * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.quizcontainer {
+  width: 100%;
+  height: 100%;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.questionask {
+  font-size: 20px;
+  width: 100%;
+  height: 140px;
+  background-color: rgb(34, 187, 211, 0.2);
+  padding: 5px;
+  animation: benga 0.5s forwards;
+}
+.questionask {
+  position: relative;
+}
+
+/* bordas bordas e bordas*/
+.questionask:before,
+.questionask:after,
+.questionask > :first-child:before,
+.questionask > :first-child:after {
+  position: absolute;
+  content: ' ';
+  width: 90px;
+  height: 50px;
+}
+.questionask:before {
+  top: 0;
+  left: 0;
+  border-width: 3px 0 0 3px;
+  box-shadow: -5px -5px 0px 0px #84e4b6,
+    -5px -5px 10px -2px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
+}
+.questionask:after {
+  top: 0;
+  right: 0;
+  border-width: 3px 3px 0 0;
+  box-shadow: 5px -5px 0px 0px #84e4b6, 5px -5px 10px -2px rgba(10, 175, 230, 1),
+    0 0 10px rgba(10, 175, 230, 0);
+}
+.questionask > :first-child:before {
+  bottom: 0;
+  right: 0;
+  border-width: 0 3px 3px 0;
+  box-shadow: 5px 5px 0px 0px #84e4b6, 5px 5px 10px -2px rgba(10, 175, 230, 1),
+    0 0 10px rgba(10, 175, 230, 0);
+}
+.questionask > :first-child:after {
+  bottom: 0;
+  left: 0;
+  border-width: 0 0 3px 3px;
+  box-shadow: -5px 5px 0px 0px #84e4b6, -5px 5px 10px -2px rgba(10, 175, 230, 1),
+    0 0 10px rgba(10, 175, 230, 0);
+}
+/* fim das bordas bordas e bordas*/
+.questionask h1 {
+  color: rgb(183, 255, 251);
+  text-shadow: 0 0 5px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+}
+
+.quizcontainer .nextbutton {
+  width: 10%;
+  font-size: 25px;
+  padding: 5px;
+}
+
+input[type='radio'] {
+  width: 80px;
+  height: 30px;
+  border: 3px solid #84e4b6;
+  box-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
+  border-radius: 1.2rem;
+  background-color: transparent;
+  -webkit-appearance: none; /*to disable the default appearance of radio button*/
+  -moz-appearance: none;
+}
+
+input[type='radio']:focus {
+  /*no need, if you don't disable default appearance*/
+  outline: none; /*to remove the square border on focus*/
+}
+
+input[type='radio']:checked {
+  /*no need, if you don't disable default appearance*/
+  background-color: #1fbed6;
+}
+
+input[type='radio']:checked ~ span:first-of-type {
+  color: white;
+}
+
+label span:first-of-type {
+  position: relative;
+  left: -70px;
+  font-size: 15px;
+}
+
+label span {
+  position: relative;
+  top: -12px;
+}

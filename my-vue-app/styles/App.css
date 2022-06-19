@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: rgb(132, 228, 182);
+  background: linear-gradient(
+    137deg,
+    rgba(132, 228, 182, 1) 0%,
+    rgba(132, 172, 228, 1) 50%,
+    rgba(29, 209, 139, 1) 100%
+  );
+}
+
+.help {
+  top: 15px;
+  right: 15px;
+  position: absolute;
+  font-size: 30px;
+  color: white;
+}
+.content {
+  margin-top: 20px;
+  position: absolute;
+  background-color: rgba(77, 85, 150, 0.5);
+  width: 85vw;
+  height: 480px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  border-radius: 5px;
+  backdrop-filter: blur(4px);
+}
+
+.Square {
+  top: 200px;
+  right: 50px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-image: linear-gradient(to right bottom, #a87c2e, #fccc7a);
+  border-image-slice: 1;
+  border-radius: 50%;
+}

@@ -1,0 +1,12 @@
+.left_content {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.left_content img {
+  max-width: 200px;
+  height: auto;
+}
