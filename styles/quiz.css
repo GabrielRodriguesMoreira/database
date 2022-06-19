@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .quizcontainer {
@@ -13,15 +14,14 @@
   align-items: center;
 }
 .questionask {
-  font-size: 20px;
-  width: 100%;
-  height: 140px;
-  background-color: rgb(34, 187, 211, 0.2);
-  padding: 5px;
-  animation: benga 0.5s forwards;
-}
-.questionask {
   position: relative;
+  font-size: 80%;
+  width: 100%;
+  height: 160px;
+  background-color: rgb(34, 187, 211, 0.2);
+  padding: 15px;
+  animation: benga 0.5s forwards;
+  margin-bottom: 30px;
 }
 
 /* bordas bordas e bordas*/
@@ -31,7 +31,7 @@
 .questionask > :first-child:after {
   position: absolute;
   content: ' ';
-  width: 90px;
+  width: 50px;
   height: 50px;
 }
 .questionask:before {
@@ -69,20 +69,37 @@
 }
 
 .quizcontainer .nextbutton {
-  width: 10%;
-  font-size: 25px;
-  padding: 5px;
+  width: 25%;
+  font-size: 130%;
+  padding: 10px;
+}
+.quizcontainer form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0;
+  padding: 0;
+}
+.asnwercolumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 input[type='radio'] {
-  width: 80px;
-  height: 30px;
+  width: 30vw;
+  height: 60px;
   border: 3px solid #84e4b6;
   box-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
-  border-radius: 1.2rem;
+  border-radius: 2rem;
   background-color: transparent;
   -webkit-appearance: none; /*to disable the default appearance of radio button*/
   -moz-appearance: none;
+  margin-bottom: 40px;
+  text-shadow: 0 0 5px rgb(182, 232, 248), 0 0 20px rgba(10, 175, 230, 0);
 }
 
 input[type='radio']:focus {
@@ -92,7 +109,7 @@ input[type='radio']:focus {
 
 input[type='radio']:checked {
   /*no need, if you don't disable default appearance*/
-  background-color: #1fbed6;
+  background-color: rgb(31, 190, 214, 0.7);
 }
 
 input[type='radio']:checked ~ span:first-of-type {
@@ -101,11 +118,33 @@ input[type='radio']:checked ~ span:first-of-type {
 
 label span:first-of-type {
   position: relative;
-  left: -70px;
-  font-size: 15px;
+  font-size: 120%;
+  color: white;
+  position: absolute;
+  margin-top: -83px;
+  transform: translate(-50%, 0);
 }
 
-label span {
-  position: relative;
-  top: -12px;
+/* Resultado */
+#showresult {
+  margin-top: 5%;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+#showresult h1 {
+  text-align: center;
+  font-size: 350%;
+}
+.aling {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.aling * {
+  width: 50px;
+  margin-right: 25px;
+  border-bottom: 4px solid black;
 }

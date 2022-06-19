@@ -18,7 +18,7 @@ export function  Navbar({stateChanger, ...rest}) {
           <div className="navlink"onClick={() => stateChanger(<Quiz />)}><div className="navlink_icon"><MdQuiz /></div> <a >PROJECT 2</a></div>
           <div className="navlink" onClick={() => stateChanger(<Fut />)}><div className="navlink_icon"><SiExpertsexchange /></div> <a >PROJECT 3</a></div>
           <div className="profile_img"><img src="../components/sources/profile.gif" alt="profile pic" /></div>
-          <div className="menu"> <img src="../components/sources/menu.svg" alt="" /></div>
+          <div className="menu"> <img src="./sources/menu.svg" alt="" /></div>
         </div>
           
 
