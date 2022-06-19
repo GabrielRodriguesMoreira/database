@@ -7,11 +7,11 @@ var choiseds = [''];
 
 export function Quiz(){
 
-        const questions = ["Quantos cm de pau?", "qt2", "qt3", "qt4", "qt5"];
-        const answers1 = ["entre 1 e 3 cm (média)", "qt2", "qt3", "qt4", "qt5"];
-        const answers2 = ["entre 4 e 5 cm (grande)", "qt2", "qt3", "qt4", "qt5"];
-        const answers3 = ["entre 5 e 7 (gigante)", "qt2", "qt3", "qt4", "qt5"];
-        const answers4 = ["entre 7 e 9 (anomalia genética)", "qt2", "qt3", "qt4", "qt5"];
+        const questions = ["Pergunta valento 1 milhao de merreis?", "qt2", "qt3", "qt4", "qt5"];
+        const answers1 = ["resopsta 1", "qt2", "qt3", "qt4", "qt5"];
+        const answers2 = ["resposta 2", "qt2", "qt3", "qt4", "qt5"];
+        const answers3 = ["resposta 3", "qt2", "qt3", "qt4", "qt5"];
+        const answers4 = ["resposta 4", "qt2", "qt3", "qt4", "qt5"];
         const corrects = ["answ1", "answ1", "answ1", "answ1", "answ1"];
   
 
