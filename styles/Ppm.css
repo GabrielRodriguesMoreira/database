@@ -6,42 +6,20 @@
   align-items: center;
   padding: 15px 30px;
 }
-
-@font-face {
-  font-family: myFirstFont;
-  src: url('./retro.ttf');
+.ppmcontainer .questionask {
+  height: 200px;
 }
-
-.title {
-  position: relative;
-  width: 100%;
-  height: 120px;
-  padding: 10px;
-  border: 3px solid #84e4b6;
-  border-radius: 1% / 50%;
-  box-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
-  animation: benga 0.5s forwards;
-  background-color: #000000;
+.ppmcontainer * {
+  font-family: 'Montserrat', sans-serif;
 }
-
-.title h1,
-.title h2 {
-  text-transform: uppercase;
-  font-family: myFirstFont;
-  letter-spacing: 1px;
-  font-size: 16px;
-  color: #84e4b6;
-  text-shadow: 0 0 5px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
-  user-select: none;
-}
-.title h2 {
-  font-size: 20px;
+#clock {
+  font-size: 30px;
+  text-align: center;
   position: absolute;
-  bottom: 0;
   left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translate(-50%, 0);
+  bottom: 0;
 }
-
 .bottom {
   margin-top: 20px;
   width: 100%;
@@ -50,18 +28,15 @@
   align-items: center;
   justify-content: space-between;
 }
-.bottom * {
-  font-family: 'Kdam Thmor Pro', sans-serif;
-}
+
 .inputbuttom {
   padding-top: 20px;
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 49%;
   height: 100%;
 }
 .inputbuttom textarea {
-  text-transform: uppercase;
   overflow: hidden;
   resize: none;
   font-size: 20px;
@@ -91,30 +66,23 @@
   border: 2px solid #84e4b6;
   box-shadow: 0 0 10px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
 }
-.result {
-  text-transform: uppercase;
+
+#checkbutton {
+  display: none;
+}
+
+#result {
   position: relative;
   width: 35%;
   padding: 10px;
   height: 100%;
-  background-color: #000000;
-  border: 3px solid #84e4b6;
-  box-shadow: 0 0 5px rgba(10, 175, 230, 1), 0 0 10px rgba(10, 175, 230, 0);
-  border-radius: 1% / 50%;
-  animation: benga 0.5s linear forwards;
-}
-.result h2,
-.result h1 {
-  font-family: myFirstFont;
-  letter-spacing: 1px;
-  font-size: 20px;
   text-align: center;
-  color: #84e4b6;
-  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
 }
-.result h1 {
-  margin-top: 50px;
-  font-size: 15px;
+#result h1 {
+  margin-bottom: 70px;
+}
+#resulttext {
+  font-size: 20px;
 }
 @keyframes benga {
   0% {
@@ -170,8 +138,4 @@
   100% {
     border-bottom: 4px solid #bff8c9;
   }
-}
-
-#checkbutton {
-  display: none;
 }

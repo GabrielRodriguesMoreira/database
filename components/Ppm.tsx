@@ -5,7 +5,7 @@ import '../styles/Ppm.css'
 
 var frases = ["Press The button to Start", 
 "DON'T BELIEVE IN YOURSELF! BELIEVE IN ME WHO BELIEVES IN YOU!",
-"THE WORLD ISN'T PERFECT. BUT IT'S THERE FOR US, DOING THE BEST IT CAN… THAT'S WHAT MAKES IT SO DAMN BEAUTIFUL.",
+"The world isn't perfect. But it's there for us, doing the best it can… that's what makes it so damn beautiful.",
 "PEOPLE, WHO CAN'T THROW SOMETHING IMPORTANT AWAY, CAN NEVER HOPE TO CHANGE ANYTHING.",
 "TO KNOW SORROW IS NOT TERRIFYING. WHAT IS TERRIFYING IS TO KNOW YOU CAN'T GO BACK TO HAPPINESS YOU COULD HAVE.",
 
@@ -18,7 +18,7 @@ let n =0;
 
 function auto_grow(element) {
   console.log(element);
-  element.style.height = "5px";
+  element.style.height = "10px";
   element.style.height = (element.scrollHeight)+"px";
 }
 
@@ -26,11 +26,12 @@ export function Ppm(){
 
 
     const [word1,setword1] = useState(frases[n]);
-    const [result,setresult] = useState(" ");
+    const [result,setresult] = useState("");
 
     function compare(){
         const word2 = (document.getElementById('text') as HTMLInputElement).value.toUpperCase();
-        if (word1!=word2){
+        let word1check = word1.toUpperCase()
+        if (word1check!=word2){
           document.getElementById("text")!.classList.add("tremer");
           setTimeout(() => {document.getElementById("text")!.classList.remove("tremer");},1500)
         } else {
@@ -99,9 +100,9 @@ export function Ppm(){
 
     return(
         <div className="ppmcontainer" id='ppmcontainer'>
-            <div className='title'>
+            <div className='questionask'>
               <h1>{word1}</h1 >
-              <h2>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h2>
+              <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
             </div>
             <div className='bottom'>
               <div className='inputbuttom'>              
@@ -109,14 +110,12 @@ export function Ppm(){
               <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
               <button className='nextbutton' onClick={compare} id='checkbutton'>CHECK</button>
               </div>
-              <div className='result'>  
-              <h2>- RESULT -</h2>            
-              <h1>{result}</h1>
+              <div className='questionask' id='result'>  
+              <h1>RESULT</h1>            
+              <h1 id='resulttext'>{result}</h1>
               </div>
 
             </div>
-
-
         </div>
     )
 }
