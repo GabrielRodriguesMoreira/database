@@ -19,10 +19,11 @@ export default function  App() {
       
       <div className="App">
         <div className="Square"> </div>
-        <Navbar stateChanger={setState} estadomudador={sethelptext} />
-        <div className="content">
+        <Navbar stateChanger={setState} estadomudador={sethelptext} style={{zIndex:99}} />
+        <div className="content" style={{zIndex:0}}>
           {state}
-          <div className="help" > <BiHelpCircle /> </div>
+          <div className="help" > <BiHelpCircle /> 
+          </div>
           <div className='helptext'>
             <p>{helptext}</p>
           </div>

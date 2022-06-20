@@ -41,6 +41,7 @@
   animation: fade 0.8s linear forwards;
 }
 .content {
+  z-index: 0;
   margin-top: 20px;
   position: absolute;
   background-color: rgba(77, 85, 150, 0.5);
