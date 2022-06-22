@@ -3,6 +3,7 @@ import '../styles/App.css'
 import {Navbar} from '../components/Navbar'
 import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
+import {Fut} from '../components/Fut'
 import { BiHelpCircle } from 'react-icons/bi';
 
 
@@ -11,7 +12,7 @@ import { BiHelpCircle } from 'react-icons/bi';
 
 export default function  App() { 
 
-  const[state, setState]=useState(<Ppm />);
+  const[state, setState]=useState(<Fut />);
   const [helptext, sethelptext]=useState("placeholder");
 
 
