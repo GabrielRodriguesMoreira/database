@@ -3,7 +3,7 @@ import '../styles/App.css'
 import {Navbar} from '../components/Navbar'
 import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
-import {Fut} from '../components/Fut'
+import {Fut} from '../components/fut'
 import { BiHelpCircle } from 'react-icons/bi';
 
 
