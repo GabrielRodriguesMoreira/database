@@ -3,7 +3,7 @@ import React from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
-import {Fut} from '../components/fut'
+import {Fut} from '../components/Fut'
 
 
 const helps = ['roboi po', 'eu vou caiir', 'me ajuda aqui vei']
