@@ -3,16 +3,11 @@ import '../styles/App.css'
 import {Navbar} from '../components/Navbar'
 import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
-import {Fut} from '../components/fut'
+import {Fut} from '../components/Fut'
 import { BiHelpCircle } from 'react-icons/bi';
-
-
-
-
-
 export default function  App() { 
 
-  const[state, setState]=useState(<Ppm />);
+  const[state, setState]=useState(<Fut />);
   const [helptext, sethelptext]=useState("placeholder");
 
 
@@ -20,7 +15,7 @@ export default function  App() {
       
       <div className="App">
         <div className="Square"> </div>
-        <Navbar stateChanger={setState} estadomudador={sethelptext} style={{zIndex:99}} />
+        <Navbar stateChanger={setState} estadomudador={sethelptext} />
         <div className="content" style={{zIndex:0}}>
           {state}
           <div className="help" > <BiHelpCircle /> 
@@ -30,7 +25,7 @@ export default function  App() {
           </div>
         </div>
         
-
+        <img className='aqua' src="../components/sources/profile.gif" alt="profile pic" width={120} />
       </div>
     )
 }

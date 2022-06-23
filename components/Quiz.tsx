@@ -7,11 +7,11 @@ var points = 0;
 var choiseds = [''];
 var colors = ['']
 export function Quiz(){
-    const questions = ["Pergunta valento 1 milhao de merreis?", "qt2", "qt3", "qt4", "qt5"];
-    const answers1 = ["resopsta 1", "qt2", "qt3", "qt4", "qt5"];
-    const answers2 = ["resposta 2", "qt2", "qt3", "qt4", "qt5"];
-    const answers3 = ["resposta 3", "qt2", "qt3", "qt4", "qt5"];
-    const answers4 = ["resposta 4", "qt2", "qt3", "qt4", "qt5"];
+    const questions = ["TA QUANTO ESSE REVORVE?", "qt2", "qt3", "qt4", "qt5"];
+    const answers1 = ["CUSTA 500 CONTO", "qt2", "qt3", "qt4", "qt5"];
+    const answers2 = ["2 E CINQUENTA", "qt2", "qt3", "qt4", "qt5"];
+    const answers3 = ["OS ZOI DA CARA", "qt2", "qt3", "qt4", "qt5"];
+    const answers4 = ["NÃO TO VENDENDO NADA NÃO", "qt2", "qt3", "qt4", "qt5"];
     const corrects = ["answ1", "answ1", "answ1", "answ1", "answ1"];
     const [current_question,set_current_question] = useState(questions[n]);
     const [current_answer1,set_current_answer1] = useState(answers1[n]);
@@ -59,7 +59,7 @@ useEffect(() => {
 function Perguntas(){
     return(
         <div className='quizcontainer'>
-        <div className='questionask'><h1 id="question_ask" >{current_question}</h1></div>
+            <div className='questionask'><h1 id="question_ask" >{current_question}</h1></div>
             <form action="">
                 <div className='asnwercolumn'>
                     <input type="radio" id="option1" name="option" value="answ1" />
@@ -73,10 +73,13 @@ function Perguntas(){
                     <input type="radio" id="option4" name="option" value="answ4" />
                     <label htmlFor="option4" id="label4" ><span>{current_answer4}</span></label>
                 </div>
-            </form> 
-        <button id="next_button" className="nextbutton" onClick={fun} >
-        Next
-        </button>
+            </form>
+            <section className='centerbutton'>
+                <button id="next_button" className="nextbutton" onClick={fun} >
+                    Next
+                </button>
+            </section>
+           
         </div>
     )
 }
