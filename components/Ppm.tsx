@@ -103,17 +103,17 @@ export function Ppm(){
             <section className='questionask'>
               <h1>{word1}</h1 >
               <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
-              <section className='secflor'>
-                <div>
+              <div className='secflor'>
+                <div className='textareacontainer'>
                   <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={1} wrap='hard' id="text" placeholder='type here' />
                   <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
                   <button className='nextbutton' onClick={compare} id='checkbutton' style={{display:'none'}}>CHECK</button>
                 </div>
                 <div id='result'>  
-                  <h1>RESULT</h1>            
+                  <h1>- RESULT -</h1>            
                   <h1 id='resulttext'>{result}</h1>
                 </div>
-              </section>
+              </div>
             </section>
         </div>
     )
