@@ -1,0 +1,83 @@
+.ppmcontainer {
+  width: 100%;
+  height: 100%;
+}
+.questionask {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.questionask h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.secflor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  width: 100vw;
+  padding: 20px;
+}
+.secflor textarea {
+  overflow: hidden;
+  resize: none;
+  font-size: 20px;
+  word-wrap: wrap;
+  padding: 1px;
+  outline: none;
+  border: none;
+  border-bottom: 4px solid #bfebf8;
+  color: white;
+  background-color: transparent;
+}
+.inputbuttom textarea::placeholder {
+  color: rgb(202, 202, 202);
+}
+
+.tremer {
+  animation: tremer 0.8s forwards !important;
+}
+
+@keyframes tremer {
+  0% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  10% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  20% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  30% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  40% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  50% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  60% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  70% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  80% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  100% {
+    border-bottom: 4px solid #bff8c9;
+  }
+}

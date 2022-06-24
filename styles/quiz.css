@@ -3,7 +3,7 @@
   width: 100vw;
   display: flex;
   justify-content: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
 }
 .questionask h1 {
   font-size: 40px;
@@ -68,8 +68,5 @@ label span:first-of-type {
 @media screen and (max-width: 768px) {
   .navlinks {
     display: none;
-  }
-  .menu {
-    display: block;
   }
 }

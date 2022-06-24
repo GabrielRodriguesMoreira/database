@@ -57,7 +57,9 @@ export function Fut(){
 
             <section className='futcontainer'>
                 <div className='left_content'>
-                    <img src={teams?.[time]?.['time']?.escudo} alt="escudotime" />
+                    <div className='imgcontainer'>
+                        <img src={teams?.[time]?.['time']?.escudo} alt="escudotime" />
+                    </div>    
                     <h1>{teams?.[time]?.['time']?.nome_popular}</h1>
                 </div>
 
@@ -67,38 +69,31 @@ export function Fut(){
                         <tr>
                             <td> <h2 >posição:</h2></td>
                             <td><h2 >{teams?.[time]?.posicao}</h2></td>
-                        </tr>
-                        <tr>
                             <td> <h2 >pontos:</h2></td>
                             <td><h2 >{teams?.[time]?.pontos}</h2></td>
                         </tr>
                         <tr>
                             <td> <h2 >aproveitamento:</h2></td>
                             <td><h2 >{teams?.[time]?.aproveitamento}</h2></td>
-                        </tr>
-                        <tr>
                             <td> <h2 >jogos:</h2></td>
                             <td><h2 >{teams?.[time]?.jogos}</h2></td>
                         </tr>
                         <tr>
                             <td> <h2 >vitórias:</h2></td>
                             <td><h2 >{teams?.[time]?.vitorias}</h2></td>
-                        </tr>
-                        <tr>
                             <td> <h2 >derrotas:</h2></td>
                             <td><h2 >{teams?.[time]?.derrotas}</h2></td>
                         </tr>
                         <tr>
                             <td> <h2 >empates:</h2></td>
                             <td><h2 >{teams?.[time]?.empates}</h2></td>
-                        </tr>
-                        <tr>
                             <td><h2>gols:</h2></td>
                             <td><h2>{teams?.[time]?.gols_pro}</h2></td>
                         </tr>
                         </tbody>
                     </table>    
                 </div>
+
 
             </section>
             

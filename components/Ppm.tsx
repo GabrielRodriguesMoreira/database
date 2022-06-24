@@ -100,22 +100,21 @@ export function Ppm(){
 
     return(
         <div className="ppmcontainer" id='ppmcontainer'>
-            <div className='questionask'>
+            <section className='questionask'>
               <h1>{word1}</h1 >
               <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
-            </div>
-            <div className='bottom'>
-              <div className='inputbuttom'>              
-              <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={3} wrap='hard' id="text" placeholder='type here' />
-              <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
-              <button className='nextbutton' onClick={compare} id='checkbutton'>CHECK</button>
-              </div>
-              <div className='questionask' id='result'>  
-              <h1>RESULT</h1>            
-              <h1 id='resulttext'>{result}</h1>
-              </div>
-
-            </div>
+              <section className='secflor'>
+                <div>
+                  <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={1} wrap='hard' id="text" placeholder='type here' />
+                  <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
+                  <button className='nextbutton' onClick={compare} id='checkbutton' style={{display:'none'}}>CHECK</button>
+                </div>
+                <div id='result'>  
+                  <h1>RESULT</h1>            
+                  <h1 id='resulttext'>{result}</h1>
+                </div>
+              </section>
+            </section>
         </div>
     )
 }
