@@ -4,6 +4,7 @@ import {Navbar} from '../components/Navbar'
 import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
 import {Fut} from '../components/fut'
+import {Profile} from '../components/Profile'
 import { BiHelpCircle } from 'react-icons/bi';
 export default function  App() { 
 
@@ -25,7 +26,7 @@ export default function  App() {
           </div>
         </div>
         
-        <img className='aqua' src="../components/sources/profile.gif" alt="profile pic" width={120} />
+        
       </div>
     )
 }

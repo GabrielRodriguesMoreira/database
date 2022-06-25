@@ -3,17 +3,17 @@ import '../styles/Ppm.css'
 
 
 
-var frases = ["Press The button to Start", 
-"DON'T BELIEVE IN YOURSELF! BELIEVE IN ME WHO BELIEVES IN YOU!",
-"The world isn't perfect. But it's there for us, doing the best it can… that's what makes it so damn beautiful.",
-"PEOPLE, WHO CAN'T THROW SOMETHING IMPORTANT AWAY, CAN NEVER HOPE TO CHANGE ANYTHING.",
-"TO KNOW SORROW IS NOT TERRIFYING. WHAT IS TERRIFYING IS TO KNOW YOU CAN'T GO BACK TO HAPPINESS YOU COULD HAVE.",
-
+var frases = ["Aperte o botão START para começar", 
+"Para sobreviver é preciso se misturar",
+"A minha alma ta armada e apontada para a cara do sussego",
+"To com um olho em você o outro na vila",
+"Acorda corno ta na hora de servir o estado capitalista",
+"Zigirigidum zigirigidum",
 ]
 
 
 
-let n =0;
+
 
 
 function auto_grow(element) {
@@ -22,6 +22,7 @@ function auto_grow(element) {
   element.style.height = (element.scrollHeight)+"px";
 }
 
+let n =0;
 export function Ppm(){
 
 
@@ -89,6 +90,9 @@ export function Ppm(){
         return String(num).padStart(totalLength, '0');
       }
 
+    
+
+    //função do Apertar Enter
       document.onkeydown = function(e){
         e = e || window.event;
         var key = e.which || e.keyCode;
@@ -105,12 +109,12 @@ export function Ppm(){
               <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
               <div className='secflor'>
                 <div className='textareacontainer'>
-                  <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={1} wrap='hard' id="text" placeholder='type here' />
+                  <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={1} wrap='hard' id="text" placeholder='Escreva aqui' />
                   <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
                   <button className='nextbutton' onClick={compare} id='checkbutton' style={{display:'none'}}>CHECK</button>
                 </div>
                 <div id='result'>  
-                  <h1>- RESULT -</h1>            
+                  <h1>- RESULTADO -</h1>            
                   <h1 id='resulttext'>{result}</h1>
                 </div>
               </div>

@@ -23,7 +23,7 @@ export function Fut(){
     const [time, settime] = useState(0)
     
         useEffect(() =>{
-        fetch('https://api.api-futebol.com.br/v1/campeonatos/1/tabela', options)
+        fetch('https://api.api-futebol.com.br/v1/campeonatos/2/tabela', options)
         .then(response => response.json())
         .then(response => {
             setteam(response);
@@ -77,7 +77,7 @@ export function Fut(){
         <div className='futparent'>
 
             <section className='searchsection'>
-                <input list="answers" id="answer" placeholder='seach some team' />
+                <input list="answers" id="answer" placeholder='Pesquise o time' />
                 <datalist id="answers"  ></datalist>
                 <button onClick={runfa}> < AiOutlineArrowRight /></button>
             </section>

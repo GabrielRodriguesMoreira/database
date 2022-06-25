@@ -98,16 +98,15 @@
   max-height: 90px;
   margin: 0 50px;
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 .lastgames ul {
+  width: 100%;
   list-style-type: none;
   display: flex;
   justify-content: space-around;
 }
 .lastgames li {
-  background-color: red;
   border-radius: 50%;
   width: 45px;
   height: 45px;

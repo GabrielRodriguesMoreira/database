@@ -29,9 +29,12 @@
 .profile_img img {
   width: 50px;
 }
-.menu {
-  display: none;
-}
-.respnavlinks {
-  display: none;
+
+@media screen and (max-width: 768px) {
+  .navlinks {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
 }

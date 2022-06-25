@@ -7,12 +7,16 @@ var points = 0;
 var choiseds = [''];
 var colors = ['']
 export function Quiz(){
-    const questions = ["TA QUANTO ESSE REVORVE?", "qt2", "qt3", "qt4", "qt5"];
-    const answers1 = ["CUSTA 500 CONTO", "qt2", "qt3", "qt4", "qt5"];
-    const answers2 = ["2 E CINQUENTA", "qt2", "qt3", "qt4", "qt5"];
-    const answers3 = ["OS ZOI DA CARA", "qt2", "qt3", "qt4", "qt5"];
-    const answers4 = ["NÃO TO VENDENDO NADA NÃO", "qt2", "qt3", "qt4", "qt5"];
-    const corrects = ["answ1", "answ1", "answ1", "answ1", "answ1"];
+    const questions = ["Uma mãe tem 30 reais para dividir entre duas filhas. Qual o horário?", 
+    "Em um avião há 4 romanos e 1 inglês. Qual é o nome da aeromoça?",
+    "Pinóquio sempre mente. Pinóquio diz: Todos os meus chapéus são verdes. Podemos concluir que:", 
+    "Sabe-se que é falsa a seguinte afirmação: “Morgana não é médica ou Carla é advogada”. Segue, a partir desta informação, que uma das afirmativas a seguir é verdadeira. Assinale-a: ", 
+    "qt5"];
+    const answers1 = ["09:20", "Raquel", "Pinóquio tem pelo menos um chapéu", "Morgana é médica e Carla é advogada", "qt5"];
+    const answers2 = ["16:20", "Ivone", "Pinóquio tem apenas um chapéu verde", "Se Morgana é médica, então Carla é advogada", "qt5"];
+    const answers3 = ["16:25", "Rochele", "Pinóquio não tem chapéus", "Morgana não é médica e Carla não é advogada", "qt5"];
+    const answers4 = ["13:45", "Judite", "Pinóquio tem pelo menos um chapéu verde", "Se Carla é advogada, então Morgana é médica", "qt5"];
+    const corrects = ["answ4", "annw2", "answ1", "answ1", "answ1"];
     const [current_question,set_current_question] = useState(questions[n]);
     const [current_answer1,set_current_answer1] = useState(answers1[n]);
     const [current_answer2,set_current_answer2] = useState(answers2[n]);

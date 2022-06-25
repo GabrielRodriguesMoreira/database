@@ -13,11 +13,12 @@
   text-align: center;
   margin: 0px 50px;
   margin-bottom: 10px;
+  user-select: none;
 }
 .secflor {
   margin-top: 10px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   width: 100vw;
   height: 100%;
   padding: 20px 40px;
@@ -25,10 +26,10 @@
 .textareacontainer {
   display: flex;
   flex-direction: column;
-  max-width: 800px;
+  max-width: 500px;
   width: 100%;
 }
-.secflor textarea {
+.textareacontainer textarea {
   overflow: hidden;
   resize: none;
   font-size: 20px;
@@ -39,7 +40,6 @@
   border-bottom: 4px solid #bfebf8;
   color: white;
   background-color: transparent;
-  max-width: 600px;
   width: 100%;
   margin-bottom: 20px;
 }
@@ -52,12 +52,15 @@
   border-radius: 1.2rem;
   box-shadow: 0px 3px 15px -6px #000000;
   padding: 10px;
-  max-height: 700px;
+  max-height: 300px;
   height: 100%;
-  max-width: 500px;
+  max-width: 400px;
   width: 100%;
+  margin-left: 150px;
 }
 #result h1 {
+  font-size: 30px;
+  text-shadow: none;
   margin-bottom: 70px;
 }
 .tremer {
