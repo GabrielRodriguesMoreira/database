@@ -105,16 +105,16 @@ function Resultado(){
 })
 
     return(
-        <div className='quizcontainer'>
-            <div className='questionask' id='showresult' >
-                <h1>Pontuação: <br /> {points}/5</h1>
-                <br></br>
-                <div className='aling' >
-                <h1 id='line1'>1</h1>
-                <h1 id='line2'>2</h1>
-                <h1 id='line3'>3</h1>
-                <h1 id='line4'>4</h1>
-                <h1 id='line5'>5</h1>
+        <div className='quizresultcontainer'>
+            <div  id='showresult' >
+                <h1>Pontuação:</h1>
+                <h1>{points}/5</h1>
+                <div className='aling'>
+                    <h1 id='line1'>1</h1>
+                    <h1 id='line2'>2</h1>
+                    <h1 id='line3'>3</h1>
+                    <h1 id='line4'>4</h1>
+                    <h1 id='line5'>5</h1>
                 </div>
             </div>
         </div>

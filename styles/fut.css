@@ -1,5 +1,5 @@
 .searchsection {
-  height: 100px;
+  height: 60px;
   display: flex;
   justify-content: center;
 }
@@ -95,21 +95,25 @@
 }
 
 .lastgames {
-  max-height: 80px;
+  max-height: 90px;
   margin: 0 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.lastgames table * {
-  border-collapse: collapse;
-  margin: 0px 20px;
+.lastgames ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-around;
 }
-.lastgames table td {
-  border-collapse: collapse;
+.lastgames li {
+  background-color: red;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
   text-align: center;
   text-transform: uppercase;
-  min-width: 50px;
 }
 
 input::-webkit-calendar-picker-indicator {

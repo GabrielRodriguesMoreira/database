@@ -27,10 +27,9 @@ export function Fut(){
         .then(response => response.json())
         .then(response => {
             setteam(response);
-            console.log(response?.[0]?.['time']?.nome_popular);
+            
             if(response){
                 console.log(response);
-
                 /* criando a lista de busca */
                 let value = (response?.[0]?.['time']?.nome_popular);
                 for (var data_value=0;data_value<response.length;data_value++){
@@ -40,26 +39,31 @@ export function Fut(){
                 tag.setAttribute('value', value);
                 let parent = (document.getElementById("answers") as HTMLInputElement);
                 parent.appendChild(tag);
+                }
 
                 /* pintar borda dependendo (V/D/E) */
                 for (let curgame=0;curgame<5;curgame++){
                     let gameparent = (document.getElementById("lastgamestr") as HTMLInputElement);
-                    let gametd = document.createElement('td');
+                    let gametd = document.createElement('li');
                     let gameh2 = document.createElement('h2');
                     gameh2.innerHTML = response?.[0]?.ultimos_jogos[curgame];
+                    switch(response?.[time]?.ultimos_jogos[curgame]){
+                        case 'v':
+                            gametd.style.cssText =   'background-color: #1cf540;'
+                            break
+                        case 'd':
+                            gametd.style.cssText =   'background-color: #b80101;'
+                            break
 
-                    if (response?.[time]?.ultimos_jogos[curgame] == 'v'){
-                        gameh2.style.cssText =   'border-bottom: 5px solid #1cf540;'
-                    }else if (response?.[time]?.ultimos_jogos[curgame] == 'd'){
-                        gameh2.style.cssText =   'border-bottom: 5px solid #b80101;'
-                    }
-                    else {
-                        gameh2.style.cssText =   'border-bottom: 5px solid #fffb0f;'
+                        case 'e':
+                            gametd.style.cssText =   'background-color: #fffb0f;'
+                            break
+                        
+                        default:
+                            gametd.style.cssText =   'border-bottom: 5px solid white;'
                     }
                     gametd.appendChild(gameh2);
                     gameparent.appendChild(gametd);
-                }
-
                 }
               }
         })
@@ -120,12 +124,9 @@ export function Fut(){
                     </div>
                     <h1 id='lastgamestitle'>Ultimos jogos</h1>
                     <div className='lastgames'>
-                    <table>
-                        <tbody>
-                            <tr id='lastgamestr'>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                    <ul id='lastgamestr'>
+                    </ul>
                     </div>
 
                 </div>
