@@ -20,11 +20,10 @@ export function Fut(){
     const [time, settime] = useState(0)
     
 useEffect(() =>{
-    fetch('https://api.api-futebol.com.br/v2/campeonatos/2/tabela', options)
+    fetch('curl -X GET https://api.api-futebol.com.br/v1/campeonatos', options)
     .then(response => response.json())
     .then(response => {
         setteam(response);
-            
          if(response){
             console.log(response);
             /* criando a lista de busca */
