@@ -1,32 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import '../styles/Ppm.css'
 
-
-
 var frases = ["Aperte o botão START para começar", 
-"Frase 1",
-"Frase 2",
-"Frase 3",
-"Frase 4",
-"Frase 5",
+"Esta casa está ladrilhada. Quem a desenladrilhará? O desenladrilhador. O desenladrilhador que a desenladrilhar bom desenladrilhador será!",
+"A fiadeira fia a farda do filho do feitor Felício",
+"La vem o velho Félix com o fole velho nas costas",
+"O bispo de Constantinopla é um bom desconstantinopolitanizador. Quem o desconstantinopolitanizar um bom desconstantinopolitanizador será.",
+"O original não se desoriginaliza! O original não se desoriginaliza! O original não se desoriginaliza! Se o desoriginalizássemos, original não seria!",
 ]
 
-
-
-
-
-
+//aumenta tamanho da textarea
 function auto_grow(element) {
   console.log(element);
   element.style.height = "10px";
   element.style.height = (element.scrollHeight)+"px";
 }
 
-let n =0;
+
+let current = 0;
 export function Ppm(){
 
-
-    const [word1,setword1] = useState(frases[n]);
+    const [word1,setword1] = useState(frases[current]);
     const [result,setresult] = useState("");
 
     function compare(){
@@ -38,19 +32,19 @@ export function Ppm(){
         } else {
             document.getElementById("text")!.style.borderBottom  = '4px solid #1cf540'
             setIsActive(false);
-             setresult(String("Você escreve " + (word1.length/(minutes*60 + seconds)).toFixed(1) + " letras por segundo." ));
-             document.getElementById("startbutton")!.style.display='block';
-             document.getElementById("checkbutton")!.style.display='none';
+            setresult(String("Você escreve " + (word1.length/(minutes*60 + seconds)).toFixed(1) + " letras por segundo." ));
+            document.getElementById("startbutton")!.style.display='block';
+            document.getElementById("checkbutton")!.style.display='none';
         }
     }
-
+    
+    // relogio
     const [seconds, setSeconds] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [isActive, setIsActive] = useState(false);
-  
     function toggle() {
-        n++;
-        setword1(frases[n])
+        current++;
+        setword1(frases[current])
         setSeconds(0);
         setMinutes(0);
         setIsActive(true);
@@ -59,13 +53,6 @@ export function Ppm(){
         document.getElementById("text")!.style.borderBottom  = '4px solid #bff8c9';
         (document.getElementById('text') as HTMLInputElement).value = ''
     }
-  
-    function reset() {
-        setMinutes(0);
-      setSeconds(0);
-      setIsActive(false);
-    }
-  
     useEffect(() => {
       let interval = setInterval(() => 0);
       if (isActive) {
@@ -75,22 +62,18 @@ export function Ppm(){
       } else if (!isActive && seconds !== 0) {
         clearInterval(interval);
       }
-
       if(seconds>=60){
         setSeconds(seconds => seconds - 60);
         setMinutes(minutes => +minutes+1);
       }
-
       return () => clearInterval(interval);
     }, [isActive, seconds]);
 
 
-    //Adicionar numero a esquerda (Muito útil!!!!!! )
+    //Adicionar numero a esquerda
     function addLeadingZeros(num, totalLength) {
         return String(num).padStart(totalLength, '0');
       }
-
-    
 
     //função do Apertar Enter
       document.onkeydown = function(e){

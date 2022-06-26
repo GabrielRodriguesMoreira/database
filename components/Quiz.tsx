@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import ReactDOM from 'react-dom';
 import '../styles/quiz.css'
 
-var n = 0;
+var stage = 0;
 var points = 0;
 var choiseds = [''];
 var colors = ['']
@@ -12,42 +12,43 @@ export function Quiz(){
     "Pinóquio sempre mente. Pinóquio diz: Todos os meus chapéus são verdes. Podemos concluir que:", 
     "Sabe-se que é falsa a seguinte afirmação: “Morgana não é médica ou Carla é advogada”. Segue, a partir desta informação, que uma das afirmativas a seguir é verdadeira. Assinale-a: ", 
     "Uma família resolveu ir ao spa. Entraram 1 avó, 2 mães, 2 filhas e 1 neta. Qual o número mínimo de mulheres dessa família que entraram nesse spa?"];
+
     const answers1 = ["09:20", "Raquel", "Pinóquio tem pelo menos um chapéu", "Morgana é médica e Carla é advogada", "5 mulheres"];
     const answers2 = ["16:20", "Ivone", "Pinóquio tem apenas um chapéu verde", "Se Morgana é médica, então Carla é advogada", "8 mulheres"];
     const answers3 = ["16:25", "Rochele", "Pinóquio não tem chapéus", "Morgana não é médica e Carla não é advogada", "3 mulheres"];
     const answers4 = ["13:45", "Judite", "Pinóquio tem pelo menos um chapéu verde", "Se Carla é advogada, então Morgana é médica", "12 mulheres"];
     const corrects = ["answ4", "answ2", "answ1", "answ4", "answ3"];
-    const [current_question,set_current_question] = useState(questions[n]);
-    const [current_answer1,set_current_answer1] = useState(answers1[n]);
-    const [current_answer2,set_current_answer2] = useState(answers2[n]);
-    const [current_answer3,set_current_answer3] = useState(answers3[n]);
-    const [current_answer4,set_current_answer4] = useState(answers4[n]);
+    
+    const [current_question,set_current_question] = useState(questions[stage]);
+    const [current_answer1,set_current_answer1] = useState(answers1[stage]);
+    const [current_answer2,set_current_answer2] = useState(answers2[stage]);
+    const [current_answer3,set_current_answer3] = useState(answers3[stage]);
+    const [current_answer4,set_current_answer4] = useState(answers4[stage]);
 
 useEffect(() => {
-        if (n>4){
+    //Mostrar tela resultado caso quiz ja tenha sido respondidoss
+        if (stage>4){
             let parent = document.getElementById("show");
             var elem = <Resultado />
             ReactDOM.render(<Resultado />,document.getElementById("show") )
         }
 })
-    function fun() {
-        if (n < 4) {
-
-        n++;
-        set_current_question(questions[n]);
-        set_current_answer1(answers1[n]);
-        set_current_answer2(answers2[n]);
-        set_current_answer3(answers3[n]);
-        set_current_answer4(answers4[n]);
-        choiseds[n - 1] = (document.querySelector(
+    function changestage() {
+        if (stage < 4) {
+        stage++;
+        set_current_question(questions[stage]);
+        set_current_answer1(answers1[stage]);
+        set_current_answer2(answers2[stage]);
+        set_current_answer3(answers3[stage]);
+        set_current_answer4(answers4[stage]);
+        choiseds[stage - 1] = (document.querySelector(
             'input[name="option"]:checked'
         ) as HTMLInputElement).value;
         } else {
-        choiseds[n] = (document.querySelector(
+        choiseds[stage] = (document.querySelector(
             'input[name="option"]:checked'
         ) as HTMLInputElement).value;
         
-
         let parent = document.getElementById("show");
         parent?.removeChild(parent.firstChild!);
         var elem = <Resultado />
@@ -55,9 +56,6 @@ useEffect(() => {
         }
     };
 
-
-
-         
 function Perguntas(){
     return(
         <div className='quizcontainer'>
@@ -77,25 +75,22 @@ function Perguntas(){
                 </div>
             </form>
             <section className='centerbutton'>
-                <button id="next_button" className="nextbutton" onClick={fun} >
+                <button id="next_button" className="nextbutton" onClick={changestage} >
                     Next
                 </button>
             </section>
-           
         </div>
     )
 }
-
-
 function Resultado(){
-    if (n<=4){
+    if (stage<=4){
     for (let i = 0; i <= 4; i++) {
         if (choiseds[i] == corrects[i]) {
         points++;
         colors[i] = '4px solid #1cf540'
         } else { colors[i] = '4px solid #b80101'}
         }
-        n=5;
+        stage=5;
     }
 
     useEffect(() => {
@@ -105,7 +100,6 @@ function Resultado(){
     document.getElementById('line4')!.style.borderBottom  = colors[3]
     document.getElementById('line5')!.style.borderBottom  = colors[4]
 })
-
     return(
         <div className='quizresultcontainer'>
             <div  id='showresult' >
@@ -122,12 +116,11 @@ function Resultado(){
         </div>
     )
 }
+
 return(
     <div id='show' >
         <Perguntas  />
-        
     </div>
-    
 )
 
 }

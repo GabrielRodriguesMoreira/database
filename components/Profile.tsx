@@ -13,14 +13,12 @@ import { TbBrandNextjs } from 'react-icons/tb';
 import { SiCplusplus } from 'react-icons/si';
 
 export function Profile(){
-
     return(
         <div>
             <section className='mainsection'>
                 <div className='left_division'>
                     <section className='infos'>
-
-                         <h1>Formação</h1>   
+                        <h1>Formação</h1>   
                         <ul>
                             <li>Curso tecnico em informática - IFCE | Campus Fortaleza (completo em 2021)</li>
                             <li>Ensino superior em Ciências da computação (em conclusão)</li>
