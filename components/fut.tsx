@@ -2,11 +2,11 @@ import{useState, useEffect, createElement} from 'react'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import '../styles/fut.css'
 
-
+const apiSecret = import.meta.env.VITE_APP_CONVERTKIT_API_SECRET;
 const options = {
 	method: 'GET',
 	headers: {
-		'Authorization': 'Bearer test_d07617715160594a9c75ffb7750fc0'
+		'Authorization': `Bearer ${apiSecret}`
 	}   
 };
 
