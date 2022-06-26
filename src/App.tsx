@@ -8,7 +8,7 @@ import {Profile} from '../components/Profile'
 import { BiHelpCircle } from 'react-icons/bi';
 export default function  App() { 
 
-  const[state, setState]=useState(<Ppm />);
+  const[state, setState]=useState(<Profile />);
   const [helptext, sethelptext]=useState("placeholder");
 
 

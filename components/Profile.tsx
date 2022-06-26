@@ -1,4 +1,5 @@
 import '../styles/profile.css'
+import profilepic from './sources/useless.png'
 
 import { AiFillGithub } from 'react-icons/ai';
 import { AiFillLinkedin } from 'react-icons/ai';
@@ -83,7 +84,7 @@ export function Profile(){
                     </section>
                 </div>
                 <div className='right_division'>
-                    <img className='aqua' src="../components/sources/useless.png" alt="profile pic" width={260}/>
+                    <img  src={profilepic} alt="profile pic" width={260}/>
                     <h1>Gabriel Rodrigues</h1>
                     <div className='links'>
                         <a  target="_blank" href='https://github.com/GabrielRodriguesMoreira'><AiFillGithub /></a>
