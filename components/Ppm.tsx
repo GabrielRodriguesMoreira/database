@@ -4,11 +4,11 @@ import '../styles/Ppm.css'
 
 
 var frases = ["Aperte o botão START para começar", 
-"Para sobreviver é preciso se misturar",
-"A minha alma ta armada e apontada para a cara do sussego",
-"To com um olho em você o outro na vila",
-"Acorda corno ta na hora de servir o estado capitalista",
-"Zigirigidum zigirigidum",
+"Frase 1",
+"Frase 2",
+"Frase 3",
+"Frase 4",
+"Frase 5",
 ]
 
 
