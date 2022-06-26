@@ -5,8 +5,9 @@ import '../styles/fut.css'
 
 
 const apiSecret = import.meta.env.VITE_APP_CONVERTKIT_API_SECRET;
+
+console.log(apiSecret);
 const options = {
-    
 	method: 'GET',
 	headers: {
 		'Authorization': `Bearer ${apiSecret}`
