@@ -2,9 +2,11 @@ import{useState, useEffect, createElement} from 'react'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import '../styles/fut.css'
 
+
+
 const apiSecret = import.meta.env.VITE_APP_CONVERTKIT_API_SECRET;
-console.log(apiSecret);
 const options = {
+    
 	method: 'GET',
 	headers: {
 		'Authorization': `Bearer ${apiSecret}`
@@ -18,7 +20,7 @@ export function Fut(){
     const [time, settime] = useState(0)
     
 useEffect(() =>{
-    fetch('https://api.api-futebol.com.br/v1/campeonatos/1/tabela', options)
+    fetch('https://api.api-futebol.com.br/v2/campeonatos/2/tabela', options)
     .then(response => response.json())
     .then(response => {
         setteam(response);
