@@ -56,7 +56,7 @@ export function Fut(){
                             break
 
                         case 'e':
-                            gametd.style.cssText =   'background-color: #fffb0f;'
+                            gametd.style.cssText =   'background-color: #f4ce26;'
                             break
                         
                         default:

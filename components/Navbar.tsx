@@ -4,7 +4,7 @@ import {Ppm} from '../components/Ppm'
 import {Quiz} from '../components/Quiz'
 import {Fut} from '../components/fut'
 import {Profile} from '../components/Profile'
-import logo from './sources/logo.webp'
+import logo from './sources/logo.png'
 const helps = ['roboi po', 'eu vou caiir', 'me ajuda aqui vei']
 
 export function  Navbar({stateChanger, estadomudador, ...rest}) {

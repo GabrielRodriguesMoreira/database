@@ -11,12 +11,12 @@ export function Quiz(){
     "Em um avião há 4 romanos e 1 inglês. Qual é o nome da aeromoça?",
     "Pinóquio sempre mente. Pinóquio diz: Todos os meus chapéus são verdes. Podemos concluir que:", 
     "Sabe-se que é falsa a seguinte afirmação: “Morgana não é médica ou Carla é advogada”. Segue, a partir desta informação, que uma das afirmativas a seguir é verdadeira. Assinale-a: ", 
-    "qt5"];
-    const answers1 = ["09:20", "Raquel", "Pinóquio tem pelo menos um chapéu", "Morgana é médica e Carla é advogada", "qt5"];
-    const answers2 = ["16:20", "Ivone", "Pinóquio tem apenas um chapéu verde", "Se Morgana é médica, então Carla é advogada", "qt5"];
-    const answers3 = ["16:25", "Rochele", "Pinóquio não tem chapéus", "Morgana não é médica e Carla não é advogada", "qt5"];
-    const answers4 = ["13:45", "Judite", "Pinóquio tem pelo menos um chapéu verde", "Se Carla é advogada, então Morgana é médica", "qt5"];
-    const corrects = ["answ4", "annw2", "answ1", "answ1", "answ1"];
+    "Uma família resolveu ir ao spa. Entraram 1 avó, 2 mães, 2 filhas e 1 neta. Qual o número mínimo de mulheres dessa família que entraram nesse spa?"];
+    const answers1 = ["09:20", "Raquel", "Pinóquio tem pelo menos um chapéu", "Morgana é médica e Carla é advogada", "5 mulheres"];
+    const answers2 = ["16:20", "Ivone", "Pinóquio tem apenas um chapéu verde", "Se Morgana é médica, então Carla é advogada", "8 mulheres"];
+    const answers3 = ["16:25", "Rochele", "Pinóquio não tem chapéus", "Morgana não é médica e Carla não é advogada", "3 mulheres"];
+    const answers4 = ["13:45", "Judite", "Pinóquio tem pelo menos um chapéu verde", "Se Carla é advogada, então Morgana é médica", "12 mulheres"];
+    const corrects = ["answ4", "answ2", "answ1", "answ4", "answ3"];
     const [current_question,set_current_question] = useState(questions[n]);
     const [current_answer1,set_current_answer1] = useState(answers1[n]);
     const [current_answer2,set_current_answer2] = useState(answers2[n]);
@@ -30,8 +30,6 @@ useEffect(() => {
             ReactDOM.render(<Resultado />,document.getElementById("show") )
         }
 })
-
-
     function fun() {
         if (n < 4) {
 
@@ -124,15 +122,12 @@ function Resultado(){
         </div>
     )
 }
-
-
 return(
     <div id='show' >
         <Perguntas  />
         
     </div>
     
-
 )
 
 }

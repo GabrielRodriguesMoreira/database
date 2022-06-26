@@ -38,7 +38,7 @@ export function Ppm(){
         } else {
             document.getElementById("text")!.style.borderBottom  = '4px solid #1cf540'
             setIsActive(false);
-             setresult(String("You type " + (word1.length/(minutes*60 + seconds)).toFixed(1) + " letters per second." ));
+             setresult(String("Você escreve " + (word1.length/(minutes*60 + seconds)).toFixed(1) + " letras por segundo." ));
              document.getElementById("startbutton")!.style.display='block';
              document.getElementById("checkbutton")!.style.display='none';
         }
@@ -104,7 +104,7 @@ export function Ppm(){
 
     return(
         <div className="ppmcontainer" id='ppmcontainer'>
-            <section className='questionask'>
+            <section className='ppmtitle'>
               <h1>{word1}</h1 >
               <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
               <div className='secflor'>
@@ -113,7 +113,7 @@ export function Ppm(){
                   <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
                   <button className='nextbutton' onClick={compare} id='checkbutton' style={{display:'none'}}>CHECK</button>
                 </div>
-                <div id='result'>  
+                <div id='ppmresult'>  
                   <h1>- RESULTADO -</h1>            
                   <h1 id='resulttext'>{result}</h1>
                 </div>
