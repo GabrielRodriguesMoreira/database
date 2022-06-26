@@ -18,7 +18,7 @@ export function Fut(){
     const [time, settime] = useState(0)
     
 useEffect(() =>{
-    fetch('https://api.api-futebol.com.br/v1/campeonatos/2/tabela', options)
+    fetch('https://api.api-futebol.com.br/v1/campeonatos/1/tabela', options)
     .then(response => response.json())
     .then(response => {
         setteam(response);
