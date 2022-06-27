@@ -114,6 +114,9 @@
   text-align: center;
   text-transform: uppercase;
 }
+#lastgame {
+  font-size: 23px;
+}
 
 input::-webkit-calendar-picker-indicator {
   opacity: 0;

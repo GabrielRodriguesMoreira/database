@@ -39,9 +39,7 @@ useEffect(() =>{
             /* pintar borda dependendo (V/D/E) */
             for (let curgame=0;curgame<5;curgame++){
                 let gameparent = (document.getElementById("lastgamestr") as HTMLInputElement);
-                let gametd = document.createElement('li');
-                let gameh2 = document.createElement('h2');
-                gameh2.innerHTML = response?.[0]?.ultimos_jogos[curgame];
+                let gametd = (document.getElementById("lastgame") as HTMLInputElement);
                 switch(response?.[time]?.ultimos_jogos[curgame]){
                     case 'v':
                         gametd.style.cssText =   'background-color: #1cf540;'
@@ -57,7 +55,6 @@ useEffect(() =>{
                     default:
                         gametd.style.cssText =   'border-bottom: 5px solid white;'
                 }
-                gametd.appendChild(gameh2);
                 gameparent.appendChild(gametd);
             }
         }
@@ -118,6 +115,11 @@ function searchteam(){
                     <h1 id='lastgamestitle'>Ultimos jogos</h1>
                     <div className='lastgames'>
                         <ul id='lastgamestr'>
+                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[0]}</li>
+                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[1]}</li>
+                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[2]}</li>
+                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[3]}</li>
+                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[4]}</li>
                         </ul>
                     </div>
                 </div>
