@@ -2,8 +2,6 @@ import{useState, useEffect, createElement} from 'react'
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import '../styles/fut.css'
 
-
-
 const apiSecret = import.meta.env.VITE_APP_CONVERTKIT_API_SECRET;
 const options = {
 	method: 'GET',
@@ -12,6 +10,26 @@ const options = {
 	}   
 };
 
+
+
+function changecolor(resp, statechanger){
+    for (let curgame=0;curgame<5;curgame++){
+        let gametd = (document.getElementById(`lastgame${curgame}`) as HTMLInputElement);
+        switch(resp?.[statechanger]?.ultimos_jogos[curgame]){
+            case 'v':
+                gametd.style.cssText =   'background-color: #1cf540;'
+                break
+            case 'd':
+                gametd.style.cssText =   'background-color: #b80101;'
+                break
+            case 'e':
+                gametd.style.cssText =   'background-color: #f4ce26;'
+                break
+            default:
+                gametd.style.cssText =   'background-color: 5px solid white;'
+        }
+    }
+}
 
 export function Fut(){
 
@@ -37,26 +55,7 @@ useEffect(() =>{
             }
 
             /* pintar borda dependendo (V/D/E) */
-            for (let curgame=0;curgame<5;curgame++){
-                let gameparent = (document.getElementById("lastgamestr") as HTMLInputElement);
-                let gametd = (document.getElementById("lastgame") as HTMLInputElement);
-                switch(response?.[time]?.ultimos_jogos[curgame]){
-                    case 'v':
-                        gametd.style.cssText =   'background-color: #1cf540;'
-                        break
-                    case 'd':
-                        gametd.style.cssText =   'background-color: #b80101;'
-                        break
-
-                    case 'e':
-                        gametd.style.cssText =   'background-color: #f4ce26;'
-                        break
-                        
-                    default:
-                        gametd.style.cssText =   'border-bottom: 5px solid white;'
-                }
-                gameparent.appendChild(gametd);
-            }
+            changecolor(response,time)
         }
     })
     .catch(err => console.error(err));
@@ -65,8 +64,13 @@ useEffect(() =>{
 function searchteam(){
     var shownVal = (document.getElementById("answer") as HTMLInputElement).value;
     var value2send = (document.querySelector("#answers option[value='"+shownVal+"']") as HTMLInputElement).dataset.value;
-    settime(Number(value2send));
-    }
+    var value = 0
+    settime(() =>{ 
+        value = Number(value2send)
+        changecolor(teams,value)
+        return value;
+    });
+}
     return(
         <div className='futparent'>
             <section className='searchsection'>
@@ -115,18 +119,16 @@ function searchteam(){
                     <h1 id='lastgamestitle'>Ultimos jogos</h1>
                     <div className='lastgames'>
                         <ul id='lastgamestr'>
-                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[0]}</li>
-                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[1]}</li>
-                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[2]}</li>
-                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[3]}</li>
-                            <li id='lastgame'>{teams?.[time]?.ultimos_jogos[4]}</li>
+                            <li id='lastgame0'>{teams?.[time]?.ultimos_jogos[0]}</li>
+                            <li id='lastgame1'>{teams?.[time]?.ultimos_jogos[1]}</li>
+                            <li id='lastgame2'>{teams?.[time]?.ultimos_jogos[2]}</li>
+                            <li id='lastgame3'>{teams?.[time]?.ultimos_jogos[3]}</li>
+                            <li id='lastgame4'>{teams?.[time]?.ultimos_jogos[4]}</li>
                         </ul>
                     </div>
                 </div>
             </section>
         </div>
     )
-
-
 }
 
