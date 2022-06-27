@@ -5,6 +5,8 @@
   padding: 10px 15px;
   background-color: #f44926;
   box-shadow: 0px 3px 15px -6px #000000;
+  width: 100%;
+  position: fixed;
 }
 .mobilenavmenu {
   display: flex;

@@ -18,7 +18,7 @@
 .mobilelinks * {
   margin: 0px 10px;
 }
-.mobilelinks a:nth-child(4) {
+.links a:nth-child(4) {
   animation: 1s flip forwards;
 }
 
@@ -32,6 +32,39 @@
 }
 .mobiledados ul {
   list-style: none;
+}
+
+.mobileconhecimentos {
+  width: 90%;
+  max-height: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.mobileconhecimentos_icons,
+.mobileconhecimentos_description {
+  width: 48%;
+  background-color: #2c73d2;
+  box-shadow: 0px 3px 15px -6px #000000;
+  border-radius: 0.6rem;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.mobileconhecimentos_icons h1 {
+  font-size: 18px;
+}
+.mobileconhecimentos_icons table {
+  width: 100%;
+  justify-content: center;
+}
+.mobileconhecimentos_icons td * {
+  font-size: 40px;
+  margin: 3px 15px;
+}
+
+.mobileconhecimentos_description h1 {
+  margin-bottom: 20px;
 }
 @keyframes flip {
   0% {
