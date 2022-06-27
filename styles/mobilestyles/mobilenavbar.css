@@ -1,0 +1,19 @@
+.mobilenavcontainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #f44926;
+  box-shadow: 0px 3px 15px -6px #000000;
+}
+.mobilenavmenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  background-color: #762fcf;
+  box-shadow: 0px 3px 15px -6px #000000;
+}
