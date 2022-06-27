@@ -11,6 +11,10 @@ export default function  MobileApp() {
             <MobileNavbar />
             <div className='navbarspacing'></div>
             <MobileProfile />
+
+            <footer>
+              <p>placeholder footer</p>
+            </footer>
       </div>
     )
 }
