@@ -74,7 +74,7 @@ function searchteam(){
     return(
         <div className='futparent'>
             <section className='searchsection'>
-                <input list="answers" id="answer" placeholder='Pesquise o time' />
+                <input list="answers" id="answer" placeholder='Pesquise o time' onFocus={() => {(document.getElementById('answer') as HTMLInputElement).value = ''}} />
                 <datalist id="answers"  ></datalist>
                 <button onClick={searchteam}> < AiOutlineArrowRight /></button>
             </section>
