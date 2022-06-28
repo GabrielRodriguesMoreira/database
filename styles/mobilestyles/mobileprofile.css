@@ -12,20 +12,21 @@
   object-fit: cover;
 }
 .mobilelinks {
+  display: flex;
   margin: 20px 0px;
   padding: 5px;
   background-color: #2c73d2;
   box-shadow: 0px 3px 15px -6px #000000;
   border-radius: 1.2rem;
-  font-size: 30px;
   line-height: 5px;
 }
 
 .mobilelinks * {
   margin: 0px 10px;
+  font-size: 30px;
 }
-.links a:nth-child(4) {
-  animation: 1s flip forwards;
+.mobilelinks a:nth-child(1) {
+  animation: flip 1s forwards;
 }
 
 .mobiledados {

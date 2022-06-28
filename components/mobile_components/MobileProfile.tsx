@@ -14,14 +14,15 @@ import { SiCplusplus } from 'react-icons/si';
 export function MobileProfile(){
     
     return(
-        <div className='mobileprofilecontainer' onLoad={() => {window.alert('Versão mobile ainda em desenvolvimento, por favor acesse por um computador')}}>
+        <div className='mobileprofilecontainer'>
                 <img src={profilepic} alt="foto perfil" width={200} />
                 <h1>Gabriel Rodrigues</h1>
                 <div className='mobilelinks'>
+                    <a  target="_blank" href="https://wa.me/+558587373084"><SiWhatsapp /></a> 
                     <a  target="_blank" href='https://github.com/GabrielRodriguesMoreira'><AiFillGithub /></a>
                     <a  target="_blank" href="https://vercel.com/dashboard"><SiVercel /></a> 
                     <a  target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"><AiFillLinkedin /></a> 
-                    <a  target="_blank" href="https://wa.me/+558587373084"><SiWhatsapp /></a> 
+
                 </div>
             <section className='mobiledados'>
                     <h1>FORMAÇÃO</h1>
@@ -36,6 +37,7 @@ export function MobileProfile(){
                         <li>Email: gabrielrm00220@gmail.com</li>
                         <li>Cidade: Fortaleza/Ce</li>
                         <li>cep: 60356-370</li>
+                        <li>Idade: 20 anos</li>
                     </ul>
             </section>
 

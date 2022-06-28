@@ -12,9 +12,9 @@ export function  Navbar({stateChanger, ...rest}) {
       <nav className="header">
         <div className='logo'><img src={logo} alt="logo" /> </div>
         <div className="navlinks">
-           <a onClick={() => {stateChanger(<Ppm />)}} >PROJETO 1</a>
+           <a onClick={() => {stateChanger(<Fut />)}} >PROJETO 1</a>
            <a onClick={() => {stateChanger(<Quiz />) }} >PROJETO 2</a>
-           <a onClick={() => {stateChanger(<Fut />)}} >PROJETO 3</a>
+           <a onClick={() => {stateChanger(<Ppm />)}} >PROJETO 3</a>
            <a onClick={() => {stateChanger(<Profile />)}} >PERFIL</a>
         </div>
       </nav>

@@ -29,6 +29,7 @@ export function Profile(){
                             <li>telefone: (85) 98737-3084</li>
                             <li>Cidade: Fortaleza/Ce</li>
                             <li>cep: 60356-370</li>
+                            <li>Idade: 20 anos</li>
                         </ul>
                     </section>
                     <section className='conhecimentos'>

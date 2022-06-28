@@ -6,7 +6,6 @@ import {Quiz} from '../components/Quiz'
 import {Fut} from '../components/fut'
 import {Profile} from '../components/Profile'
 
-import { Routes, Route, Link } from "react-router-dom";
 
 export default function  App() { 
 
