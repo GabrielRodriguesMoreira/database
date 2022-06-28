@@ -65,7 +65,7 @@ export function MobileProfile(){
                 <div className= 'mobileconhecimentos_description'>
                     <div id='conhecimentos_description_default'>
                             <h1>Descrição</h1>
-                            <p>passe o mouse sobre um icone para saber a descrição</p>
+                            <p>Toque em um icone para saber a descrição</p>
                     </div>
                     <div id='css_description'>
                         <h1>CSS</h1>

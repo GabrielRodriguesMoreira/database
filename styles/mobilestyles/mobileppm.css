@@ -1,0 +1,105 @@
+.mobileppm_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  height: 100vh;
+}
+.mobileppm_container h1 {
+  font-size: 15px;
+  text-shadow: 0px 3px 7px rgba(0, 0, 0, 0.75);
+  user-select: none;
+  margin-bottom: 10px;
+}
+.mobileppm_textbutton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.mobileppm_textbutton textarea {
+  overflow: hidden;
+  resize: none;
+  font-size: 15px;
+  word-wrap: wrap;
+  padding: 1px;
+  outline: none;
+  border: none;
+  border-bottom: 3px solid #bfebf8;
+  color: white;
+  background-color: transparent;
+  width: 80%;
+  margin-bottom: 10px;
+}
+.mobileppm_textbutton textarea::placeholder {
+  color: rgb(211, 211, 211);
+}
+.mobileppm_textbutton button {
+  font-size: 13px;
+  max-width: 80px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 2rem;
+  background-color: #e000a7;
+  border: none;
+  box-shadow: 0px 3px 15px -6px #000000;
+  cursor: pointer;
+}
+
+.tremer {
+  animation: tremer 0.8s forwards !important;
+}
+.mobileppm_result {
+  border-radius: 1.2rem;
+  box-shadow: 0px 3px 15px -6px #000000;
+  background-color: #2c73d2;
+  width: 85%;
+  height: 150px;
+  padding: 10px;
+}
+.mobileppm_result h1 {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+@keyframes tremer {
+  0% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  10% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  20% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  30% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  40% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  50% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  60% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  70% {
+    transform: translateX(-1%);
+    border-bottom: 4px solid #b80101;
+  }
+  80% {
+    transform: translateX(+1%);
+    border-bottom: 4px solid #b80101;
+  }
+  100% {
+    border-bottom: 4px solid #bff8c9;
+  }
+}
