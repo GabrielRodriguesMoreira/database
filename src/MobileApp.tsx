@@ -7,7 +7,7 @@ import {MobileProfile} from '../components/mobile_components/MobileProfile'
 
 export default function  MobileApp() { 
     return (
-      <div>
+      <div >
             <MobileNavbar />
             <div className='navbarspacing'></div>
             <MobileProfile />

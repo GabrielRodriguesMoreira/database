@@ -21,8 +21,7 @@
 }
 .sidelinks {
   display: flex;
-  opacity: 0%;
-  right: 0;
+  right: -155px;
   top: 0;
   position: fixed;
   width: 150px;
@@ -41,11 +40,19 @@
 .sidelinks a:first-child {
   margin-top: 10px;
 }
+.sidelinks_close_button {
+  width: 30px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 5px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+}
 .selected {
   background-color: #762fcf;
-}
-.visible {
-  display: flex !important;
 }
 
 @keyframes hello {
@@ -65,7 +72,6 @@
   }
   100% {
     right: -155px;
-    display: none;
     opacity: 100%;
   }
 }
