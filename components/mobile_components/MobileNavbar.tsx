@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
 import {MobilePpm} from './MobilePpm'
 import {MobileProfile} from './MobileProfile'
-import {MobileQuiz} from './MobileQuiz'
+import {RandomStore} from '../RandomStore'
 import {MobileFut} from './MobileFut'
 
 export function MobileNavbar({stateChanger, ...rest}){
@@ -18,7 +18,7 @@ export function MobileNavbar({stateChanger, ...rest}){
                 <button onClick={ () => {sidecontrol('goodbye 1s forwards')}} className='sidelinks_close_button'> <AiOutlineClose /></button>
                 <a onClick={() =>{ changeselected('profile'); stateChanger(<MobileProfile />)}}  id ='profile' className='selected' >PROFILE</a>
                 <a  onClick={() =>{ changeselected('project1'); stateChanger(<MobileFut />)}}  id ='project1'>PROJECT 1</a>
-                <a onClick={() =>{ changeselected('project2'); stateChanger(<MobileQuiz />)}}  id ='project2'>PROJECT 2</a>
+                <a onClick={() =>{ changeselected('project2'); stateChanger(<RandomStore />)}}  id ='project2'>PROJECT 2</a>
                 <a  onClick={() =>{ changeselected('project3'); stateChanger(<MobilePpm />)}}  id ='project3'>PROJECT 3</a>
             </div>
         </div>

@@ -30,6 +30,9 @@
   background-color: #4b4453;
   box-shadow: 0px 3px 15px -6px #000000;
   border-left: 5px solid #762fcf;
+  border-top: 5px solid #762fcf;
+  border-bottom: 5px solid #762fcf;
+
   flex-direction: column;
 }
 .sidelinks a {
