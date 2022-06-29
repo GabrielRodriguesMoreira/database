@@ -1,12 +1,12 @@
 import {useState, useEffect} from 'react'
 import '../styles/randomstore.css'
 
-const apiSecret = import.meta.env.VITE_APP_IMGSPALASH_API_SECRET; 
+const apiSecret2 = import.meta.env.VITE_APP_IMGSPALASH_API_SECRET; 
 
 export function RandomStore(){
 
     function createitem(){
-        fetch(`https://api.unsplash.com/photos/?client_id=${apiSecret}`)
+        fetch(`https://api.unsplash.com/photos/?client_id=${apiSecret2}`)
         .then(response => response.json())
         .then( response => {
             console.log(response)
