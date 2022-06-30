@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import '../styles/App.css'
 import {Navbar} from '../components/Navbar'
 import {Ppm} from '../components/Ppm'
-import {Quiz} from '../components/Quiz'
 import {Fut} from '../components/fut'
 import {Profile} from '../components/Profile'
 
