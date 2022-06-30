@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import MobileApp from './MobileApp'
 
+
+
 var display = <App />
 if (screen.width <= 950) {  display = <MobileApp /> }
 
