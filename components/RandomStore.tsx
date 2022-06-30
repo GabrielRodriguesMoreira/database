@@ -24,7 +24,7 @@ export function RandomStore(){
       <Createscreen visibility={visible} />
       <div className='main_store_container'>
         {components.map(componenet => {
-          return <Product stats={componenet} key={String(new Date().valueOf())} />
+          return <Product stats={componenet}  />
         })}
       </div>
 
