@@ -1,4 +1,3 @@
-
 import '../styles/randomstore.css'
 import React, {useState, useEffect} from 'react'
 
@@ -6,13 +5,14 @@ import React, {useState, useEffect} from 'react'
 
 export function RandomStore(){
   const defobj = {
-    key: String(new Date().valueOf()),
+    id: String(new Date().valueOf()),
     name:"knife",
     price: 21.50,
     img:'https://i.imgur.com/nD24joWb.jpg'
   }
   const [components,setcomponenets] = useState([defobj])
   const [visible, setvisible] = useState('none')
+
 
   return(
     <div className='mainstore'>
@@ -24,37 +24,36 @@ export function RandomStore(){
       <Createscreen visibility={visible} />
       <div className='main_store_container'>
         {components.map(componenet => {
-          return <Product stats={componenet} key={String(new Date().valueOf())} />
+          return <Product stats={componenet} />
         })}
       </div>
-
-
-
     </div>
   )
 
   function Createscreen(props){
     function addComponent(){
 
+
       const obj = {
-        key: String(new Date().valueOf()),
+        id: String(new Date().valueOf()),
         name: String((document.getElementById('productname') as HTMLInputElement).value),
         price: Number((document.getElementById('productprice') as HTMLInputElement).value),
         img:String((document.getElementById('productimg') as HTMLInputElement).value)
       }
       setcomponenets([...components,obj]);
       setvisible('none')
+
+
     }
-
-
     return(
       <div id='createscreen_container' style={{display:props.visibility}}>
           <span>Nome do produto:</span>
           <input type="text" id='productname' />
           <span>Preço do produto:</span>
           <input type="number" id='productprice' />
-          <span>URL da Imagem do produto:</span>
+          <span>Imagem do produto:</span>
           <input type="text" id='productimg' />
+          <input type="file" id='productimgfile' />
           <button onClick={addComponent} >Criar </button>
       </div>
     )
@@ -64,11 +63,11 @@ export function RandomStore(){
 
 function Product(props){
   function selfdestruction(){
-    let element = (document.getElementById(props.stats.key) as HTMLInputElement);
+    let element = (document.getElementById(props.stats.id) as HTMLInputElement);
     element.remove()
   }
   return(
-      <div className='product_container' id={props.stats.key}>
+      <div className='product_container' id={props.stats.id}>
         <div className='imgcontainer'>
             <img src={props.stats.img} alt="product image" />
         </div>
@@ -81,3 +80,4 @@ function Product(props){
       </div>
   )
 }
+
