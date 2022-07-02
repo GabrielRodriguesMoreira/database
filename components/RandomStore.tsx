@@ -8,9 +8,9 @@ import { GrClose } from 'react-icons/gr';
 export function RandomStore(){
   const defobj = {
     key: String(new Date().valueOf()),
-    name:"knife",
-    price: 21.50,
-    img:'https://cdn.picpng.com/knives/shape-knives-39538.png'
+    name:"Geladeira",
+    price: 2.599,
+    img:'https://www.compresuageladeira.com.br/wp-content/uploads/2018/04/Geladeira-Refrigerador-Duplex-553-litros-Frost-Free-Inox-Blue-Touch-DF82X-Electrolux-1.png'
   }
   const [components,setcomponenets] = useState([defobj])
   const [visible, setvisible] = useState('none')
@@ -52,11 +52,11 @@ export function RandomStore(){
             <GrClose />
           </button>
           <span>Nome do produto:</span>
-          <input type="text" id='productname' />
+          <input type="text" id='productname' maxLength={30} />
           <span>Preço do produto:</span>
-          <input type="number" id='productprice' />
+          <input type="number" id='productprice' maxLength={10} />
           <span>URL da Imagem do produto:</span>
-          <input type="text" id='productimg' />
+          <input type="text" id='productimg' required />
           <button onClick={addComponent} >Criar </button>
       </div>
     )
@@ -90,8 +90,11 @@ function Product(props){
           <h1 id={id+'productname'}>{props.stats.name}</h1>
           <h1 id={id+'productprice'}> R$: {props.stats.price}</h1>
         </div>
+        <div className='Productsbuttons'>
           <button >Comprar</button>
           <button onClick={selfdestruction}>deletar</button>
+        </div>
+          
       </div>
   )
 
@@ -102,21 +105,32 @@ function Product(props){
       let oldimg = (document.getElementById(props.id+'productimg') as HTMLInputElement);
       let oldprice = (document.getElementById(props.id+'productprice') as HTMLInputElement);
       
-      oldname.innerHTML = (document.getElementById(props.id+'newname') as HTMLInputElement).value;
-      oldprice.innerHTML = (document.getElementById(props.id+'newprice') as HTMLInputElement).value;
+      let newname = (document.getElementById(props.id+'newname') as HTMLInputElement).value;
+      let newprice = (document.getElementById(props.id+'newprice') as HTMLInputElement).value;
+      let newimg = (document.getElementById(props.id+'newimg') as HTMLInputElement).value;
+
+
+      if(newname!=''){
+      oldname.innerHTML = newname;
+      }
+      if(newprice!=''){
+      oldprice.innerHTML = "R$" + (document.getElementById(props.id+'newprice') as HTMLInputElement).value;
+      }
+      if(newimg!=''){
       oldimg.src = (document.getElementById(props.id+'newimg') as HTMLInputElement).value;
+      }
       setvisible('none')
     }
     
     return(
       <div className='Editscreen' style={{display:props.isvisibility}}>
         <span>Novo nome:</span>
-        <input type="text" id={props.id+'newname'} />
+        <input type="text" id={props.id+'newname'}  maxLength={30} />
         <span>Novo valor:</span>
-        <input type="number" id={props.id+'newprice'}/>
+        <input type="number" id={props.id+'newprice'}  maxLength={10}/>
         <span>Nova imagem:</span>
         <input type="text" id={props.id+'newimg'} />
-        <button onClick={changeall}>Change</button>
+        <button onClick={changeall}>Atualizar</button>
       </div>
     )
   }

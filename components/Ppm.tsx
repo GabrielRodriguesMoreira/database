@@ -1,107 +1,171 @@
 import React, {useState, useEffect} from 'react'
-import '../styles/Ppm.css'
+import '../styles/robot.css'
+import happyface from './sources/happyface.webp'
+import sadface from './sources/sadface.webp'
+import talk2 from './sources/talk2.webp'
+import surpreso from './sources/surpreso.webp'
+import pergunta from './sources/pergunta.webp'
+import seriusface from './sources/seriusface.webp'
+export function Ppm(){
 
-var frases = ["Aperte o botão START para começar", 
-"Esta casa está ladrilhada. Quem a desenladrilhará? O desenladrilhador. O desenladrilhador que a desenladrilhar bom desenladrilhador será!",
-"A fiadeira fia a farda do filho do feitor Felício",
-"La vem o velho Félix com o fole velho nas costas",
-"O bispo de Constantinopla é um bom desconstantinopolitanizador. Quem o desconstantinopolitanizar um bom desconstantinopolitanizador será.",
-"O original não se desoriginaliza! O original não se desoriginaliza! O original não se desoriginaliza! Se o desoriginalizássemos, original não seria!",
-]
+  const [fillspace,setfillspace] = useState(<></>)
+  const [fala,setfala] = useState(0);
+  const [img, setimg] = useState(happyface)
+  const [infos, setinfos] = useState({
+    name:'',
+    charname:'',
+    place:''
+  })
 
-//aumenta tamanho da textarea
-function auto_grow(element) {
-  console.log(element);
-  element.style.height = "10px";
-  element.style.height = (element.scrollHeight)+"px";
+  var actions ='line1';
+
+  var falas = ['Olá estranho!',
+   'Parece que é sua primeira vez aqui, poderia me dizer seu nome?',
+   `Entendido ${infos.name}, Parece que eu também não tenho um nome, poderia me dar um?`,
+    'Ótima escolha!',
+    'Antes de sair responda. Qual desses lugares você gosta mais?',
+    'Perfeito, agora me da só um sengudo para eu memorizar tudo.',
+  'tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.']
+
+
+  useEffect(() => {
+    if(document.cookie.length>0){
+      var obj = JSON.parse(document.cookie);
+      setinfos({
+        name: obj.name,
+        charname:obj.charname,
+        place:obj.place,
+      });
+      switch(obj.place){
+        case 'praia':
+      (document.getElementById("main_robot_container") as HTMLInputElement).style.backgroundImage = 'url(https://image.winudf.com/v2/image/Y29tLnNnbS5iZWF1dGlmdWxiZWFjaHdhbGxwYXBlcl9zY3JlZW5zaG90c18wXzFjMTMxZGFj/screen-0.jpg?fakeurl=1&type=.webp)'
+        break;
+        case 'futebol':
+          (document.getElementById("main_robot_container") as HTMLInputElement).style.backgroundImage = 'url(https://img.freepik.com/fotos-gratis/estadio-de-futebol-3d-render-arena-de-campo-de-estadio-de-futebol_3544-1363.jpg?)'
+          break;
+        case 'parque':
+          (document.getElementById("main_robot_container") as HTMLInputElement).style.backgroundImage = 'url(https://wallpaperaccess.com/full/1826326.jpg)'
+        break;
+    }
+      actions = 'line2';
+      var falas = [`Bem vindo de volta ${obj.name}!`,'Gostou do novo ambiente?']
+    } else {
+    }
+    console.log(infos)
+  },[])
+
+function nextaction(){
+  setfala(fala+1);
+  (document.getElementById('charimg') as HTMLInputElement).style.display = 'none';
+  (document.getElementById('type') as HTMLInputElement).style.display = 'none';
+  setTimeout(comeback, 1)
+
+  //ações
+  if (actions=='line1'){
+  switch (fala+2){
+
+    case 0:
+      //six mana do nothing
+      break;
+
+    case 1:  
+      (document.getElementById('namequestion') as HTMLInputElement).style.display = 'block';
+      break;
+
+    case 2:  
+      setfillspace(<input type="text" id='namequestion' placeholder='type here'/>)
+      setimg(surpreso);
+
+      break;
+
+    case 3:
+      setinfos({
+        name:(document.getElementById('namequestion') as HTMLInputElement).value,
+        charname:'',
+        place:''
+      });
+      (document.getElementById('namequestion') as HTMLInputElement).value = '';
+      setfillspace((<input type="text" id='charname' placeholder='type here'/>));
+      setimg(sadface);
+      break;
+
+    case 4:
+      setinfos({
+        name: infos.name,
+        charname:(document.getElementById('charname') as HTMLInputElement).value,
+        place:''
+      });
+      setimg(happyface);
+      setfillspace(<></>)
+      break;
+
+    case 5:
+      setfillspace(<div className='localebuttons'> 
+                    <button id='praiabutton' onClick={() =>{
+                      setinfos({
+                        name: infos.name,
+                        charname: infos.charname,
+                        place:'praia'
+                      });
+                       }}>Praia</button>
+
+                    <button id='futebolbutton' onClick={() =>{
+                      setinfos({
+                        name: infos.name,
+                        charname: infos.charname,
+                        place:'futebol'
+                      });
+                      }}>Campo de futebol</button>
+                    <button id='parquebutton' onClick={() =>{
+                      setinfos({
+                        name: infos.name,
+                        charname: infos.charname,
+                        place:'parque'
+                      });
+                       }}>Parque</button>
+                  </div>)
+         setimg(talk2);
+      break;
+
+      case 6:
+        setfillspace(<></>)
+        console.log(infos);
+        setimg(pergunta);
+        document.cookie = JSON.stringify(infos);
+        break;
+      
+      case 7:
+        console.log(document.cookie);
+        setimg(talk2);
+        break;
+
+        case 8:
+          setimg(sadface);
+          (document.getElementById('name_text_container') as HTMLInputElement).style.display = 'none';
+          break;
+    }
+  }
+
+  function comeback(){
+    (document.getElementById('charimg') as HTMLInputElement).style.display = 'block';
+    (document.getElementById('type') as HTMLInputElement).style.display = 'block';
+  }
 }
 
 
-let current = 0;
-export function Ppm(){
+return(
+  
+  <div className='main_robot_container' id='main_robot_container'>
+    <div className='name_text_container' id='name_text_container'>
+      <div className='charname'><p id='charnameplace'>{infos.charname}</p></div>
+      <div className='textbox' >
+        <span className='type' id='type' style={{ "--n":70} as React.CSSProperties}>{falas[fala]}</span>
+        {fillspace}
+        <button onClick={nextaction}>next</button>
+      </div>
+    </div>
+    <img src={img} id='charimg'></img>
+  </div>
+)
 
-    const [word1,setword1] = useState(frases[current]);
-    const [result,setresult] = useState("");
-
-    function compare(){
-        const word2 = (document.getElementById('text') as HTMLInputElement).value.toUpperCase();
-        let word1check = word1.toUpperCase()
-        if (word1check!=word2){
-          document.getElementById("text")!.classList.add("tremer");
-          setTimeout(() => {document.getElementById("text")!.classList.remove("tremer");},1500)
-        } else {
-            document.getElementById("text")!.style.borderBottom  = '4px solid #1cf540'
-            setIsActive(false);
-            setresult(String("Você escreve " + (word1.length/(minutes*60 + seconds)).toFixed(1) + " letras por segundo." ));
-            document.getElementById("startbutton")!.style.display='block';
-            document.getElementById("checkbutton")!.style.display='none';
-        }
-    }
-    
-    // relogio
-    const [seconds, setSeconds] = useState(0);
-    const [minutes, setMinutes] = useState(0);
-    const [isActive, setIsActive] = useState(false);
-    function toggle() {
-        current++;
-        setword1(frases[current])
-        setSeconds(0);
-        setMinutes(0);
-        setIsActive(true);
-        document.getElementById("startbutton")!.style.display='none';
-        document.getElementById("checkbutton")!.style.display='block';
-        document.getElementById("text")!.style.borderBottom  = '4px solid #bff8c9';
-        (document.getElementById('text') as HTMLInputElement).value = ''
-    }
-    useEffect(() => {
-      let interval = setInterval(() => 0);
-      if (isActive) {
-        interval = setInterval(() => {
-          setSeconds(seconds => seconds + 1);
-        }, 1000);
-      } else if (!isActive && seconds !== 0) {
-        clearInterval(interval);
-      }
-      if(seconds>=60){
-        setSeconds(seconds => seconds - 60);
-        setMinutes(minutes => +minutes+1);
-      }
-      return () => clearInterval(interval);
-    }, [isActive, seconds]);
-
-
-    //Adicionar numero a esquerda
-    function addLeadingZeros(num, totalLength) {
-        return String(num).padStart(totalLength, '0');
-      }
-
-    //função do Apertar Enter
-      document.onkeydown = function(e){
-        e = e || window.event;
-        var key = e.which || e.keyCode;
-        if(key===13){
-            compare();
-            return (key != 13)
-        }
-    }
-
-    return(
-        <div className="ppmcontainer" id='ppmcontainer'>
-            <section className='ppmtitle'>
-              <h1>{word1}</h1 >
-              <h1 id='clock'>{addLeadingZeros(minutes,2)}:{addLeadingZeros(seconds,2)}</h1>
-              <div className='secflor'>
-                <div className='textareacontainer'>
-                  <textarea spellCheck="false" onInput={() => {auto_grow(document.getElementById('text'))}} rows={1} wrap='hard' id="text" placeholder='Escreva aqui' />
-                  <button className='nextbutton' onClick={toggle} id='startbutton'> START</button>
-                  <button className='nextbutton' onClick={compare} id='checkbutton' style={{display:'none'}}>CHECK</button>
-                </div>
-                <div id='ppmresult'>  
-                  <h1>- RESULTADO -</h1>            
-                  <h1 id='resulttext'>{result}</h1>
-                </div>
-              </div>
-            </section>
-        </div>
-    )
 }

@@ -1,0 +1,134 @@
+.main_robot_container {
+  flex: 1 1 auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.main_robot_container img {
+  z-index: 0;
+  height: 100%;
+  position: absolute;
+}
+.name_text_container {
+  width: 70%;
+  z-index: 10;
+}
+.name_text_container .textbox {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
+  border: 2px solid aqua;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0, 0.7);
+  box-shadow: 0px 3px 15px -6px #000000;
+  z-index: 1;
+}
+.main_robot_container .charname {
+  width: 280px;
+  height: 50px;
+  margin-bottom: 5px;
+  top: -55%;
+  left: 0;
+  border: 2px solid aqua;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0, 0.7);
+  box-shadow: 0px 3px 15px -6px #000000;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  font-size: 22px;
+  overflow: hidden;
+}
+.main_robot_container .textbox button {
+  position: absolute;
+  border: 2px solid aqua;
+  color: aqua;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 2rem;
+  outline: none;
+  background-color: transparent;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+.textbox input {
+  width: 40%;
+  font-size: 20px;
+  position: absolute;
+  bottom: 10px;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid aqua;
+}
+.textbox input::placeholder {
+  color: white;
+}
+.localebuttons {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  height: 50px;
+}
+.localebuttons button {
+  position: relative !important;
+}
+.localebuttons button:focus {
+  background-color: rgba(13, 173, 173, 0.459);
+}
+#charimg {
+  animation: transition 0.7s forwards;
+}
+
+.type {
+  max-width: 90%;
+  position: absolute;
+  font-family: monospace;
+  font-weight: 700;
+  font-size: 22px;
+  color: #0000;
+  background: linear-gradient(-90deg, #00dffc 5px, #0000 0) 10px 0,
+    linear-gradient(#00dffc 0 0) 0 0;
+  background-size: calc(var(--n) * 1ch) 200%;
+  -webkit-background-clip: padding-box, text;
+  background-clip: padding-box, text;
+  background-repeat: no-repeat;
+  animation: b 0.7s infinite steps(1),
+    t calc(var(--n) * 0.06s) steps(var(--n)) forwards;
+}
+
+@keyframes t {
+  from {
+    background-size: 0 200%;
+  }
+}
+@keyframes b {
+  50% {
+    background-position: 0 -100%, 0 0;
+  }
+}
+
+@keyframes transition {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}

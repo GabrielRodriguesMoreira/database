@@ -1,5 +1,6 @@
 .main_store_container {
   display: flex;
+  align-items: center;
   width: 100vw;
   flex-wrap: wrap;
 }
@@ -42,6 +43,7 @@
   align-items: center;
   padding: 20px;
   margin: 15px;
+  overflow: hidden;
 }
 .imgcontainer {
   width: 100%;
@@ -76,7 +78,10 @@
   align-items: center;
   cursor: pointer;
 }
-.product_container button:nth-child(5) {
+.Productsbuttons {
+  display: flex;
+}
+.Productsbuttons button:nth-child(2) {
   background-color: #f42626;
 }
 .product_container #editbutton {
@@ -112,7 +117,7 @@
 #createscreen_container input {
   width: 420px;
   height: 40px;
-  font-size: 20px;
+  font-size: 15px;
   color: black;
   border-radius: 1rem;
   border: none;
@@ -167,6 +172,7 @@
 }
 .Editscreen button {
   margin-top: 30px;
+  background-color: #f44926;
 }
 @keyframes createproductanim {
   0% {

@@ -1,12 +1,14 @@
 .navcontainer {
   width: 100vw;
+  box-shadow: 0px 3px 20px -4px #000000;
+  z-index: 15;
 }
 .header {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30px 60px;
+  padding: 5px 50px;
 }
 .header .logo img {
   max-width: 200px;

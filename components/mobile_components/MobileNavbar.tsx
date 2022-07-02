@@ -13,7 +13,7 @@ export function MobileNavbar({stateChanger, ...rest}){
     return(
         <div className='mobilenavcontainer'>
             <img src={logo} alt="logo" width={120}  />
-                <div onClick={ () => {sidecontrol('hello 1s forwards')}} className='mobilenavmenu' id='mobilenavmenu'><GiHamburgerMenu /></div>
+                <div onClick={ () => {sidecontrol('hello 0.7s forwards')}} className='mobilenavmenu' id='mobilenavmenu'><GiHamburgerMenu /></div>
             <div  id='sidelinks' className='sidelinks' >
                 <button onClick={ () => {sidecontrol('goodbye 1s forwards')}} className='sidelinks_close_button'> <AiOutlineClose /></button>
                 <a onClick={() =>{ changeselected('profile'); stateChanger(<MobileProfile />)}}  id ='profile' className='selected' >PROFILE</a>
