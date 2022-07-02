@@ -2,8 +2,7 @@ import '../styles/mobilestyles/mobileapp.css'
 import React,{ useState } from 'react'
 import {MobileNavbar} from '../components/mobile_components/MobileNavbar'
 import {MobileProfile} from '../components/mobile_components/MobileProfile'
-import {MobilePpm} from '../components/mobile_components/MobilePpm'
-
+import {MobileCookieRobot} from '../components/mobile_components/MobileCookieRobot'
 
 
 export default function  MobileApp() { 
@@ -14,9 +13,6 @@ export default function  MobileApp() {
             <MobileNavbar stateChanger={setState} />
             <div className='navbarspacing'></div>
               {state}
-            <footer>
-              <p>placeholder footer</p>
-            </footer>
       </div>
     )
 }

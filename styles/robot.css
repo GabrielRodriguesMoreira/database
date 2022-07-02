@@ -84,9 +84,11 @@
   display: flex;
   justify-content: space-around;
   width: 50%;
-  height: 50px;
+  height: 40px;
 }
 .localebuttons button {
+  display: flex;
+  align-items: center;
   position: relative !important;
 }
 .localebuttons button:focus {
@@ -95,33 +97,12 @@
 #charimg {
   animation: transition 0.7s forwards;
 }
-
-.type {
-  max-width: 90%;
-  position: absolute;
+.typewriter,
+#charnameplace {
   font-family: monospace;
   font-weight: 700;
   font-size: 22px;
-  color: #0000;
-  background: linear-gradient(-90deg, #00dffc 5px, #0000 0) 10px 0,
-    linear-gradient(#00dffc 0 0) 0 0;
-  background-size: calc(var(--n) * 1ch) 200%;
-  -webkit-background-clip: padding-box, text;
-  background-clip: padding-box, text;
-  background-repeat: no-repeat;
-  animation: b 0.7s infinite steps(1),
-    t calc(var(--n) * 0.06s) steps(var(--n)) forwards;
-}
-
-@keyframes t {
-  from {
-    background-size: 0 200%;
-  }
-}
-@keyframes b {
-  50% {
-    background-position: 0 -100%, 0 0;
-  }
+  color: aqua;
 }
 
 @keyframes transition {

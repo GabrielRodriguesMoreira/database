@@ -1,6 +1,6 @@
 import '../styles/Navbar.css'
 import React from 'react'
-import {Ppm} from '../components/Ppm'
+import {CookieRobot} from '../components/CookieRobot'
 import {RandomStore} from '../components/RandomStore'
 import {Fut} from '../components/fut'
 import {Profile} from '../components/Profile'
@@ -14,7 +14,7 @@ export function  Navbar({stateChanger, ...rest}) {
         <div className="navlinks">
            <a onClick={() => {stateChanger(<Fut />)}} >PROJETO 1</a>
            <a onClick={() => {stateChanger(<RandomStore />) }} >PROJETO 2</a>
-           <a onClick={() => {stateChanger(<Ppm />)}} >PROJETO 3</a>
+           <a onClick={() => {stateChanger(<CookieRobot />)}} >PROJETO 3</a>
            <a onClick={() => {stateChanger(<Profile />)}} >PERFIL</a>
         </div>
       </nav>
