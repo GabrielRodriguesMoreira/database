@@ -3,7 +3,7 @@ import logo from '../sources/logo.png'
 import '../../styles/mobilestyles/mobilenavbar.css'
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { AiOutlineClose } from 'react-icons/ai';
-import {MobilePpm} from './MobilePpm'
+import {Ppm} from '../Ppm'
 import {MobileProfile} from './MobileProfile'
 import {RandomStore} from '../RandomStore'
 import {MobileFut} from './MobileFut'
@@ -19,7 +19,7 @@ export function MobileNavbar({stateChanger, ...rest}){
                 <a onClick={() =>{ changeselected('profile'); stateChanger(<MobileProfile />)}}  id ='profile' className='selected' >PROFILE</a>
                 <a  onClick={() =>{ changeselected('project1'); stateChanger(<MobileFut />)}}  id ='project1'>PROJECT 1</a>
                 <a onClick={() =>{ changeselected('project2'); stateChanger(<RandomStore />)}}  id ='project2'>PROJECT 2</a>
-                <a  onClick={() =>{ changeselected('project3'); stateChanger(<MobilePpm />)}}  id ='project3'>PROJECT 3</a>
+                <a  onClick={() =>{ changeselected('project3'); stateChanger(<Ppm />)}}  id ='project3'>PROJECT 3</a>
             </div>
         </div>
     )
