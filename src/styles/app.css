@@ -1,0 +1,31 @@
+:root {
+  --bgcolor: #f5fffa;
+  --txtcolor: #0e0e0e;
+  --Montserrat: 'Montserrat', sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bgcolor);
+  transition: 0.4s;
+  overflow-x: hidden;
+}
+body * {
+  font-family: var(--Montserrat);
+  box-sizing: border-box;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+  min-width: 100vw;
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+}
+.content {
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: 100%;
+  flex: 1 1 auto;
+}
