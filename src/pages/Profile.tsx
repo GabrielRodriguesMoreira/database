@@ -71,7 +71,7 @@ export function Profile(){
                     <div className='conhecimentos_description'>
                         <div id='conhecimentos_description_default' >
                                 <h1>DESCRIÇÃO</h1>
-                                <p>passe o mouse sobre um icone para saber a descrição</p>
+                                <p>passe o mouse ou toque sobre um icone para saber a descrição</p>
                         </div>
                             <div id='css_description' style={{display:'none'}}>
                                 <h1>CSS</h1>
@@ -104,10 +104,10 @@ export function Profile(){
                 <div className='profilepic'><img src={profilepic} alt="profile pic" /></div>
                 <h1>Gabriel Rodrigues</h1>
                 <div className='profile_links'>
-                    <a href=""> <AiOutlineGithub /></a>
-                    <a href=""> <SiVercel /></a>
-                    <a href=""> <BsWhatsapp /></a>
-                    <a href=""> <AiOutlineLinkedin /></a>
+                    <a target="_blank" href='https://github.com/GabrielRodriguesMoreira'> <AiOutlineGithub /></a>
+                    <a target="_blank" href="https://vercel.com/dashboard"> <SiVercel /></a>
+                    <a target="_blank" href="https://wa.me/+558587373084"> <BsWhatsapp /></a>
+                    <a target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"> <AiOutlineLinkedin /></a>
                 </div>
             </section>
 

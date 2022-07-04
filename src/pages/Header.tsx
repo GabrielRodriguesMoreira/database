@@ -2,13 +2,15 @@ import '../styles/header.css'
 import logo from '../componenets/logo.webp'
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
+import { CookieRobot } from './CookieRobot';
+import { Profile } from './Profile';
 
 type Header = {
     id: string;
 
 }
 
-export function Header(){
+export function Header({stateChanger, ...rest}){
 
     function colormode(id){
         var r = (document.querySelector(':root') as HTMLInputElement);
@@ -44,16 +46,16 @@ export function Header(){
         <div className='main_header_container'>
             <div className='logo'> 
                 <div className='logo_img'><img src={logo} alt="logo" /></div> 
-
+                <h1>Gabriel <br/> Rodrigues</h1>
             </div>
             
             
             <div className='header_content'>
                 <div className='navlinks'>
-                    <a href="">PROJETO 1</a>
-                    <a href="">PROJETO 2</a>
-                    <a href="">PROJETO 3</a>
-                    <a href="">PERFIL</a>
+                    <a onClick={() => {stateChanger(<CookieRobot />)}}>PROJETO 1</a>
+                    <a >PROJETO 2</a>
+                    <a >PROJETO 3</a>
+                    <a onClick={() => {stateChanger(<Profile />)}}>PERFIL</a>
                     <label className="switch">
                         <input type="checkbox" id='checkboxcolor' onClick={() =>{colormode('checkboxcolor')}}/>
                         <span className="slider"></span>

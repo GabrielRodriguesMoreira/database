@@ -9,6 +9,25 @@
   background-color: var(--txtcolor);
   transition: 0.4s;
 }
+.logo {
+  display: flex;
+  align-items: center;
+  max-height: 100%;
+  height: 100%;
+  max-width: 100%;
+}
+.logo h1 {
+  margin: 0;
+  margin-left: 10px;
+  font: 30px Arial;
+  font-weight: 700;
+  color: var(--txtcolor);
+  -webkit-text-stroke: 1px var(--bgcolor);
+  line-height: 30px;
+}
+.logo h1:first-line {
+  color: var(--bgcolor);
+}
 
 .logo_img {
   aspect-ratio: 1 / 1;
@@ -46,6 +65,7 @@
 .header_content .navlinks a {
   text-decoration: none;
   color: var(--bgcolor);
+  cursor: pointer;
 }
 .navlinks a:nth-child(4) {
   padding: 10px 15px;
@@ -61,11 +81,11 @@
   cursor: pointer;
 }
 .menu_icon * {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   padding: 3px;
-  background-color: var(--txtcolor);
-  color: var(--bgcolor);
+  background-color: var(--bgcolor);
+  color: var(--txtcolor);
   display: flex;
   align-items: center;
   justify-content: center;

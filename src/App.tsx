@@ -1,14 +1,16 @@
 import './styles/app.css'
+import React,{useState} from 'react'
 import {Header} from './pages/Header'
 import {Profile} from './pages/Profile'
+import {CookieRobot} from './pages/CookieRobot'
 
 function App() {
-
+  const[state, setState]=useState(<Profile />);
   return (
     <div className="App">
-      <Header />
+      <Header stateChanger={setState} />
       <div className='content'>
-        <Profile />
+      {state}
       </div>
     </div>
   )

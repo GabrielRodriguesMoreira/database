@@ -6,7 +6,8 @@
   flex: 1 1 auto;
 }
 .profile_left_content {
-  min-width: 65%;
+  margin-top: 10px;
+  width: 65%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -19,6 +20,9 @@
   width: 95%;
   height: 50%;
   display: flex;
+}
+.profile_infos p {
+  font-size: 16px;
 }
 .formacao {
   padding: 5px;
@@ -107,6 +111,9 @@
   text-decoration: none;
   color: var(--txtcolor);
 }
+.profile_links a:nth-child(3) {
+  animation: flip 1s forwards;
+}
 
 @media only screen and (max-width: 740px) {
   .main_profile_container {
@@ -117,6 +124,10 @@
   .profile_right_content,
   .profile_left_content {
     width: 100%;
+  }
+  .conhecimentos_icons,
+  .conhecimentos_description {
+    width: 48%;
   }
   .conhecimentos_icons table {
     font-size: 40px;
@@ -136,5 +147,26 @@
   }
   .profile_links {
     width: 80%;
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(15deg) scale(200%);
+  }
+  40% {
+    transform: rotate(-15deg) scale(200%);
+  }
+  60% {
+    transform: rotate(15deg) scale(200%);
+  }
+  80% {
+    transform: rotate(-15deg) scale(200%);
+  }
+  100% {
+    transform: rotate(0deg);
   }
 }
