@@ -78,8 +78,8 @@ export function Header({stateChanger, ...rest}){
                 </label>
                 </section>
                 <section className='sidebar_links'>
-                    <a id='project1' onClick={() =>{ changeselected('project1');}}>PROJETO 1</a>
-                    <a id='project2' onClick={() =>{ changeselected('project2');}}>PROJETO 2</a>
+                    <a id='project1' onClick={() =>{ changeselected('project1'); stateChanger(<CookieRobot />)}}>PROJETO 1</a>
+                    <a id='project2' onClick={() =>{ changeselected('project2'); stateChanger(<Profile />)}}>PROJETO 2</a>
                     <a id='project3' onClick={() =>{ changeselected('project3');}}>PROJETO 3</a>
                     <a className='selected' id='profile' onClick={() =>{ changeselected('profile');}}>PERFIL</a>
                 </section>
