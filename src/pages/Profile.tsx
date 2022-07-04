@@ -3,7 +3,7 @@ import profilepic from '../componenets/useless.png'
 
 import { AiOutlineGithub } from 'react-icons/ai';
 import { SiVercel } from 'react-icons/si';
-import { BsWhatsapp } from 'react-icons/Bs';
+import { BsWhatsapp } from 'react-icons/bs';
 import { AiOutlineLinkedin } from 'react-icons/ai';
 import { DiCss3 } from 'react-icons/di';
 import { AiOutlineHtml5 } from 'react-icons/ai';
