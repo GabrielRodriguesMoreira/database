@@ -1,5 +1,5 @@
 import '../styles/header.css'
-import logo from '../componenets/logo.png'
+import logo from '../componenets/logo.webp'
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 
@@ -42,7 +42,12 @@ export function Header(){
 
     return(
         <div className='main_header_container'>
-            <img className='logo' src={logo} alt="logo" />
+            <div className='logo'> 
+                <div className='logo_img'><img src={logo} alt="logo" /></div> 
+
+            </div>
+            
+            
             <div className='header_content'>
                 <div className='navlinks'>
                     <a href="">PROJETO 1</a>

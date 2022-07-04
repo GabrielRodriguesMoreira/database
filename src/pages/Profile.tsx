@@ -91,7 +91,7 @@ export function Profile(){
                             </div>
                             <div id='next_description' style={{display:'none'}}>
                                 <h1>NEXT JS</h1>
-                                <p>É uma estrutura da web de desenvolvimento front-end React de código aberto criada por Vercel que permite funcionalidades como renderização do lado do servidor e geração de sites estáticos para aplicativos da web.</p>
+                                <p>É uma estrutura da web de desenvolvimento front-end React de código aberto criada pela Vercel.</p>
                             </div>
                             <div id='cplusplus_description' style={{display:'none'}}>
                                 <h1>C++</h1>
