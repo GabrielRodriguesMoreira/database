@@ -11,17 +11,15 @@ export function CookieRobot(){
     const [action,setaction] = useState(0)
     const [fillspace,setfillspace] = useState(<></>)
     const [infos, setinfos] = useState({
-        name:'',
-        charname:'',
-        video:''
-      })
+                                        name:'',
+                                        charname:'',
+                                        video:''
+                                        })
     var i = 0;
     var speed = 30;
 
 
-
 useEffect(() => {
-
     if(document.cookie.length>0){
         setaction(-50);
         setinfos(() =>{
@@ -65,17 +63,16 @@ function nextaction(){
                 video:'',
             })
             setface('👍 ');
-            setsprite(spr1);
+            setsprite(spr2);
             typeWriter(`Obrigado ${(document.getElementById('username') as HTMLInputElement).value}`);
             setfillspace((<></>));
             break;
-        
         case 3:
+            setface('◉ _ ◉');
             setsprite(spr1);
             typeWriter('Mas parece que eu também não tenho um nome. Poderia me dar um?');
             setfillspace((<input type="text" id='charname' autoComplete='off' placeholder='type here'/>));
-            break;
-        
+            break;       
         case 4:
             setinfos({
                 name: infos.name,
@@ -83,18 +80,20 @@ function nextaction(){
                 video:'',
             })
             setfillspace((<></>));
-            setsprite(spr1);
+            setface('(▀̿Ĺ̯▀̿ ̿)');
+            setsprite(spr2);
             typeWriter('Perfeito!')
             break;
-
         case 5:
+            setface('🐈 🐕 🐇');
+            setsprite(spr1);
             typeWriter('Antes de ir me responda apenas uma pergunta. De que animal você gosta mais?');
             setfillspace(<div className='animalbutton'> 
             <button id='gato' onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'/src/componenets/catvideo.mp4'
+                video:'https://www.youtube.com/embed/uHKfrz65KSU'
               });
                }}>Gato</button>
 
@@ -102,70 +101,67 @@ function nextaction(){
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'/src/componenets/dogvideo.mp4'
+                video:'https://www.youtube.com/embed/WNOBl1mtsMY'
               });
               }}>Cachorro</button>
             <button id='coelho' onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'/src/componenets/bunnyvideo.mp4'
+                video:'https://www.youtube.com/embed/aDuPblqkI6Q'
               });
                }}>Coelho</button>
           </div>);
             setsprite(spr1);
         break;
-
         case 6:
+            setface('༼ʘ̚ل͜ʘ̚༽');
             typeWriter('Ótimo, agora me da só um segundo para que eu possa memorizar tudo.');
             setsprite(spr1);
             setfillspace((<></>));
             document.cookie = JSON.stringify(infos);
-            break;
-        
+            break;     
         case 7:
-            console.log(document.cookie);
-        typeWriter('tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.')
-        setsprite(spr2);
+        setface('｡ ◕‿◕ ｡');
+        typeWriter('tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.');
+        setsprite(spr1);
         break;
-
         case 8:
-            setsprite(spr1);
+            setface('｡ ◕‿◕ ｡');
+            setsprite(spr2);
             (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
             break;
 
-        
         //segundo acesso
         case -50:
+            setface('｡ ◕‿◕ ｡');
+            setsprite(spr1);
             typeWriter('Quem bom que você voltou.');
             break;
-        
         case -49:
+            setface('◉ _ ◉');
+            setsprite(spr2);
             typeWriter('Agora lembra da pergunta que fiz?');
         break;
-
         case -48:
+            setface('◕ ‿ ◕');
+            setsprite(spr1);
             typeWriter("Aqui vai uma surpresa! Espero que goste.");
             break;
-        
         case -47:
             (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
             (document.getElementById('textface') as HTMLInputElement).style.display = 'none';
             (document.getElementById('tvscreen') as HTMLInputElement).setAttribute('class','nobefore');
-
             //criar player
             let parent = (document.getElementById('face') as HTMLInputElement);
-            let video = document.createElement('video');
-            let source = document.createElement('source');
+            let source = document.createElement('iframe');
             
-            video.setAttribute('class','iframevideo');
-            video.setAttribute('autoplay', 'on');
-            source.setAttribute('id','videoplace');
-            source.setAttribute('src',infos.video);
-            source.setAttribute('type','video/mp4');
+            source.setAttribute('class','iframevideo');
+            source.setAttribute('frameborder', '0');
 
-            video.appendChild(source);
-            parent.appendChild(video);
+            source.setAttribute('allow','autoplay');
+            source.setAttribute('src',infos.video+'?autoplay=1');
+            parent.appendChild(source);
             break;
     }
 
@@ -176,7 +172,6 @@ function nextaction(){
     function comeback(){
         (document.getElementById('robotbox') as HTMLInputElement).style.display = 'flex';
 
-        
     }
 }
 
