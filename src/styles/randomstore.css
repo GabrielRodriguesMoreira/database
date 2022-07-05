@@ -1,0 +1,207 @@
+.main_store_container {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  flex-wrap: wrap;
+}
+
+.Store_header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 20px;
+}
+.Store_header h1 {
+  color: var(--txtcolor);
+  font-size: 35px;
+  border-bottom: 4px solid var(--txtcolor);
+}
+.Store_header button {
+  color: var(--txtcolor);
+  width: 200px;
+  height: 15px;
+  font-size: 17px;
+  outline: none;
+  border: none;
+  padding: 20px;
+  margin: 5px;
+  border-radius: 2rem;
+  background-color: var(--bgcolor);
+  border: 2px solid var(--txtcolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.product_container {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background-color: var(--bgcolor);
+  border: 2px solid var(--txtcolor);
+  color: var(--txtcolor);
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 15px;
+  overflow: hidden;
+}
+.imgcontainer {
+  width: 100%;
+  height: 60%;
+}
+.imgcontainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+}
+.producttexts {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  font-size: 14px;
+}
+.producttexts h1 {
+  margin: 0;
+}
+.Productsbuttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.Productsbuttons button {
+  width: 100px;
+  height: 20%;
+  font-size: 15px;
+  outline: none;
+  border: 1px solid var(--txtcolor);
+  color: var(--txtcolor);
+  padding: 20px;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.product_container #editbutton {
+  color: var(--txtcolor);
+  top: 0;
+  right: 0;
+  padding: 0;
+  position: absolute;
+  background-color: transparent;
+  height: 40px;
+  width: 50px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+}
+#createscreen_container {
+  z-index: 5;
+  color: var(--txtcolor);
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  max-height: 400px;
+  height: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: var(--bgcolor);
+  border-radius: 0.7rem;
+  border: 2px solid var(--txtcolor);
+  box-shadow: 0px 0px 10px 1px var(--txtcolor);
+  position: absolute;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: createproductanim 1s forwards;
+}
+#createscreen_container input {
+  width: 420px;
+  height: 40px;
+  font-size: 15px;
+  color: var(--txtcolor);
+  background-color: transparent;
+  border-radius: 1rem;
+  border: 1px solid var(--txtcolor);
+  outline: none;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+#createscreen_container button {
+  width: 150px;
+  font-size: 20px;
+  outline: none;
+  border: 1px solid var(--txtcolor);
+  color: var(--txtcolor);
+  padding: 20px;
+  border-radius: 1.3rem;
+  margin-top: 30px;
+  background-color: transparent;
+  cursor: pointer;
+}
+#createscreen_container .closebutton {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  top: 15px;
+  right: 15px;
+  background-color: transparent;
+  font-size: 25px;
+}
+.Editscreen {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bgcolor);
+  border-radius: 1.2rem;
+  box-shadow: 0px 3px 15px -6px #000000;
+}
+.Editscreen * {
+  margin: 3px;
+}
+.Editscreen input {
+  border: 1px solid var(--txtcolor);
+  outline: none;
+  background-color: transparent;
+  border-radius: 1rem;
+  color: var(--txtcolor);
+  margin-bottom: 10px;
+  padding: 5px;
+}
+.Editscreen button {
+  padding: 10px;
+  margin-top: 30px;
+  background-color: transparent;
+  color: var(--txtcolor);
+  border: 1px solid var(--txtcolor);
+  border-radius: 0.3rem;
+}
+@keyframes createproductanim {
+  0% {
+    top: -500px;
+  }
+  100% {
+    top: 5%;
+  }
+}

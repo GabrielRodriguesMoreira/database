@@ -4,6 +4,7 @@ import { HiMenu } from 'react-icons/hi';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { CookieRobot } from './CookieRobot';
 import { Profile } from './Profile';
+import { RandomStore } from './RandomStore';
 
 type Header = {
     id: string;
@@ -52,7 +53,7 @@ export function Header({stateChanger, ...rest}){
             <div className='header_content'>
                 <div className='navlinks'>
                     <a onClick={() => {stateChanger(<CookieRobot />)}}>PROJETO 1</a>
-                    <a >PROJETO 2</a>
+                    <a onClick={() => {stateChanger(<RandomStore />)}}>PROJETO 2</a>
                     <a >PROJETO 3</a>
                     <a onClick={() => {stateChanger(<Profile />)}}>PERFIL</a>
                     <label className="switch">
@@ -77,10 +78,10 @@ export function Header({stateChanger, ...rest}){
                 </label>
                 </section>
                 <section className='sidebar_links'>
-                    <a id='project1' onClick={() =>{ changeselected('project1'); stateChanger(<CookieRobot />)}}>PROJETO 1</a>
-                    <a id='project2' onClick={() =>{ changeselected('project2'); stateChanger(<Profile />)}}>PROJETO 2</a>
-                    <a id='project3' onClick={() =>{ changeselected('project3');}}>PROJETO 3</a>
-                    <a className='selected' id='profile' onClick={() =>{ changeselected('profile');}}>PERFIL</a>
+                    <a id='project1'  onClick={() =>{ changeselected('project1'); stateChanger(<CookieRobot />)}}>PROJETO 1</a>
+                    <a id='project2'  onClick={() =>{ changeselected('project2'); stateChanger(<RandomStore />)}}>PROJETO 2</a>
+                    <a id='project3'  onClick={() =>{ changeselected('project3');}}>PROJETO 3</a>
+                    <a className='selected' id='profile' onClick={() =>{ changeselected('profile'); stateChanger(<Profile />)}}>PERFIL</a>
                 </section>
             </div>
 

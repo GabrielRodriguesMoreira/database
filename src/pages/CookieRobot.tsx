@@ -20,6 +20,7 @@ export function CookieRobot(){
 
 
 useEffect(() => {
+   
     if(document.cookie.length>0){
         setaction(-50);
         setinfos(() =>{
@@ -27,7 +28,10 @@ useEffect(() => {
             return obj})
             console.log(infos)
         typeWriter(`Bem vindo de volta ${JSON.parse(document.cookie).name}`);
-    } else {  typeWriter('Olá visitante');}
+    } else { 
+        window.alert('O projeto 1 em especifico utiliza cookies, se você não permite a utilização por favor siga para o próximo projeto!')
+        typeWriter('Olá visitante');
+    }
 },[])
 
 
@@ -80,37 +84,37 @@ function nextaction(){
                 video:'',
             })
             setfillspace((<></>));
-            setface('(▀̿Ĺ̯▀̿ ̿)');
+            setface('▀̿Ĺ̯▀̿ ̿');
             setsprite(spr2);
             typeWriter('Perfeito!')
             break;
         case 5:
-            setface('🐈 🐕 🐇');
+            setface(' ͡° ͜ʖ ͡°');
             setsprite(spr1);
-            typeWriter('Antes de ir me responda apenas uma pergunta. De que animal você gosta mais?');
+            typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de música prefere?');
             setfillspace(<div className='animalbutton'> 
-            <button id='gato' onClick={() =>{
+            <button onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/embed/uHKfrz65KSU'
+                video:'https://www.youtube.com/embed/1V_xRb0x9aw'
               });
-               }}>Gato</button>
+               }}>Rock</button>
 
-            <button id='cachorro' onClick={() =>{
+            <button onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/embed/WNOBl1mtsMY'
+                video:'https://www.youtube.com/embed/pXRviuL6vMY'
               });
-              }}>Cachorro</button>
-            <button id='coelho' onClick={() =>{
+              }}>Pop</button>
+            <button onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/embed/aDuPblqkI6Q'
+                video:'https://www.youtube.com/embed/dQw4w9WgXcQ'
               });
-               }}>Coelho</button>
+               }}>a melhor</button>
           </div>);
             setsprite(spr1);
         break;
