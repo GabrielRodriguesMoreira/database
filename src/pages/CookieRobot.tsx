@@ -4,6 +4,7 @@ import typewritesound from '../componenets/typewrite.wav'
 import spr1 from '../componenets/spr1.webp'
 import spr2 from '../componenets/spr2.webp'
 
+
 export function CookieRobot(){
     const [face,setface] = useState("｡◕‿◕｡")
     const [sprite,setsprite] = useState(spr1)
@@ -26,7 +27,8 @@ useEffect(() => {
         setinfos(() =>{
              var obj =  JSON.parse(document.cookie);
             return obj})
-        typeWriter(`Bem vindo de volta ${infos.name}`);
+            console.log(infos)
+        typeWriter(`Bem vindo de volta ${JSON.parse(document.cookie).name}`);
     } else {  typeWriter('Olá visitante');}
 },[])
 
@@ -44,6 +46,7 @@ function nextaction(){
 
     //ações
     switch(action){
+        //primeiro acesso
         case 0:
             setface('° □ °');
             setsprite(spr2);
@@ -91,7 +94,7 @@ function nextaction(){
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/watch?v=uHKfrz65KSU'
+                video:'/src/componenets/catvideo.mp4'
               });
                }}>Gato</button>
 
@@ -99,14 +102,14 @@ function nextaction(){
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/watch?v=VNcVz8uBC_w'
+                video:'/src/componenets/dogvideo.mp4'
               });
               }}>Cachorro</button>
             <button id='coelho' onClick={() =>{
               setinfos({
                 name: infos.name,
                 charname: infos.charname,
-                video:'https://www.youtube.com/watch?v=aDuPblqkI6Q'
+                video:'/src/componenets/bunnyvideo.mp4'
               });
                }}>Coelho</button>
           </div>);
@@ -114,7 +117,7 @@ function nextaction(){
         break;
 
         case 6:
-            typeWriter('Ótimpo, agora me da só um segundo para que eu possa memorizar tudo.');
+            typeWriter('Ótimo, agora me da só um segundo para que eu possa memorizar tudo.');
             setsprite(spr1);
             setfillspace((<></>));
             document.cookie = JSON.stringify(infos);
@@ -130,6 +133,40 @@ function nextaction(){
             setsprite(spr1);
             (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
             break;
+
+        
+        //segundo acesso
+        case -50:
+            typeWriter('Quem bom que você voltou.');
+            break;
+        
+        case -49:
+            typeWriter('Agora lembra da pergunta que fiz?');
+        break;
+
+        case -48:
+            typeWriter("Aqui vai uma surpresa! Espero que goste.");
+            break;
+        
+        case -47:
+            (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
+            (document.getElementById('textface') as HTMLInputElement).style.display = 'none';
+            (document.getElementById('tvscreen') as HTMLInputElement).setAttribute('class','nobefore');
+
+            //criar player
+            let parent = (document.getElementById('face') as HTMLInputElement);
+            let video = document.createElement('video');
+            let source = document.createElement('source');
+            
+            video.setAttribute('class','iframevideo');
+            video.setAttribute('autoplay', 'on');
+            source.setAttribute('id','videoplace');
+            source.setAttribute('src',infos.video);
+            source.setAttribute('type','video/mp4');
+
+            video.appendChild(source);
+            parent.appendChild(video);
+            break;
     }
 
     //resetar transição
@@ -138,11 +175,12 @@ function nextaction(){
 
     function comeback(){
         (document.getElementById('robotbox') as HTMLInputElement).style.display = 'flex';
+
+        
     }
 }
 
 function typeWriter(falo) {
-        console.log(falo)
         if (i < falo.length) {
           (document.getElementById('typewritesound') as HTMLAudioElement).play();
           (document.getElementById("type") as HTMLInputElement).innerHTML += falo.charAt(i);
@@ -160,8 +198,8 @@ function typeWriter(falo) {
             <audio id='typewritesound' src={typewritesound} ></audio>
             <div className='robotbox' id='robotbox'>
                 <div  id='tvscreen'>
-                    <div className="face">
-                        <p className="glitch">
+                    <div className="face" id='face'>
+                        <p className="glitch" id='textface'>
                         <span aria-hidden="true">{face}</span>
                             {face}
                         <span aria-hidden="true">{face}</span>
@@ -176,6 +214,7 @@ function typeWriter(falo) {
                 {fillspace}
                 <button id='nextbutton' onClick={nextaction}>next</button>
             </div>
+           
         </div>
     )
 

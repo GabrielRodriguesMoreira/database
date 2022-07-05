@@ -49,7 +49,6 @@ export function Header({stateChanger, ...rest}){
                 <h1>Gabriel <br/> Rodrigues</h1>
             </div>
             
-            
             <div className='header_content'>
                 <div className='navlinks'>
                     <a onClick={() => {stateChanger(<CookieRobot />)}}>PROJETO 1</a>
