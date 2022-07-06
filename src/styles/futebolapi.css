@@ -125,5 +125,13 @@
   .lastgames {
     width: 100%;
     height: 20%;
+    font-size: 10px;
+  }
+  .lastgames li {
+    font-size: 10px;
+  }
+  .staticstable table {
+    border-spacing: 5px;
+    font-size: 7px;
   }
 }
