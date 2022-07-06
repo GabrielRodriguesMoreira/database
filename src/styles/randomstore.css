@@ -110,8 +110,8 @@
   z-index: 5;
   color: var(--txtcolor);
   position: relative;
-  max-width: 800px;
-  width: 100%;
+  max-width: 600px;
+  width: 80%;
   max-height: 400px;
   height: 100%;
   left: 50%;
@@ -127,7 +127,7 @@
   animation: createproductanim 1s forwards;
 }
 #createscreen_container input {
-  width: 420px;
+  width: 80%;
   height: 40px;
   font-size: 15px;
   color: var(--txtcolor);
@@ -203,5 +203,11 @@
   }
   100% {
     top: 5%;
+  }
+}
+
+@media only screen and (max-width: 740px) {
+  .main_store_container {
+    justify-content: center;
   }
 }
