@@ -1,0 +1,129 @@
+.futparent {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.searchsection {
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 7%;
+  align-items: center;
+  justify-content: center;
+}
+.searchsection input {
+  background-color: transparent;
+  border: 2px solid var(--txtcolor);
+  border-radius: 0.2rem;
+  color: var(--txtcolor);
+  height: 90%;
+  width: 30%;
+}
+.searchsection button {
+  margin-left: 10px;
+  height: 90%;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  border-radius: 0.2rem;
+  border: 2px solid var(--txtcolor);
+  font-size: 25px;
+  color: var(--txtcolor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.futcontainer {
+  display: flex;
+  width: 100%;
+  height: 90%;
+  justify-content: space-around;
+  margin-top: 30px;
+}
+.futleft_content {
+  border: 3px solid var(--txtcolor);
+  border-radius: 0.7rem;
+  height: 70%;
+  width: 30%;
+}
+.futimgcontainer {
+  width: 100%;
+  height: 80%;
+}
+.futimgcontainer img {
+  padding: 5px;
+  width: 100%;
+  max-height: 100%;
+  object-fit: fill;
+}
+.futleft_content h1 {
+  margin-top: 15px;
+  text-align: center;
+  color: var(--txtcolor);
+}
+.futright_content {
+  width: 50%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.staticstable table {
+  border-collapse: separate;
+  border-spacing: 20px 5px;
+}
+.staticstable table td {
+  color: var(--txtcolor);
+  text-align: center;
+  border: 3px solid var(--txtcolor);
+  border-radius: 0.4rem;
+  padding: 15px 10px;
+}
+.lastgames {
+  margin-top: 20px;
+  text-align: center;
+  width: 85%;
+  height: 30%;
+  border: 2px solid var(--txtcolor);
+}
+#lastgamestitle {
+  color: var(--txtcolor);
+}
+.lastgames ul {
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.lastgames li {
+  color: var(--txtcolor);
+  font-size: 20px;
+  margin: 0;
+  width: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 740px) {
+  .futcontainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .searchsection input {
+    width: 50%;
+  }
+  .futleft_content {
+    width: 60%;
+    height: 40%;
+  }
+  .futright_content {
+    width: 90%;
+  }
+  .lastgames {
+    width: 100%;
+    height: 20%;
+  }
+}

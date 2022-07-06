@@ -5,6 +5,7 @@ import { AiOutlineMenuUnfold } from 'react-icons/ai';
 import { CookieRobot } from './CookieRobot';
 import { Profile } from './Profile';
 import { RandomStore } from './RandomStore';
+import { FutebolAPI } from './FutebolAPI';
 
 type Header = {
     id: string;
@@ -54,7 +55,7 @@ export function Header({stateChanger, ...rest}){
                 <div className='navlinks'>
                     <a onClick={() => {stateChanger(<CookieRobot />)}}>PROJETO 1</a>
                     <a onClick={() => {stateChanger(<RandomStore />)}}>PROJETO 2</a>
-                    <a >PROJETO 3</a>
+                    <a onClick={() => {stateChanger(<FutebolAPI />)}}>PROJETO 3</a>
                     <a onClick={() => {stateChanger(<Profile />)}}>PERFIL</a>
                     <label className="switch">
                         <input type="checkbox" id='checkboxcolor' onClick={() =>{colormode('checkboxcolor')}}/>
@@ -80,7 +81,7 @@ export function Header({stateChanger, ...rest}){
                 <section className='sidebar_links'>
                     <a id='project1'  onClick={() =>{ changeselected('project1'); stateChanger(<CookieRobot />)}}>PROJETO 1</a>
                     <a id='project2'  onClick={() =>{ changeselected('project2'); stateChanger(<RandomStore />)}}>PROJETO 2</a>
-                    <a id='project3'  onClick={() =>{ changeselected('project3');}}>PROJETO 3</a>
+                    <a id='project3'  onClick={() =>{ changeselected('project3');  stateChanger(<FutebolAPI />)}}>PROJETO 3</a>
                     <a className='selected' id='profile' onClick={() =>{ changeselected('profile'); stateChanger(<Profile />)}}>PERFIL</a>
                 </section>
             </div>
