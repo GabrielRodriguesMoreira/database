@@ -18,12 +18,11 @@
   width: 100%;
 }
 .logo h1 {
+  font-family: 'Ubuntu', sans-serif;
   margin: 0;
   margin-left: 10px;
-  font: 30px Arial;
-  font-weight: 700;
   color: var(--txtcolor);
-  -webkit-text-stroke: 1px var(--bgcolor);
+  -webkit-text-stroke: 0.1px var(--bgcolor);
   line-height: 30px;
 }
 .logo h1:first-line {
