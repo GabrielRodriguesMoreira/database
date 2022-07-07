@@ -48,7 +48,8 @@
 }
 .futimgcontainer {
   width: 100%;
-  height: 80%;
+  max-height: 80%;
+  height: 100%;
 }
 .futimgcontainer img {
   padding: 5px;
@@ -85,8 +86,9 @@
   margin-top: 20px;
   text-align: center;
   width: 85%;
-  height: 30%;
+  height: 25%;
   border: 2px solid var(--txtcolor);
+  border-radius: 0.5rem;
 }
 #lastgamestitle {
   color: var(--txtcolor);
@@ -101,7 +103,7 @@
 }
 .lastgames li {
   color: var(--txtcolor);
-  font-size: 20px;
+  font-size: 22px;
   margin: 0;
   width: 30px;
   text-align: center;
@@ -128,10 +130,13 @@
     font-size: 10px;
   }
   .lastgames li {
-    font-size: 10px;
+    font-size: 15px;
   }
   .staticstable table {
-    border-spacing: 5px;
-    font-size: 7px;
+    border-spacing: 1px;
+    font-size: 10px;
+  }
+  .staticstable table td {
+    padding: 5px;
   }
 }
