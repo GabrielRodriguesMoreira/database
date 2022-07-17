@@ -15,13 +15,16 @@ const options = {
 
 export function FutebolAPI() {
 
-    const { data: times, isFetch } = useAxios('https://api.api-futebol.com.br/v1/campeonatos/10/tabela', options)
+    const { data: times, isFetch } = useAxios<Array<Object>>('https://api.api-futebol.com.br/v1/campeonatos/10/tabela', options)
 
-    useEffect(() => {
-        console.log(times)
-    })
     return (
-        <div>
+        <div className='main_futebol_container'>
+
+        </div>
+    )
+}
+
+/*
             {isFetch && <p>loading...</p>}
             <h1>{times?.map(teams => {
                 return (
@@ -29,7 +32,4 @@ export function FutebolAPI() {
                 )
             })}</h1>
 
-
-        </div>
-    )
-}
+*/
