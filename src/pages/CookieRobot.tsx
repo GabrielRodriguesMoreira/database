@@ -1,5 +1,6 @@
 import '../styles/cookierobot.css'
 import React, { useState, useEffect } from 'react'
+
 import typewritesound from '../componenets/typewrite.wav'
 import spr1 from '../componenets/spr1.webp'
 import spr2 from '../componenets/spr2.webp'
