@@ -1,13 +1,10 @@
 import '../styles/cookierobot.css'
 import React, { useState, useEffect } from 'react'
 import typewritesound from '../componenets/typewrite.wav'
-import spr1 from '../componenets/spr1.webp'
-import spr2 from '../componenets/spr2.webp'
+import spr1 from '../componenets/roboto.gif'
 
 
 export function CookieRobot() {
-    const [face, setface] = useState("｡◕‿◕｡")
-    const [sprite, setsprite] = useState(spr1)
     const [action, setaction] = useState(0)
     const [fillspace, setfillspace] = useState(<></>)
     const [infos, setinfos] = useState({
@@ -17,8 +14,6 @@ export function CookieRobot() {
     })
     var i = 0;
     var speed = 30;
-
-
     useEffect(() => {
 
         if (document.cookie.length > 0) {
@@ -30,7 +25,7 @@ export function CookieRobot() {
             console.log(infos)
             typeWriter(`Bem vindo de volta ${JSON.parse(document.cookie).name}`);
         } else {
-            window.alert('O projeto 1 em especifico utiliza cookies, se você não permite a utilização por favor siga para o próximo projeto!')
+
             typeWriter('Olá visitante');
         }
     }, [])
@@ -51,13 +46,9 @@ export function CookieRobot() {
         switch (action) {
             //primeiro acesso
             case 0:
-                setface('° □ °');
-                setsprite(spr2);
                 typeWriter('Parece que é sua primeira vez aqui.');
                 break;
             case 1:
-                setface('• _ •');
-                setsprite(spr1);
                 typeWriter('Poderia me dizer seu nome?');
                 setfillspace((<input type="text" id='username' autoComplete='off' placeholder='type here' />));
                 break;
@@ -67,14 +58,10 @@ export function CookieRobot() {
                     charname: '',
                     video: '',
                 })
-                setface('👍 ');
-                setsprite(spr2);
                 typeWriter(`Obrigado ${(document.getElementById('username') as HTMLInputElement).value}`);
                 setfillspace((<></>));
                 break;
             case 3:
-                setface('◉ _ ◉');
-                setsprite(spr1);
                 typeWriter('Mas parece que eu também não tenho um nome. Poderia me dar um?');
                 setfillspace((<input type="text" id='charname' autoComplete='off' placeholder='type here' />));
                 break;
@@ -85,14 +72,10 @@ export function CookieRobot() {
                     video: '',
                 })
                 setfillspace((<></>));
-                setface('▀̿Ĺ̯▀̿ ̿');
-                setsprite(spr2);
                 typeWriter('Perfeito!')
                 break;
             case 5:
-                setface(' ͡° ͜ʖ ͡°');
-                setsprite(spr1);
-                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de música prefere?');
+                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de música você mais gosta?');
                 setfillspace(<div className='animalbutton'>
                     <button onClick={() => {
                         setinfos({
@@ -117,69 +100,37 @@ export function CookieRobot() {
                         });
                     }}>????</button>
                 </div>);
-                setsprite(spr1);
                 break;
             case 6:
-                setface('༼ʘ̚ل͜ʘ̚༽');
                 typeWriter('Ótimo, agora me da só um segundo para que eu possa memorizar tudo.');
-                setsprite(spr1);
                 setfillspace((<></>));
                 document.cookie = JSON.stringify(infos);
                 break;
             case 7:
-                setface('｡ ◕‿◕ ｡');
                 typeWriter('tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.');
-                setsprite(spr1);
                 break;
             case 8:
-                setface('｡ ◕‿◕ ｡');
-                setsprite(spr2);
                 (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
                 break;
 
             //segundo acesso
+
             case -50:
-                setface('｡ ◕‿◕ ｡');
-                setsprite(spr1);
-                typeWriter('Quem bom que você voltou.');
-                break;
-            case -49:
-                setface('◉ _ ◉');
-                setsprite(spr2);
                 typeWriter('Agora lembra da pergunta que fiz?');
                 break;
-            case -48:
-                setface('◕ ‿ ◕');
-                setsprite(spr1);
+            case -49:
                 typeWriter("Aqui vai uma surpresa! Espero que goste.");
                 break;
-            case -47:
-                (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
-                (document.getElementById('textface') as HTMLInputElement).style.display = 'none';
-                (document.getElementById('tvscreen') as HTMLInputElement).setAttribute('class', 'nobefore');
-                //criar player
-                let parent = (document.getElementById('face') as HTMLInputElement);
-                let source = document.createElement('iframe');
+            case -48:
 
-                source.setAttribute('class', 'iframevideo');
-                source.setAttribute('frameborder', '0');
-
-                source.setAttribute('allow', 'autoplay');
-                source.setAttribute('src', infos.video + '?autoplay=1 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen');
-                parent.appendChild(source);
+                setfillspace(
+                    <div>
+                    </div>
+                )
                 break;
         }
 
-        //resetar transição
-        (document.getElementById('robotbox') as HTMLInputElement).style.display = 'none';
-        setTimeout(comeback, 1)
-
-        function comeback() {
-            (document.getElementById('robotbox') as HTMLInputElement).style.display = 'flex';
-
-        }
     }
-
     function typeWriter(falo) {
         if (i < falo.length) {
             (document.getElementById('typewritesound') as HTMLAudioElement).play();
@@ -197,16 +148,7 @@ export function CookieRobot() {
         <div className='main_cookierobot_cotainer'>
             <audio id='typewritesound' src={typewritesound} ></audio>
             <div className='robotbox' id='robotbox'>
-                <div id='tvscreen'>
-                    <div className="face" id='face'>
-                        <p className="glitch" id='textface'>
-                            <span aria-hidden="true">{face}</span>
-                            {face}
-                            <span aria-hidden="true">{face}</span>
-                        </p>
-                    </div>
-                </div>
-                <img id='charimg' src={sprite} alt="" />
+                <img src={spr1} alt="robo" />
             </div>
             <div className='textbox' id='textbox'>
                 <div className='charname'>{infos.charname}</div>
@@ -214,7 +156,6 @@ export function CookieRobot() {
                 {fillspace}
                 <button id='nextbutton' onClick={nextaction}>next</button>
             </div>
-
         </div>
     )
 
