@@ -98,6 +98,11 @@
   background-color: rgba(172, 255, 47, 0.219);
 }
 
+.videobox{
+  height: 420px;
+  width: 750px;
+}
+
 @keyframes back {
   from {
     background-size: 100% 100%;
