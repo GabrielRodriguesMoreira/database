@@ -15,7 +15,7 @@ export function CookieRobot() {
     var i = 0;
     var speed = 30;
     useEffect(() => {
-
+        console.log(document.cookie);
         if (document.cookie.length > 0) {
             setaction(-50);
             setinfos(() => {
@@ -113,8 +113,8 @@ export function CookieRobot() {
                 (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
                 break;
 
-            //segundo acesso
 
+            //segundo acesso
             case -50:
                 typeWriter('Agora lembra da pergunta que fiz?');
                 break;
@@ -125,6 +125,7 @@ export function CookieRobot() {
 
                 setfillspace(
                     <div>
+                        <iframe width="750" height="420" src={JSON.parse(document.cookie).video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullscreen></iframe>
                     </div>
                 )
                 break;
