@@ -18,8 +18,8 @@ export function RandomStore() {
   return (
     <div className='mainstore'>
       <Createscreen visibility={visible} />
-      <div className='Store_header'>
-        <h1>Store Name</h1>
+      <div className='Store_header' >
+        <h1 contentEditable='true'>Store Name</h1>
         <button onClick={() => { setvisible('flex') }}>Criar Produto</button>
       </div>
 
