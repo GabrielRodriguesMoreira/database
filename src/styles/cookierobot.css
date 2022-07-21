@@ -10,6 +10,7 @@
 .robotbox{
   position: absolute;
   top: 10%;
+  transition: 1s all;
 }
 .robotbox img{
   height: 300px;
@@ -99,10 +100,22 @@
 }
 
 .videobox{
-  height: 420px;
-  width: 750px;
+  height: 440px;
+  width: 770px;
 }
+.videoframe{
+  width: 100%;
+  height: 100%;
+}
+.minimize{
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+}
+.minimize img{
+  width: 250px;
 
+}
 @keyframes back {
   from {
     background-size: 100% 100%;

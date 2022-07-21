@@ -122,12 +122,10 @@ export function CookieRobot() {
                 typeWriter("Aqui vai uma surpresa! Espero que goste.");
                 break;
             case -48:
-                let parent = (document.getElementById('face') as HTMLInputElement);
-                let source = document.createElement('iframe');
-
+                document.getElementById('robotbox')?.setAttribute('class', 'minimize')
                 setfillspace(
                     <div className='videobox'>
-                        <iframe src={JSON.parse(document.cookie).video} frameBorder="0" allow="autoplay;" allowFullScreen></iframe>
+                        <iframe className='videoframe' src={`${JSON.parse(document.cookie).video}?autoplay=1`} frameBorder="0" allow="autoplay" allowFullScreen></iframe>
                     </div>
                 )
                 break;
