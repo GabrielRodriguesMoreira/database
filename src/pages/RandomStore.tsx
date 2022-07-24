@@ -34,7 +34,7 @@ export function RandomStore() {
   function Createscreen(props) {
     function addComponent() {
 
-      var input = document.querySelector('#imageUpload');
+      var input = document.querySelector<HTMLInputElement>('#imageUpload');
       var previewSource = URL.createObjectURL(input.files[0]);
 
       const obj = {
