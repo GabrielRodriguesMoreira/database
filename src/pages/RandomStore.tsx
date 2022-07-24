@@ -35,13 +35,17 @@ export function RandomStore() {
     function addComponent() {
 
       var input = document.querySelector<HTMLInputElement>('#imageUpload');
-      var previewSource = URL.createObjectURL(input.files[0]);
+
+
+      if (input && input.files) {
+        var previewSource = URL.createObjectURL(input.files[0]);
+      }
 
       const obj = {
         key: String(new Date().valueOf()),
         name: String((document.getElementById('productname') as HTMLInputElement).value),
         price: Number((document.getElementById('productprice') as HTMLInputElement).value),
-        img: previewSource,
+        img: previewSource!,
       }
       setcomponenets([...components, obj]);
       setvisible('none')
