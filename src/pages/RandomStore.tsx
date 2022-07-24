@@ -33,11 +33,15 @@ export function RandomStore() {
 
   function Createscreen(props) {
     function addComponent() {
+
+      var input = document.querySelector('#imageUpload');
+      var previewSource = URL.createObjectURL(input.files[0]);
+
       const obj = {
         key: String(new Date().valueOf()),
         name: String((document.getElementById('productname') as HTMLInputElement).value),
         price: Number((document.getElementById('productprice') as HTMLInputElement).value),
-        img: String((document.getElementById('productimg') as HTMLInputElement).value)
+        img: previewSource,
       }
       setcomponenets([...components, obj]);
       setvisible('none')
@@ -55,7 +59,7 @@ export function RandomStore() {
         <span>Preço do produto:</span>
         <input type="number" id='productprice' maxLength={10} />
         <span>URL da Imagem do produto:</span>
-        <input type="text" id='productimg' required />
+        <input id="imageUpload" type="file" name="imageUpload" accept="image/png, image/jpeg" />
         <button onClick={addComponent} >Criar </button>
       </div>
     )
