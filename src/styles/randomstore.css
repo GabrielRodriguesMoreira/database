@@ -199,6 +199,9 @@
   border: 1px solid var(--txtcolor);
   border-radius: 0.3rem;
 }
+.Editscreen .imageUpload{
+  width: 90%;
+}
 @keyframes createproductanim {
   0% {
     top: -500px;
