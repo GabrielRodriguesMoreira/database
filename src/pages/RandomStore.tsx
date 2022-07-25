@@ -32,11 +32,9 @@ export function RandomStore() {
   )
 
   function Createscreen(props) {
+
     function addComponent() {
-
       var input = document.querySelector<HTMLInputElement>('#imageUpload');
-
-
       if (input && input.files) {
         var previewSource = URL.createObjectURL(input.files[0]);
       }
@@ -108,13 +106,18 @@ function Product(props) {
   function Edit(props) {
 
     function changeall() {
+      var input = document.querySelector<HTMLInputElement>('[id="' + props.id + 'Editscreen"] .imageUpload'); //{`${props.id}imageUpload`}
+
       let oldname = (document.getElementById(props.id + 'productname') as HTMLInputElement);
       let oldimg = (document.getElementById(props.id + 'productimg') as HTMLInputElement);
       let oldprice = (document.getElementById(props.id + 'productprice') as HTMLInputElement);
 
       let newname = (document.getElementById(props.id + 'newname') as HTMLInputElement).value;
       let newprice = (document.getElementById(props.id + 'newprice') as HTMLInputElement).value;
-      let newimg = (document.getElementById(props.id + 'newimg') as HTMLInputElement).value;
+      var newimg = ''
+      if (input && input.files) {
+        newimg = URL.createObjectURL(input.files[0]);
+      }
 
 
       if (newname != '') {
@@ -123,20 +126,22 @@ function Product(props) {
       if (newprice != '') {
         oldprice.innerHTML = "R$" + (document.getElementById(props.id + 'newprice') as HTMLInputElement).value;
       }
-      if (newimg != '') {
-        oldimg.src = (document.getElementById(props.id + 'newimg') as HTMLInputElement).value;
+      if (newimg! != '') {
+        oldimg.src = newimg!;
+        newimg = '';
+
       }
       setvisible('none')
     }
 
     return (
-      <div className='Editscreen' style={{ display: props.isvisibility }}>
+      <div className='Editscreen' id={`${props.id}Editscreen`} style={{ display: props.isvisibility }}>
         <span>Novo nome:</span>
         <input type="text" id={props.id + 'newname'} maxLength={30} />
         <span>Novo valor:</span>
         <input type="number" id={props.id + 'newprice'} maxLength={10} />
         <span>Nova imagem:</span>
-        <input type="text" id={props.id + 'newimg'} />
+        <input type="file" id={`${props.id}imageUpload`} name="imageUpload" className='imageUpload' accept="image/png, image/jpeg" />
         <button onClick={changeall}>Atualizar</button>
       </div>
     )
