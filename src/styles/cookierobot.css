@@ -11,9 +11,11 @@
   position: absolute;
   top: 10%;
   transition: 1s all;
+  display: flex;
+  justify-content: center;
 }
 .robotbox img{
-  height: 300px;
+  width: 70%;
 }
 
 /* textbox */
@@ -100,8 +102,9 @@
 }
 
 .videobox{
-  height: 440px;
-  width: 770px;
+  aspect-ratio: 2/1;
+  width: 100%;
+  height: auto;
 }
 .videoframe{
   width: 100%;
@@ -145,5 +148,10 @@
   }
   .glitch {
     font-size: 60px;
+  }
+  .minimize{
+    position: relative;
+    left: initial;
+    bottom: 50%;
   }
 }

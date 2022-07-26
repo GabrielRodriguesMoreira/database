@@ -23,6 +23,7 @@
   margin-left: 10px;
   color: var(--txtcolor);
   -webkit-text-stroke: 0.5px var(--bgcolor);
+
   line-height: 30px;
 }
 .logo h1:first-line {
