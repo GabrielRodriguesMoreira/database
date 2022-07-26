@@ -96,6 +96,7 @@
   text-align: center;
   justify-content: center;
   align-items: center;
+  -webkit-tap-highlight-color: transparent;
 }
 .animalbutton button:focus {
   background-color: rgba(172, 255, 47, 0.219);
