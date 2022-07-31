@@ -21,7 +21,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-
     </div>
   )
 }

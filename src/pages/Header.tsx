@@ -34,7 +34,7 @@ export function Header() {
         <div className='main_header_container'>
             <div className='logo'>
                 <div className='logo_img'><img src={logo} alt="logo" /></div>
-                <text x="10" y="10" stroke='2px white'>Gabriel <br /> Rodrigues</text>
+                <text >Gabriel <br /> Rodrigues</text>
             </div>
 
             <div className='header_content'>

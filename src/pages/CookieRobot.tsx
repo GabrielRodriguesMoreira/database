@@ -19,7 +19,7 @@ export function CookieRobot() {
         if (document.cookie.length > 0) {
             setaction(-50);
             setinfos(() => {
-                var obj = JSON.parse(document.cookie);
+                var obj = JSON.parse(document.cookie)
                 return obj
             })
             console.log(infos)
