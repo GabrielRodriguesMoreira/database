@@ -1,17 +1,27 @@
 import './styles/app.css'
-import React,{useState} from 'react'
-import {Header} from './pages/Header'
-import {Profile} from './pages/Profile'
-import {CookieRobot} from './pages/CookieRobot'
+import { Header } from './pages/Header'
+import { Profile } from './pages/Profile'
+import { FutebolAPI } from './pages/FutebolAPI'
+import { RandomStore } from './pages/RandomStore'
+import { CookieRobot } from './pages/CookieRobot'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 
 function App() {
-  const[state, setState]=useState(<Profile />);
   return (
     <div className="App">
-      <Header stateChanger={setState} />
-      <div className='content'>
-      {state}
-      </div>
+      <Router>
+        <Header />
+        <div className='content'>
+          <Routes>
+            <Route path="/" element={<Profile />} />
+            <Route path="/FutebolAPI" element={<FutebolAPI />} />
+            <Route path="/RandomStore" element={<RandomStore />} />
+            <Route path="/CookieRobot" element={<CookieRobot />} />
+          </Routes>
+        </div>
+      </Router>
+
     </div>
   )
 }

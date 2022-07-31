@@ -17,16 +17,16 @@
   max-width: 100%;
   width: 100%;
 }
-.logo h1 {
+.logo text {
   font-family: 'Ubuntu', sans-serif;
   margin: 0;
   margin-left: 10px;
   color: var(--txtcolor);
-  -webkit-text-stroke: 0.5px var(--bgcolor);
-
+  -webkit-text-stroke: 1px var(--bgcolor);
   line-height: 30px;
+  font-size: 35px;
 }
-.logo h1:first-line {
+.logo text:first-line {
   color: var(--bgcolor);
 }
 

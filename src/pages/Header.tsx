@@ -2,21 +2,17 @@ import '../styles/header.css'
 import logo from '../componenets/logo.webp'
 import { HiMenu } from 'react-icons/hi';
 import { AiOutlineMenuUnfold } from 'react-icons/ai';
-import { CookieRobot } from './CookieRobot';
-import { Profile } from './Profile';
-import { RandomStore } from './RandomStore';
-import { FutebolAPI } from './FutebolAPI';
-
+import { Link } from 'react-router-dom'
 type Header = {
     id: string;
 
 }
 
-export function Header({stateChanger, ...rest}){
+export function Header() {
 
-    function colormode(id){
+    function colormode(id) {
         var r = (document.querySelector(':root') as HTMLInputElement);
-        if((document. getElementById(id) as HTMLInputElement).checked) {
+        if ((document.getElementById(id) as HTMLInputElement).checked) {
             r.style.setProperty('--bgcolor', '#0e0e0e')
             r.style.setProperty('--txtcolor', '#f5fffa')
         } else {
@@ -25,64 +21,54 @@ export function Header({stateChanger, ...rest}){
         }
     }
 
-    function togglesidebar(){
+    function togglesidebar() {
         let elem = (document.getElementById('sidebar') as HTMLInputElement);
-        if (elem.style.display==''  || elem.style.display=='none'){
+        if (elem.style.display == '' || elem.style.display == 'none') {
             elem.style.display = 'flex'
         } else {
             elem.style.display = 'none'
         }
     }
 
-    function changeselected(id){
-        var selected = document.querySelectorAll('.selected');
-            selected.forEach(selected => {
-            selected.classList.remove('selected');
-    
-            var newselected = (document.getElementById(id) as HTMLInputElement);
-            newselected.setAttribute('class', 'selected')
-            });
-    }
-
-    return(
+    return (
         <div className='main_header_container'>
-            <div className='logo'> 
-                <div className='logo_img'><img src={logo} alt="logo" /></div> 
-                <h1>Gabriel <br/> Rodrigues</h1>
+            <div className='logo'>
+                <div className='logo_img'><img src={logo} alt="logo" /></div>
+                <text x="10" y="10" stroke='2px white'>Gabriel <br /> Rodrigues</text>
             </div>
-            
+
             <div className='header_content'>
                 <div className='navlinks'>
-                    <a onClick={() => {stateChanger(<CookieRobot />)}}>PROJETO 1</a>
-                    <a onClick={() => {stateChanger(<RandomStore />)}}>PROJETO 2</a>
-                    <a onClick={() => {stateChanger(<FutebolAPI />)}}>PROJETO 3</a>
-                    <a onClick={() => {stateChanger(<Profile />)}}>PERFIL</a>
+                    <Link to="/CookieRobot">PROJETO 1</Link>
+                    <Link to="/FutebolAPI">PROJETO 2</Link>
+                    <Link to="/RandomStore">PROJETO 3</Link>
+                    <Link to="/">PERFIL</Link>
                     <label className="switch">
-                        <input type="checkbox" id='checkboxcolor' onClick={() =>{colormode('checkboxcolor')}}/>
+                        <input type="checkbox" id='checkboxcolor' onClick={() => { colormode('checkboxcolor') }} />
                         <span className="slider"></span>
                     </label>
                 </div>
-                <button className='menu_icon' onClick={togglesidebar}><HiMenu /></button>  
+                <button className='menu_icon' onClick={togglesidebar}><HiMenu /></button>
             </div>
             <Sidebar />
         </div>
     )
 
-    function Sidebar(){
-        return(
+    function Sidebar() {
+        return (
             <div className='sidebar' id='sidebar'>
                 <section className='sidebar_icons'>
-                <button onClick={togglesidebar} className='close_sidebar_button'><AiOutlineMenuUnfold /></button>
-                <label className="switch">
-                        <input type="checkbox" id='checkboxcolor2' onClick={()=>{colormode('checkboxcolor2')}}/>
+                    <button onClick={togglesidebar} className='close_sidebar_button'><AiOutlineMenuUnfold /></button>
+                    <label className="switch">
+                        <input type="checkbox" id='checkboxcolor2' onClick={() => { colormode('checkboxcolor2') }} />
                         <span className="slider"></span>
-                </label>
+                    </label>
                 </section>
                 <section className='sidebar_links'>
-                    <a id='project1'  onClick={() =>{ changeselected('project1'); stateChanger(<CookieRobot />)}}>PROJETO 1</a>
-                    <a id='project2'  onClick={() =>{ changeselected('project2'); stateChanger(<RandomStore />)}}>PROJETO 2</a>
-                    <a id='project3'  onClick={() =>{ changeselected('project3');  stateChanger(<FutebolAPI />)}}>PROJETO 3</a>
-                    <a className='selected' id='profile' onClick={() =>{ changeselected('profile'); stateChanger(<Profile />)}}>PERFIL</a>
+                    <Link id='project1' to="/CookieRobot">PROJETO 1</Link>
+                    <Link id='project2' to="/FutebolAPI">PROJETO 2</Link>
+                    <Link id='project3' to="/RandomStore">PROJETO 3</Link>
+                    <Link className='selected' id='profile' to="/">PERFIL</Link>
                 </section>
             </div>
 
