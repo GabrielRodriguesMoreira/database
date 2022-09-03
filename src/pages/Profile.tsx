@@ -1,6 +1,6 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
-
+import React, { useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
 import { BsWhatsapp } from 'react-icons/bs';
@@ -8,19 +8,17 @@ import { AiOutlineLinkedin } from 'react-icons/ai';
 import { DiCss3 } from 'react-icons/di';
 import { AiOutlineHtml5 } from 'react-icons/ai';
 import { TbBrandJavascript } from 'react-icons/tb';
-import { SiCplusplus } from 'react-icons/si';
 import { DiReact } from 'react-icons/di';
-import { TbBrandNextjs } from 'react-icons/tb';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
+
 
 type Profile = {
     id: string;
 }
 
 export function Profile() {
-
 
     function hoverin(id) {
         let element = document.getElementById(id);
@@ -34,7 +32,6 @@ export function Profile() {
         let def = document.getElementById('conhecimentos_description_default');
         def!.style.display = 'block'
     }
-
 
     return (
         <div className="main_profile_container">
@@ -61,20 +58,15 @@ export function Profile() {
                     </div>
                     <div className='profile_conhecimentos'>
                         <div className='conhecimentos_icons'>
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></td>
-                                        <td onMouseEnter={() => { hoverin('html_description') }} onMouseLeave={() => { hoverout('html_description') }}> <AiOutlineHtml5 /></td>
-                                        <td onMouseEnter={() => { hoverin('javascript_description') }} onMouseLeave={() => { hoverout('javascript_description') }}><TbBrandJavascript /> </td>
-                                    </tr>
-                                    <tr>
-                                        <td onMouseEnter={() => { hoverin('cplusplus_description') }} onMouseLeave={() => { hoverout('cplusplus_description') }}> <SiCplusplus /></td>
-                                        <td onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}><DiReact /> </td>
-                                        <td onMouseEnter={() => { hoverin('next_description') }} onMouseLeave={() => { hoverout('next_description') }}><TbBrandNextjs /></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div className='conhecimentos_icons_circle'>
+                                <button onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></button>
+                                <div>
+                                    <button onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}> <DiReact /></button>
+                                    <button onMouseEnter={() => { hoverin('javascript_description') }} onMouseLeave={() => { hoverout('javascript_description') }}> <TbBrandJavascript /></button>
+                                </div>
+
+                                <button onMouseEnter={() => { hoverin('html_description') }} onMouseLeave={() => { hoverout('html_description') }}> <AiOutlineHtml5 /></button>
+                            </div>
                         </div>
                         <div className='conhecimentos_description'>
                             <div id='conhecimentos_description_default' >
@@ -84,26 +76,22 @@ export function Profile() {
                             <div id='css_description' style={{ display: 'none' }}>
                                 <h1>CSS</h1>
                                 <p>Cascading Style Sheets é um mecanismo para adicionar estilo a um documento web.</p>
+                                <p>Tempo de uso: 3 anos</p>
                             </div>
                             <div id='javascript_description' style={{ display: 'none' }}>
                                 <h1>JAVASCRIPT</h1>
                                 <p>É uma linguagem de programação interpretada estruturada, de script em alto nível com tipagem dinâmica fraca e multiparadigma.</p>
+                                <p>Tempo de uso: 3 anos</p>
                             </div>
                             <div id='html_description' style={{ display: 'none' }}>
                                 <h1>HTML</h1>
                                 <p>É uma linguagem de marcação utilizada na construção de páginas na Web.</p>
+                                <p>Tempo de uso: 3 anos</p>
                             </div>
                             <div id='react_description' style={{ display: 'none' }}>
                                 <h1>REACT</h1>
                                 <p>É uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web</p>
-                            </div>
-                            <div id='next_description' style={{ display: 'none' }}>
-                                <h1>NEXT JS</h1>
-                                <p>É uma estrutura da web de desenvolvimento front-end React de código aberto criada pela Vercel.</p>
-                            </div>
-                            <div id='cplusplus_description' style={{ display: 'none' }}>
-                                <h1>C++</h1>
-                                <p>O C++ é uma linguagem de programação de nível médio, baseada na linguagem C</p>
+                                <p>Tempo de uso: 1 anos</p>
                             </div>
                         </div>
                     </div>
@@ -122,7 +110,8 @@ export function Profile() {
                     <button className='contact_button'>CONTACT</button>
                 </div>
             </section>
-
+            <section className='star_rating'>
+            </section>
         </div>
     )
 }

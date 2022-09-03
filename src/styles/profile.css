@@ -4,6 +4,7 @@
   width: 100%;
   min-height: 100%;
   flex: 1 1 auto;
+  flex-wrap: wrap;
 }
 .profile_left_content {
   width: 65%;
@@ -14,7 +15,7 @@
 .left_card{
   width: 98%;
   height: 95%;
-  box-shadow: 3px 3px 10px 1px var(--txtcolor);
+  box-shadow: 1px 1px 10px -2px var(--txtcolor);
   border-radius: 0.4rem;
   padding: 10px;
 }
@@ -56,7 +57,14 @@
   height: 100%;
   border-radius: 2rem;
 }
+.dados p:hover, .formacao p:hover{
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+}
+
 .dados p, .formacao p{
+  transition: 0.15s all;
+  cursor: pointer;
   display: flex;
   align-items: center;
   border: 2px solid var(--txtcolor);
@@ -71,37 +79,54 @@
 .profile_conhecimentos {
   width: 95%;
   height: 45%;
-  display: none;
+  display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-top: 30px;
 }
-.conhecimentos_icons {
 
-  width: 45%;
+.conhecimentos_icons{
+  width: 20%;
   height: 90%;
-  border: 2px solid var(--txtcolor);
-  border-radius: 0.5rem;
-  color: var(--txtcolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.conhecimentos_icons table {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: 60px;
+.conhecimentos_icons_circle{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  width: 150px;
+  height: 150px;
+  border: 2px solid var(--txtcolor);
+  border-radius: 50%;
+  box-shadow: 0px 0px 10px -1px var(--txtcolor);
+}
+.conhecimentos_icons_circle button{
+  border: none;
+  font-size: 35px;
+  background-color: transparent;
+  transition: 0.3s all;
   cursor: pointer;
-}
-.conhecimentos_description {
-  width: 45%;
-  height: 90%;
   color: var(--txtcolor);
-  border: 2px solid var(--txtcolor);
-  border-radius: 0.5rem;
-  padding: 10px;
-  text-align: center;
 }
-.conhecimentos_description h1 {
-  margin: 0;
+.conhecimentos_icons_circle button:hover{
+  transform: scale(170%);
+
+}
+.conhecimentos_icons_circle div{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.conhecimentos_description {
+  width: 70%;
+  height: 90%;
+  display: flex;
+  align-items: center;
+  color: var(--txtcolor);
 }
 .profile_right_content {
   display: flex;
@@ -119,7 +144,7 @@
   align-items: center;
   width: 80%;
   height: 95%;
-  box-shadow: 3px 3px 10px 1px var(--txtcolor);
+  box-shadow: 2px 2px 10px -2px var(--txtcolor);
   border-radius: 0.3rem;
 }
 .profile_right_content h1{
@@ -154,11 +179,12 @@ margin:  20px 0;
   align-items: center;
   text-decoration: none;
   color: var(--txtcolor);
+  transition: 0.4s all;
+}
+.profile_links a:hover{
+  transform: scale(170%) !important;
+}
 
-}
-.profile_links a:nth-child(3) {
-  animation: flip 1s forwards;
-}
 .profile_right_content .contact_button{
   background-color: var(--txtcolor);
   color: var(--bgcolor);

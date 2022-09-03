@@ -1,6 +1,6 @@
 .main_header_container {
   max-width: 100%;
-  max-height: 100px;
+  max-height: 80px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -23,8 +23,8 @@
   margin-left: 10px;
   color: var(--txtcolor);
   -webkit-text-stroke: 1px var(--bgcolor);
-  line-height: 30px;
-  font-size: 35px;
+  line-height: 25px;
+  font-size: 25px;
 }
 .logo text:first-line {
   color: var(--bgcolor);
@@ -32,9 +32,9 @@
 
 .logo_img {
   aspect-ratio: 1 / 1;
-  max-width: 60px;
+  max-width: 45px;
   width: 100%;
-  max-height: 60px;
+  max-height: 45px;
   height: 100%;
   border: 2px solid var(--bgcolor);
   border-radius: 50%;
