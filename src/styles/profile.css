@@ -1,29 +1,28 @@
 .main_profile_container {
   display: flex;
-  position: relative;
+  justify-content: space-between;
   width: 100%;
   min-height: 100%;
   flex: 1 1 auto;
   flex-wrap: wrap;
+  margin-top: 10px;
 }
+
 .profile_left_content {
   width: 65%;
+  height: 86vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.left_card{
-  width: 98%;
-  height: 95%;
+  flex-direction: column;
   box-shadow: 1px 1px 10px -2px var(--txtcolor);
   border-radius: 0.4rem;
   padding: 10px;
 }
+
 .profile_infos {
   color: var(--txtcolor);
   border-radius: 0.5rem;
   width: 95%;
-  height: 50%;
+  max-height: 50%;
   display: flex;
   justify-content: space-between;
 }
@@ -33,9 +32,8 @@
 .formacao {
   padding: 5px;
   width: 45%;
-  height: 100%;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: center;
   gap: 8px;
   overflow: auto;
@@ -55,7 +53,7 @@
   padding: 5px;
   width: 45%;
   height: 100%;
-  border-radius: 2rem;
+  
 }
 .dados p:hover, .formacao p:hover{
   background-color: var(--txtcolor);
@@ -70,12 +68,12 @@
   border: 2px solid var(--txtcolor);
   border-radius: 0.5rem;
   padding: 3px;
-
 }
 .dados p :nth-child(1){
   font-size: 25px;
   margin-right: 8px;
 }
+
 .profile_conhecimentos {
   width: 95%;
   height: 45%;
@@ -84,25 +82,23 @@
   align-items: center;
   margin-top: 30px;
 }
-
 .conhecimentos_icons{
-  width: 20%;
-  height: 90%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.conhecimentos_icons_circle{
   display: flex;
   justify-content: space-between;
   align-items:center;
-  width: 150px;
-  height: 150px;
+  width: 170px;
+  height: 170px;
   border: 2px solid var(--txtcolor);
   border-radius: 50%;
   box-shadow: 0px 0px 10px -1px var(--txtcolor);
 }
-.conhecimentos_icons_circle button{
+.conhecimentos_icons div{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+.conhecimentos_icons button{
   border: none;
   font-size: 35px;
   background-color: transparent;
@@ -110,17 +106,9 @@
   cursor: pointer;
   color: var(--txtcolor);
 }
-.conhecimentos_icons_circle button:hover{
+.conhecimentos_icons button:hover{
   transform: scale(170%);
-
 }
-.conhecimentos_icons_circle div{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-}
-
 .conhecimentos_description {
   width: 70%;
   height: 90%;
@@ -128,35 +116,36 @@
   align-items: center;
   color: var(--txtcolor);
 }
+
+
+
 .profile_right_content {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 35%;
-  color: var(--txtcolor);
-}
-.profile_card{
   position: relative;
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 80%;
-  height: 95%;
+  width: 30%;
+  color: var(--txtcolor);
+  height: 86vh;
   box-shadow: 2px 2px 10px -2px var(--txtcolor);
   border-radius: 0.3rem;
 }
-.profile_right_content h1{
-margin:  20px 0;
-}
+
+
+
 .profilepic {
-  margin-top: 20px;
-  max-width: 250px;
-  aspect-ratio: 1 / 1;
-  border: 3px solid var(--txtcolor);
-  border-radius: 50%;
-  overflow: hidden;
+    margin: 20px 0;
+    max-width: 250px;
+    aspect-ratio: 1 / 1;
+    border: 3px solid var(--txtcolor);
+    border-radius: 50%;
+    overflow: hidden;
+}
+.profile_right_content h3{
+  margin:  20px 0;
+  color: rgb(80, 80, 80);
+
 }
 .profilepic img {
   height: 100%;
@@ -166,13 +155,12 @@ margin:  20px 0;
 .profile_links {
   padding: 10px 20px;
   font-size: 30px;
+  width: 80%;
   border-radius: 2rem;
-  width: 90%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   border: 2px solid var(--txtcolor);
-
 }
 .profile_links a {
   display: flex;
@@ -184,6 +172,7 @@ margin:  20px 0;
 .profile_links a:hover{
   transform: scale(170%) !important;
 }
+
 
 .profile_right_content .contact_button{
   background-color: var(--txtcolor);
@@ -200,58 +189,3 @@ margin:  20px 0;
   cursor: pointer;
 }
 
-@media only screen and (max-width: 740px) {
-  .main_profile_container {
-    flex-direction: column-reverse;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .profile_right_content,
-  .profile_left_content {
-    width: 100%;
-  }
-  .conhecimentos_icons,
-  .conhecimentos_description {
-    width: 48%;
-  }
-  .conhecimentos_icons table {
-    font-size: 40px;
-  }
-  .conhecimentos_description h1 {
-    font-size: 18px;
-  }
-  .conhecimentos_description p {
-    font-size: 11px;
-  }
-  .profile_infos {
-    height: 100%;
-    margin: 10px;
-  }
-  .profile_infos p {
-    font-size: 10px;
-  }
-  .profile_links {
-    width: 80%;
-  }
-}
-
-@keyframes flip {
-  0% {
-    transform: rotate(0deg);
-  }
-  20% {
-    transform: rotate(15deg) scale(200%);
-  }
-  40% {
-    transform: rotate(-15deg) scale(200%);
-  }
-  60% {
-    transform: rotate(15deg) scale(200%);
-  }
-  80% {
-    transform: rotate(-15deg) scale(200%);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
