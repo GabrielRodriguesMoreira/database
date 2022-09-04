@@ -68,6 +68,7 @@
   border: 2px solid var(--txtcolor);
   border-radius: 0.5rem;
   padding: 3px;
+  
 }
 .dados p :nth-child(1){
   font-size: 25px;
@@ -105,6 +106,7 @@
   transition: 0.3s all;
   cursor: pointer;
   color: var(--txtcolor);
+  padding: 0;
 }
 .conhecimentos_icons button:hover{
   transform: scale(170%);
@@ -189,3 +191,42 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 700px) {
+  .main_profile_container{
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 10px;
+  }
+  .profile_right_content, .profile_left_content{
+    width: 95%;
+    height: fit-content;
+    min-height: 530px;
+  }
+
+  .profile_infos{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 450px;
+  }
+  .dados, .formacao{
+    width: 100%;
+  }
+  .dados p, .formacao p{
+    font-size: 12px;
+  }
+  .profile_conhecimentos{
+    height: fit-content !important;
+  }
+  .conhecimentos_icons{
+    width: 80px;
+    height: 80px;
+  }
+  .conhecimentos_icons button{
+    font-size: 18px;
+  }
+  .conhecimentos_description{
+    font-size: 12px;
+    margin-left: 15px;
+  }
+}

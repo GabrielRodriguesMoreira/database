@@ -59,9 +59,11 @@ export function Profile() {
                     <div className='conhecimentos_icons'>
                         <button onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></button>
                         <div>
+
                             <button onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}> <DiReact /></button>
                             <button onMouseEnter={() => { hoverin('javascript_description') }} onMouseLeave={() => { hoverout('javascript_description') }}> <TbBrandJavascript /></button>
                         </div>
+
                         <button onMouseEnter={() => { hoverin('html_description') }} onMouseLeave={() => { hoverout('html_description') }}> <AiOutlineHtml5 /></button>
                     </div>
                     <div className='conhecimentos_description'>
