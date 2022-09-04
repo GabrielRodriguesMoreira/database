@@ -14,50 +14,26 @@ const options = {
     }
 };
 
-const options2 = {
-    method: 'GET',
-    headers: {
-        'Accept': 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json'
-    }
-};
 
 export function FutebolAPI() {
 
-    const [teams, setteam] = useState({})
     const [time, settime] = useState(0)
+    const { data: data, isFetch } = useAxios('https://api.api-futebol.com.br/v1/campeonatos/10/tabela', options)
+    const teams = Object(data)
 
-    const { provolone } = useAxios('https://kitsu.io/api/edge/chapters?page%5Blimit%5D=10&page%5Boffset%5D=0', options2)
-
-
-
-    useEffect(() => {
-
-        console.log(provolone)
-        fetch('https://api.api-futebol.com.br/v1/campeonatos/10/tabela', options)
-            .then(response => response.json())
-            .then(response => {
-                setteam(response);
-                if (response) {
-                    /* criando a lista de busca */
-                    let value = (response?.[0]?.['time']?.nome_popular);
-                    for (var data_value = 0; data_value < response.length; data_value++) {
-                        value = (response?.[data_value]?.['time']?.nome_popular)
-                        let tag = document.createElement('option');
-                        tag.setAttribute('data-value', String(data_value));
-                        tag.setAttribute('value', value);
-                        let parent = (document.getElementById("answers") as HTMLInputElement);
-                        parent.appendChild(tag);
-                    }
-
-                    /* pintar borda dependendo (V/D/E) */
-                    changecolor(response, time)
-                }
-            })
-            .catch(err => console.error(err));
-    }, []);
-
-
+    if (teams) {
+        /* criando a lista de busca */
+        let value = (teams?.[0]?.['time']?.nome_popular);
+        for (var data_value = 0; data_value < teams.length; data_value++) {
+            value = (teams?.[data_value]?.['time']?.nome_popular)
+            let tag = document.createElement('option');
+            tag.setAttribute('data-value', String(data_value));
+            tag.setAttribute('value', value);
+            let parent = (document.getElementById("answers") as HTMLInputElement);
+            parent.appendChild(tag);
+            changecolor(teams, 0)
+        }
+    }
     function searchteam() {
         var shownVal = (document.getElementById("answer") as HTMLInputElement).value;
         var value2send = (document.querySelector("#answers option[value='" + shownVal + "']") as HTMLInputElement).dataset.value;
@@ -68,8 +44,6 @@ export function FutebolAPI() {
             return value;
         });
     }
-
-
     function changecolor(resp, statechanger) {
         for (let curgame = 0; curgame < 5; curgame++) {
             let gametd = (document.getElementById(`lastgame${curgame}`) as HTMLInputElement);
@@ -99,10 +73,8 @@ export function FutebolAPI() {
             </section>
             <section className='futcontainer'>
                 <div className='futleft_content'>
-                    <div className='futimgcontainer'>
-                        <img src={teams?.[time]?.['time']?.escudo} alt="escudotime" />
-                    </div>
-                    <h1>{teams?.[time]?.['time']?.nome_popular}</h1>
+                    {isFetch ? <div className="loader"></div> : <img src={teams?.[time]?.['time']?.escudo} alt="escudotime" />}
+                    <h1>{isFetch ? <div className="loader"></div> : teams?.[time]?.['time']?.nome_popular}</h1>
                 </div>
                 <div className='futright_content' id='right'>
                     <div className='staticstable'>
@@ -110,43 +82,42 @@ export function FutebolAPI() {
                             <tbody>
                                 <tr>
                                     <td> <h2 >posição:</h2></td>
-                                    <td><h2 >{teams?.[time]?.posicao}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.posicao}</h2></td>
                                     <td> <h2 >pontos:</h2></td>
-                                    <td><h2 >{teams?.[time]?.pontos}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.pontos}</h2></td>
                                 </tr>
                                 <tr>
 
                                 </tr>
                                 <tr>
                                     <td> <h2 >aproveitamento:</h2></td>
-                                    <td><h2 >{teams?.[time]?.aproveitamento}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.aproveitamento}</h2></td>
                                     <td> <h2 >jogos:</h2></td>
-                                    <td><h2 >{teams?.[time]?.jogos}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.jogos}</h2></td>
                                 </tr>
                                 <tr>
                                     <td> <h2 >vitórias:</h2></td>
-                                    <td><h2 >{teams?.[time]?.vitorias}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.vitorias}</h2></td>
                                     <td> <h2 >derrotas:</h2></td>
-                                    <td><h2 >{teams?.[time]?.derrotas}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.derrotas}</h2></td>
                                 </tr>
                                 <tr>
                                     <td> <h2 >empates:</h2></td>
-                                    <td><h2 >{teams?.[time]?.empates}</h2></td>
+                                    <td><h2 >{isFetch ? <div className="loader"></div> : teams?.[time]?.empates}</h2></td>
                                     <td><h2>gols:</h2></td>
-                                    <td><h2>{teams?.[time]?.gols_pro}</h2></td>
+                                    <td><h2>{isFetch ? <div className="loader"></div> : teams?.[time]?.gols_pro}</h2></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-
                     <div className='lastgames'>
                         <h1 id='lastgamestitle'>Ultimos jogos</h1>
                         <ul id='lastgamestr'>
-                            <li id='lastgame0'>{teams?.[time]?.ultimos_jogos[0]}</li>
-                            <li id='lastgame1'>{teams?.[time]?.ultimos_jogos[1]}</li>
-                            <li id='lastgame2'>{teams?.[time]?.ultimos_jogos[2]}</li>
-                            <li id='lastgame3'>{teams?.[time]?.ultimos_jogos[3]}</li>
-                            <li id='lastgame4'>{teams?.[time]?.ultimos_jogos[4]}</li>
+                            <li id='lastgame0'>{isFetch ? <div className="loader"></div> : teams?.[time]?.ultimos_jogos[0]}</li>
+                            <li id='lastgame1'>{isFetch ? <div className="loader"></div> : teams?.[time]?.ultimos_jogos[1]}</li>
+                            <li id='lastgame2'>{isFetch ? <div className="loader"></div> : teams?.[time]?.ultimos_jogos[2]}</li>
+                            <li id='lastgame3'>{isFetch ? <div className="loader"></div> : teams?.[time]?.ultimos_jogos[3]}</li>
+                            <li id='lastgame4'>{isFetch ? <div className="loader"></div> : teams?.[time]?.ultimos_jogos[4]}</li>
                         </ul>
                     </div>
                 </div>

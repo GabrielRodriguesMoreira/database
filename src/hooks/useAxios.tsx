@@ -18,7 +18,6 @@ export function useAxios(url, options) {
 
 
     }, []);
-
     return { data, error, isFetch }
 }
 
