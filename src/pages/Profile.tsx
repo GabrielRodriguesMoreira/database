@@ -23,8 +23,6 @@ export function Profile() {
     function hoverin(id) {
 
         let nodes = (document.getElementById('conhecimentos_description')?.childNodes);
-
-
         for (let i = 0; i < nodes!.length; i++) {
             (nodes![i] as HTMLElement).style.display = 'none';
         }

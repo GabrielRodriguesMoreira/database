@@ -212,11 +212,19 @@
   .dados, .formacao{
     width: 100%;
   }
-  .dados p, .formacao p{
+  .dados p, .formacao p {
     font-size: 12px;
   }
   .profile_conhecimentos{
     height: fit-content !important;
+  }
+  .profile_conhecimentos h1{
+    font-size: 15px;
+    margin: 3px;
+  }
+  .conhecimentos_description p{
+    font: 10px;
+    margin: 0;
   }
   .conhecimentos_icons{
     width: 80px;
