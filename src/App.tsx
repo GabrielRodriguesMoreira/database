@@ -3,7 +3,7 @@ import { Header } from './pages/Header'
 import { Profile } from './pages/Profile'
 import { FutebolAPI } from './pages/FutebolAPI'
 import { RandomStore } from './pages/RandomStore'
-import { CookieRobot } from './pages/CookieRobot'
+import { Clicker } from './pages/Clicker'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 
@@ -17,7 +17,7 @@ function App() {
             <Route path="/" element={<Profile />} />
             <Route path="/FutebolAPI" element={<FutebolAPI />} />
             <Route path="/RandomStore" element={<RandomStore />} />
-            <Route path="/CookieRobot" element={<CookieRobot />} />
+            <Route path="/Clicker" element={<Clicker />} />
           </Routes>
         </div>
       </Router>

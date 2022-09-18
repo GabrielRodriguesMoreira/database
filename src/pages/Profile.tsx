@@ -21,16 +21,27 @@ type Profile = {
 export function Profile() {
 
     function hoverin(id) {
+
+        let nodes = document.getElementById('conhecimentos_description')?.childNodes;
+
+        for (let i = 0; i < nodes!.length; i++) {
+            nodes![i].style.display = 'none';
+        }
+
         let element = document.getElementById(id);
         element!.style.display = 'block'
         let def = document.getElementById('conhecimentos_description_default');
         def!.style.display = 'none'
+
     }
+
     function hoverout(id) {
-        let element = document.getElementById(id);
-        element!.style.display = 'none'
-        let def = document.getElementById('conhecimentos_description_default');
-        def!.style.display = 'block'
+        if (window.innerWidth > 700) {
+            let element = document.getElementById(id);
+            element!.style.display = 'none'
+            let def = document.getElementById('conhecimentos_description_default');
+            def!.style.display = 'block'
+        }
     }
 
     return (
@@ -56,8 +67,8 @@ export function Profile() {
                     </div>
                 </div>
                 <div className='profile_conhecimentos'>
-                    <div className='conhecimentos_icons'>
-                        <button onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></button>
+                    <div className='conhecimentos_icons' >
+                        <button onTouchStartCapture={() => { hoverin('css_description') }} onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></button>
                         <div>
 
                             <button onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}> <DiReact /></button>
@@ -66,7 +77,7 @@ export function Profile() {
 
                         <button onMouseEnter={() => { hoverin('html_description') }} onMouseLeave={() => { hoverout('html_description') }}> <AiOutlineHtml5 /></button>
                     </div>
-                    <div className='conhecimentos_description'>
+                    <div className='conhecimentos_description' id='conhecimentos_description'>
                         <div id='conhecimentos_description_default' >
                             <h1>DESCRIÇÃO</h1>
                             <p>passe o mouse ou toque sobre um icone para saber a descrição</p>
