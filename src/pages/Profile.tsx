@@ -84,17 +84,17 @@ export function Profile() {
                         <div id='css_description' style={{ display: 'none' }}>
                             <h1>CSS</h1>
                             <p>Cascading Style Sheets é um mecanismo para adicionar estilo a um documento web.</p>
-                            <p>Tempo de uso: 3 anos</p>
+                            <p>Tempo de uso: 2 anos</p>
                         </div>
                         <div id='javascript_description' style={{ display: 'none' }}>
                             <h1>JAVASCRIPT</h1>
                             <p>É uma linguagem de programação interpretada estruturada, de script em alto nível com tipagem dinâmica fraca e multiparadigma.</p>
-                            <p>Tempo de uso: 3 anos</p>
+                            <p>Tempo de uso: 2 anos</p>
                         </div>
                         <div id='html_description' style={{ display: 'none' }}>
                             <h1>HTML</h1>
                             <p>É uma linguagem de marcação utilizada na construção de páginas na Web.</p>
-                            <p>Tempo de uso: 3 anos</p>
+                            <p>Tempo de uso: 2 anos</p>
                         </div>
                         <div id='react_description' style={{ display: 'none' }}>
                             <h1>REACT</h1>
