@@ -172,7 +172,7 @@ export function Profile() {
             <section>
                 {
                     
-                    comentarios?.map(function (element){
+                    comentarios?.map(function (element : any = {}){
                         return( <h1>{element.comment}</h1> )
                     })
             }
