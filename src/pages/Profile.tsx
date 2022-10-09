@@ -12,6 +12,7 @@ import { DiReact } from 'react-icons/di';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
+import { AiOutlineStar } from 'react-icons/ai';
 
 
 type Profile = {
@@ -65,7 +66,7 @@ export function Profile() {
     }
 
 
-    var [comentarios,setcomentarios] = useState([{}])
+    var [comentarios,setcomentarios] = useState([])
     useEffect(() => {
         async function load_comments(){
             const querySnapshot = await getDocs(collection(db, "comments"));
@@ -77,12 +78,15 @@ export function Profile() {
       },[]);
 
       async function send_comment(){
-        let commment = (document.getElementById("comment_text") as HTMLInputElement).value;
+        let commment = (document.getElementById("comment_text") as HTMLInputElement);
+        let name = (document.getElementById("comment_name") as HTMLInputElement);
         addDoc(collection(db, "comments"), {
-            name: "Ada",
-            comment: commment,
+            name: name.value,
+            comment: commment.value,
             rate: 1
           });
+          commment.value = ''
+          name.value = ''
     }
 
     return (
@@ -161,22 +165,45 @@ export function Profile() {
             </section>
             <section className='star_rating'>
             </section>
+            <section className='comments_container'>
+                <h1>Deixe seu Comentário</h1>
+                <div className='comments_section' >
+                    <div className='first_row'>
+                        <div className='comment_name'>
+                            <label htmlFor="comment_name">Nome</label>
+                            <input type="text" id='comment_name'/>
+                        </div>
 
-            <section className='comments_section' >
-                <div>
-                    <input type="text" id='comment_text'/>
-                    <button onClick={send_comment}>Clica</button>
+                        <div className='comment_star'>
+                            < AiOutlineStar className='star_icon' />
+                            < AiOutlineStar className='star_icon'  />
+                            < AiOutlineStar className='star_icon'  />
+                            < AiOutlineStar className='star_icon' />
+                            < AiOutlineStar className='star_icon' />
+                        </div>
+                    </div>
+                    <label htmlFor="comment_text">Comentário</label>
+                    <textarea name="" id='comment_text' cols={10} rows={5}></textarea>
+                    <button onClick={send_comment}>Públicar</button>
                 </div>
             </section>
 
-            <section>
-                {
-                    
-                    comentarios?.map(function (element : any = {}){
-                        return( <h1>{element.comment}</h1> )
-                    })
-            }
-            </section>
+                <section className='show_comments'>
+                    <h1>Comentários</h1>
+                    {
+                        comentarios?.map(function (element : any = {}){
+                            return(
+                                
+                                <div className='comment_box'>
+                                    <h3 className='comments_name'>{element.name}</h3>
+                                    <h2 className='comment_text'>{element.comment}</h2> 
+                                </div>
+
+                                 )
+                        })
+                }
+                </section>
+
         </div>
     )
 
