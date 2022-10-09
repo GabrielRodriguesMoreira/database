@@ -66,7 +66,7 @@ export function Profile() {
     }
 
 
-    var [comentarios,setcomentarios] = useState<Object>([])
+    var [comentarios,setcomentarios] = useState<Array>([])
     useEffect(() => {
         async function load_comments(){
             const querySnapshot = await getDocs(collection(db, "comments"));
