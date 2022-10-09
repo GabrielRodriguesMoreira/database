@@ -1,6 +1,6 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
 import { BsWhatsapp } from 'react-icons/bs';
@@ -17,6 +17,27 @@ import { GoLocation } from 'react-icons/go';
 type Profile = {
     id: string;
 }
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc, getDocs  } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyC6O0ozfTBg9OX3N-fxfgsJyks3V40ED5Y",
+  authDomain: "unique-caldron-362117.firebaseapp.com",
+  projectId: "unique-caldron-362117",
+  storageBucket: "unique-caldron-362117.appspot.com",
+  messagingSenderId: "458607624724",
+  appId: "1:458607624724:web:593ce50ecd957739159d01"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 
 export function Profile() {
 
@@ -41,6 +62,27 @@ export function Profile() {
             let def = document.getElementById('conhecimentos_description_default');
             def!.style.display = 'block'
         }
+    }
+
+
+    var [comentarios,setcomentarios] = useState([{}])
+    useEffect(() => {
+        async function load_comments(){
+            const querySnapshot = await getDocs(collection(db, "comments"));
+            querySnapshot.forEach((doc) => {
+                setcomentarios(comentarios => [...comentarios, doc.data()]);
+              });
+        }
+        load_comments()
+      },[]);
+
+      async function send_comment(){
+        let commment = (document.getElementById("comment_text") as HTMLInputElement).value;
+        addDoc(collection(db, "comments"), {
+            name: "Ada",
+            comment: commment,
+            rate: 1
+          });
     }
 
     return (
@@ -119,6 +161,25 @@ export function Profile() {
             </section>
             <section className='star_rating'>
             </section>
+
+            <section className='comments_section' >
+                <div>
+                    <input type="text" id='comment_text'/>
+                    <button onClick={send_comment}>Clica</button>
+                </div>
+            </section>
+
+            <section>
+                {
+                    
+                    comentarios?.map(function (element){
+                        return( <h1>{element.comment}</h1> )
+                    })
+            }
+            </section>
         </div>
     )
+
+
 }
+
