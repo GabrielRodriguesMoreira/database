@@ -1,6 +1,7 @@
 import "../styles/drag.css"
 export function Clicker() {
 
+    window.alert("Em desenvolvimento")
     const datalist = [{
         name: "Fim da 2° guerra mundial",
         date: 1945,
