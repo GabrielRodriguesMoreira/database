@@ -27,12 +27,12 @@ import { collection, addDoc, getDocs  } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyC6O0ozfTBg9OX3N-fxfgsJyks3V40ED5Y",
+  apiKey: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_DATABASE,
   authDomain: "unique-caldron-362117.firebaseapp.com",
   projectId: "unique-caldron-362117",
   storageBucket: "unique-caldron-362117.appspot.com",
   messagingSenderId: "458607624724",
-  appId: "1:458607624724:web:593ce50ecd957739159d01"
+  appId: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_ID
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
