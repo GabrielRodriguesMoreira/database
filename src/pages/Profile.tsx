@@ -18,6 +18,9 @@ import { AiOutlineStar } from 'react-icons/ai';
 type Profile = {
     id: string;
 }
+type comentarios = {
+    name: string
+}
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -66,7 +69,7 @@ export function Profile() {
     }
 
 
-    var [comentarios,setcomentarios] = useState<Array>([])
+    var [comentarios,setcomentarios] = useState<Object[]>([])
     useEffect(() => {
         async function load_comments(){
             const querySnapshot = await getDocs(collection(db, "comments"));
@@ -166,7 +169,7 @@ export function Profile() {
             <section className='star_rating'>
             </section>
             <section className='comments_container'>
-                <h1>Deixe seu Comentário</h1>
+                <h1>Deixe seu Feedback</h1>
                 <div className='comments_section' >
                     <div className='first_row'>
                         <div className='comment_name'>
@@ -198,7 +201,7 @@ export function Profile() {
                                     <h3 className='comments_name'>{element.name}</h3>
                                     <h2 className='comment_text'>{element.comment}</h2> 
                                 </div>
-
+                                
                                  )
                         })
                 }
