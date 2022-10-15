@@ -10,7 +10,7 @@ export function CookieRobot() {
     const [infos, setinfos] = useState({
         name: '',
         charname: '',
-        video: ''
+        jogo: ''
     })
     var i = 0;
     var speed = 30;
@@ -56,7 +56,7 @@ export function CookieRobot() {
                 setinfos({
                     name: (document.getElementById('username') as HTMLInputElement).value,
                     charname: '',
-                    video: '',
+                    jogo: '',
                 })
                 typeWriter(`Obrigado ${(document.getElementById('username') as HTMLInputElement).value}`);
                 setfillspace((<></>));
@@ -69,36 +69,36 @@ export function CookieRobot() {
                 setinfos({
                     name: infos.name,
                     charname: (document.getElementById('charname') as HTMLInputElement).value,
-                    video: '',
+                    jogo: '',
                 })
                 setfillspace((<></>));
                 typeWriter('Perfeito!')
                 break;
             case 5:
-                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de música você mais gosta?');
+                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de jogo você mais gosta?');
                 setfillspace(<div className='animalbutton'>
                     <button onClick={() => {
                         setinfos({
                             name: infos.name,
                             charname: infos.charname,
-                            video: 'https://www.youtube.com/embed/1V_xRb0x9aw'
+                            jogo: 'http://www.celestegame.com'
                         });
-                    }}>Rock</button>
+                    }}>Plataforma</button>
 
                     <button onClick={() => {
                         setinfos({
                             name: infos.name,
                             charname: infos.charname,
-                            video: 'https://www.youtube.com/embed/pXRviuL6vMY'
+                            jogo: 'https://www.coromon.com'
                         });
-                    }}>Pop</button>
+                    }}>Aventura</button>
                     <button onClick={() => {
                         setinfos({
                             name: infos.name,
                             charname: infos.charname,
-                            video: 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+                            jogo: 'https://staterastudio.com/pocketbravery.html'
                         });
-                    }}>????</button>
+                    }}>Luta</button>
                 </div>);
                 break;
             case 6:
@@ -119,13 +119,13 @@ export function CookieRobot() {
                 typeWriter('Agora lembra da pergunta que fiz?');
                 break;
             case -49:
-                typeWriter("Aqui vai uma surpresa! Espero que goste.");
+                typeWriter("Aqui vai uma Recomendação! Espero que goste.");
                 break;
             case -48:
                 document.getElementById('robotbox')?.setAttribute('class', 'minimize')
                 setfillspace(
                     <div className='videobox'>
-                        <iframe className='videoframe' src={`${JSON.parse(document.cookie).video}?autoplay=1`} frameBorder="0" allow="autoplay" allowFullScreen></iframe>
+                        <iframe className='videoframe' src={`${JSON.parse(document.cookie).jogo}`}></iframe>
                     </div>
                 )
                 break;

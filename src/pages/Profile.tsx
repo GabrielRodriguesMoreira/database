@@ -1,7 +1,5 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
-import fillstar from '../componenets/star-icon.svg'
-import strokedstar from '../componenets/star-stroked-15.svg'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
@@ -41,12 +39,6 @@ const db = getFirestore(app);
 var rate = 0
 export function Profile() {
 
-    async function load_comments(){
-        const querySnapshot = await getDocs(collection(db, "comments"));
-        querySnapshot.forEach((doc) => {
-            setcomentarios(comentarios => [...comentarios, doc.data()]);
-          });
-    }
 
     function hoverin(id) {
         let nodes = (document.getElementById('conhecimentos_description')?.childNodes);
@@ -73,6 +65,13 @@ export function Profile() {
 
     //carregar comentários
     var [comentarios,setcomentarios] = useState<Object[]>([])
+    async function load_comments(){
+        const querySnapshot = await getDocs(collection(db, "comments"));
+        querySnapshot.forEach((doc) => {
+            setcomentarios(comentarios => [...comentarios, doc.data()]);
+          });
+    }
+    
     useEffect(() => {
         load_comments()
       },[]);
@@ -109,8 +108,7 @@ export function Profile() {
 
     return (
         <div className="main_profile_container">
-
-            
+        
             <section className='profile_left_content'>
                 <div className='profile_infos'>
                     <div className='dados'>
@@ -207,8 +205,7 @@ export function Profile() {
                     <button onClick={send_comment}>Públicar</button>
                 </div>
             </section>
-
-                <section className='show_comments'>
+            <section className='show_comments'>
                     <h1>Comentários</h1>
                     {
                         comentarios?.map(function (element : any = {}){
@@ -232,7 +229,7 @@ export function Profile() {
                                  )
                         })
                 }
-                </section>
+            </section>
         </div>
     )
 
