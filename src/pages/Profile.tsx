@@ -1,5 +1,7 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
+import fillstar from '../componenets/star-icon.svg'
+import strokedstar from '../componenets/star-stroked-15.svg'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
@@ -7,20 +9,14 @@ import { BsWhatsapp } from 'react-icons/bs';
 import { AiOutlineLinkedin } from 'react-icons/ai';
 import { DiCss3 } from 'react-icons/di';
 import { AiOutlineHtml5 } from 'react-icons/ai';
-import { TbBrandJavascript } from 'react-icons/tb';
+import { TbBrandJavascript, TbH1 } from 'react-icons/tb';
 import { DiReact } from 'react-icons/di';
 import { HiOutlineMail } from 'react-icons/hi';
 import { BsTelephoneFill } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
+import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineStar } from 'react-icons/ai';
 
-
-type Profile = {
-    id: string;
-}
-type comentarios = {
-    name: string
-}
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -42,11 +38,17 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-
+var rate = 0
 export function Profile() {
 
-    function hoverin(id) {
+    async function load_comments(){
+        const querySnapshot = await getDocs(collection(db, "comments"));
+        querySnapshot.forEach((doc) => {
+            setcomentarios(comentarios => [...comentarios, doc.data()]);
+          });
+    }
 
+    function hoverin(id) {
         let nodes = (document.getElementById('conhecimentos_description')?.childNodes);
         for (let i = 0; i < nodes!.length; i++) {
             (nodes![i] as HTMLElement).style.display = 'none';
@@ -69,34 +71,48 @@ export function Profile() {
     }
 
 
+    //carregar comentários
     var [comentarios,setcomentarios] = useState<Object[]>([])
     useEffect(() => {
-        async function load_comments(){
-            const querySnapshot = await getDocs(collection(db, "comments"));
-            querySnapshot.forEach((doc) => {
-                setcomentarios(comentarios => [...comentarios, doc.data()]);
-              });
-        }
         load_comments()
       },[]);
 
+
+      //votação estrelas
+      const [star, setstar] = useState([false,false,false,false,false])
+      function starfunction(id){
+        rate = id+1;
+        let tempo = [...star]
+            for(let i=0;i<=id;i++){
+                tempo[i] = true
+            }
+            for(let o=5; o>(5-(5-id));o--){
+                tempo[o] = false
+            }
+            setstar(tempo)
+    }
+
+
+    //escrever novo comentário
       async function send_comment(){
         let commment = (document.getElementById("comment_text") as HTMLInputElement);
         let name = (document.getElementById("comment_name") as HTMLInputElement);
         addDoc(collection(db, "comments"), {
             name: name.value,
             comment: commment.value,
-            rate: 1
+            rate: rate
           });
           commment.value = ''
           name.value = ''
+          load_comments()
     }
 
     return (
         <div className="main_profile_container">
+
+            
             <section className='profile_left_content'>
                 <div className='profile_infos'>
-
                     <div className='dados'>
                         <h1>Dados</h1>
                         <p><HiOutlineMail />: gabrielrm00220@gmail.com</p>
@@ -177,12 +193,13 @@ export function Profile() {
                             <input type="text" id='comment_name'/>
                         </div>
 
-                        <div className='comment_star'>
-                            < AiOutlineStar className='star_icon' />
-                            < AiOutlineStar className='star_icon'  />
-                            < AiOutlineStar className='star_icon'  />
-                            < AiOutlineStar className='star_icon' />
-                            < AiOutlineStar className='star_icon' />
+                        <div className='comment_star' id='comment_star'>
+                            {star[0]? <AiFillStar  className='star_icon'  onClick={() =>{starfunction(0)}} /> :  <AiOutlineStar  className='star_icon' id="star0" onClick={() =>{starfunction(0)}} />}
+                            {star[1]? <AiFillStar  className='star_icon'  onClick={() =>{starfunction(1)}} /> :  <AiOutlineStar  className='star_icon' id="star1" onClick={() =>{starfunction(1)}} />}
+                            {star[2]? <AiFillStar  className='star_icon'  onClick={() =>{starfunction(2)}} /> :  <AiOutlineStar  className='star_icon' id="star2" onClick={() =>{starfunction(2)}} />}
+                            {star[3]? <AiFillStar  className='star_icon' onClick={() =>{starfunction(3)}} /> :  <AiOutlineStar  className='star_icon' id="star3" onClick={() =>{starfunction(3)}} />}
+                            {star[4]? <AiFillStar  className='star_icon' onClick={() =>{starfunction(4)}} /> :  <AiOutlineStar  className='star_icon' id="star4" onClick={() =>{starfunction(4)}} />}
+                        
                         </div>
                     </div>
                     <label htmlFor="comment_text">Comentário</label>
@@ -195,21 +212,28 @@ export function Profile() {
                     <h1>Comentários</h1>
                     {
                         comentarios?.map(function (element : any = {}){
+                            var tempo = [false,false,false,false,false];
+                            for(let i=0;i<element.rate;i++){
+                                tempo[i] = true
+                            }
                             return(
-                                
                                 <div className='comment_box'>
-                                    <h3 className='comments_name'>{element.name}</h3>
+                                    
+                                                <div className='name_starlist'>
+                                                <h3 className='comments_name'>{element.name}</h3> 
+                                                {tempo[0]? <AiFillStar /> : <AiOutlineStar />}
+                                                {tempo[1]? <AiFillStar /> : <AiOutlineStar />}
+                                                {tempo[2]? <AiFillStar /> : <AiOutlineStar />}
+                                                {tempo[3]? <AiFillStar /> : <AiOutlineStar />}
+                                                {tempo[4]? <AiFillStar /> : <AiOutlineStar />}
+                                                </div>
                                     <h2 className='comment_text'>{element.comment}</h2> 
                                 </div>
-                                
                                  )
                         })
                 }
                 </section>
-
         </div>
     )
 
-
 }
-

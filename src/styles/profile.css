@@ -219,6 +219,7 @@
   border: 2px solid var(--txtcolor);
   border-radius: 0.2rem;
   color: var(--txtcolor);
+  padding: 3px;
 }
 .comments_section .first_row{
   display: flex;
@@ -230,11 +231,19 @@
   display: flex;
   align-items: center;
 }
+
+.comment_star{
+  gap: 3px;
+}
+
 .star_icon{
   justify-content: center;
   font-size: 30px;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  
 }
-
 
 .comments_section textarea{
   background-color: transparent;
@@ -243,6 +252,7 @@
   color: var(--txtcolor);
   resize: none;
   margin-bottom: 10px;
+  padding: 5px;
 }
 .comments_section button{
   color: var(--txtcolor);
@@ -284,9 +294,14 @@
 }
 .comments_name{
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-right: 10px;
   border-bottom: 1px solid var(--txtcolor);
   width: fit-content;
+}
+.name_starlist{
+  display: flex;
+  margin-bottom: 5px;
+  font-size: 18px;
 }
 .comment_text{
   font-size: 25px;
@@ -360,9 +375,8 @@
     padding: 3px;
     width: 100%;
   }
-  .comment_star *{
-    font-size: 18px;
-  }
+
+
 
   .comment_box{
     width: 90%;
