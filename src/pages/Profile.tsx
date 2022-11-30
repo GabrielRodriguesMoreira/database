@@ -1,8 +1,10 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
+import curriculo from '../componenets/Curriculo.pdf'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
+import { HiDownload } from 'react-icons/hi';
 import { BsWhatsapp } from 'react-icons/bs';
 import { AiOutlineLinkedin } from 'react-icons/ai';
 import { DiCss3 } from 'react-icons/di';
@@ -108,7 +110,6 @@ export function Profile() {
 
     return (
         <div className="main_profile_container">
-        
             <section className='profile_left_content'>
                 <div className='profile_infos'>
                     <div className='dados'>
@@ -178,7 +179,7 @@ export function Profile() {
                     <a target="_blank" href="https://wa.me/+558587373084"> <BsWhatsapp /></a>
                     <a target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"> <AiOutlineLinkedin /></a>
                 </div>
-                <button className='contact_button'>CONTACT</button>
+                <button className='contact_button'> <a href={curriculo} download>Baixar CV </a> <HiDownload className='download_icon' /> </button>
             </section>
             <section className='star_rating'>
             </section>

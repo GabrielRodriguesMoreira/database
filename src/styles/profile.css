@@ -189,6 +189,18 @@
   border-bottom-left-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.download_icon{
+  position: absolute;
+  right: 10px;
+  font-size: 35px;
+}
+.profile_right_content .contact_button a{
+  text-decoration: none;
+  color: var(--bgcolor);
 }
 .comments_container{
   width: 100%;
