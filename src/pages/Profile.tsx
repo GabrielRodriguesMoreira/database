@@ -179,7 +179,7 @@ export function Profile() {
                     <a target="_blank" href="https://wa.me/+558587373084"> <BsWhatsapp /></a>
                     <a target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"> <AiOutlineLinkedin /></a>
                 </div>
-                <button className='contact_button'> <a href={curriculo} download>Baixar CV </a> <HiDownload className='download_icon' /> </button>
+                <a className='contact_button' href={curriculo} download><button >Baixar CV <HiDownload className='download_icon' />  </button> </a> 
             </section>
             <section className='star_rating'>
             </section>

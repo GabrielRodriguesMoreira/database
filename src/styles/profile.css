@@ -177,15 +177,13 @@
 
 
 .profile_right_content .contact_button{
+  text-decoration: none;
   background-color: var(--txtcolor);
-  color: var(--bgcolor);
   position: absolute;
   bottom: 0;
   width: 100%;
   height: 60px;
-  font-size: 25px;
   letter-spacing: 2px;
-  border: 1px solid black;
   border-bottom-left-radius: 0.2rem;
   border-bottom-right-radius: 0.2rem;
   cursor: pointer;
@@ -193,14 +191,16 @@
   justify-content: center;
   align-items: center;
 }
+.profile_right_content .contact_button button{
+  color: var(--bgcolor);
+  font-size: 25px;
+  border: none;
+  background-color: transparent;
+}
 .download_icon{
   position: absolute;
   right: 10px;
   font-size: 35px;
-}
-.profile_right_content .contact_button a{
-  text-decoration: none;
-  color: var(--bgcolor);
 }
 .comments_container{
   width: 100%;
