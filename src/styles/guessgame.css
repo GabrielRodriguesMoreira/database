@@ -1,0 +1,63 @@
+
+.guessgame_container{
+    width: 100%;
+    height: 100%;
+}
+.guessgame_image_section{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.guessgame_image_container {
+    width: 700px;
+    height: 466px;
+    overflow: hidden;
+    background-color: rgb(82, 77, 77);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border: 2px solid var(--txtcolor);
+    border-radius: 1.2rem;
+}
+.guessgame_block_line{
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 0;
+}
+.guessgame_block_line:nth-child(2){
+    top: 77.6px;
+}
+.guessgame_block_line:nth-child(3){
+    top: 155.2px;
+}
+.guessgame_block_line:nth-child(4){
+    top: 232.8px;
+}
+.guessgame_block_line:nth-child(5){
+    top: 310.4px;
+}
+.guessgame_block_line:nth-child(6){
+    top: 388px;
+}
+#guessgame_block_1{
+    background-color: transparent;
+}
+
+.guessgame_block{
+    width: 87.5px;
+    height: 77.6px;
+    background-color: rgb(82, 77, 77);
+}
+#middle_block{
+    background-color: transparent;
+}
+.guessgame_image_container img{
+    width: 700px;
+    height: 466px;
+}

@@ -1,163 +1,100 @@
-import '../styles/cookierobot.css'
-import React, { useState, useEffect } from 'react'
-import typewritesound from '../componenets/typewrite.wav'
-import spr1 from '../componenets/roboto.gif'
+import "../styles/guessgame.css"
+export function CookieRobot(){
+
+    function cleanblock(){
+        let lineuseds = [4]
+        let blocksuseds =[5]
+
+        let elem = document.getElementById("guessgame_image_container");
 
 
-export function CookieRobot() {
-    const [action, setaction] = useState(0)
-    const [fillspace, setfillspace] = useState(<></>)
-    const [infos, setinfos] = useState({
-        name: '',
-        charname: '',
-        jogo: ''
-    })
-    var i = 0;
-    var speed = 30;
-    useEffect(() => {
-        console.log(document.cookie);
-        if (document.cookie.length > 0) {
-            setaction(-50);
-            setinfos(() => {
-                var obj = JSON.parse(document.cookie)
-                return obj
-            })
-            console.log(infos)
-            typeWriter(`Bem vindo de volta ${JSON.parse(document.cookie).name}`);
-        } else {
+        let lineindex = Math.floor(Math.random() * 6);
+        let blockindex = Math.floor(Math.random() * 8);
 
-            typeWriter('Olá visitante');
+        while(lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
+            lineindex = Math.floor(Math.random() * 6);
+            blockindex = Math.floor(Math.random() * 8);
         }
-    }, [])
+        lineuseds.push(lineindex);
+        blocksuseds.push(blockindex);
 
+        let line = elem?.childNodes[lineindex];
+        let block = line?.childNodes[blockindex];
 
-    function nextaction() {
-        i = 0;
-        //tirar botão
-        (document.getElementById("nextbutton") as HTMLInputElement).style.display = 'none';
-
-        //limpar caixa de texto
-        (document.getElementById("type") as HTMLInputElement).innerHTML = '';
-
-        //proxima ação
-        setaction(action + 1)
-
-        //ações
-        switch (action) {
-            //primeiro acesso
-            case 0:
-                typeWriter('Parece que é sua primeira vez aqui.');
-                break;
-            case 1:
-                typeWriter('Poderia me dizer seu nome?');
-                setfillspace((<input type="text" id='username' autoComplete='off' placeholder='type here' />));
-                break;
-            case 2:
-                setinfos({
-                    name: (document.getElementById('username') as HTMLInputElement).value,
-                    charname: '',
-                    jogo: '',
-                })
-                typeWriter(`Obrigado ${(document.getElementById('username') as HTMLInputElement).value}`);
-                setfillspace((<></>));
-                break;
-            case 3:
-                typeWriter('Mas parece que eu também não tenho um nome. Poderia me dar um?');
-                setfillspace((<input type="text" id='charname' autoComplete='off' placeholder='type here' />));
-                break;
-            case 4:
-                setinfos({
-                    name: infos.name,
-                    charname: (document.getElementById('charname') as HTMLInputElement).value,
-                    jogo: '',
-                })
-                setfillspace((<></>));
-                typeWriter('Perfeito!')
-                break;
-            case 5:
-                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de jogo você mais gosta?');
-                setfillspace(<div className='animalbutton'>
-                    <button onClick={() => {
-                        setinfos({
-                            name: infos.name,
-                            charname: infos.charname,
-                            jogo: 'http://www.celestegame.com'
-                        });
-                    }}>Plataforma</button>
-
-                    <button onClick={() => {
-                        setinfos({
-                            name: infos.name,
-                            charname: infos.charname,
-                            jogo: 'https://www.coromon.com'
-                        });
-                    }}>Aventura</button>
-                    <button onClick={() => {
-                        setinfos({
-                            name: infos.name,
-                            charname: infos.charname,
-                            jogo: 'https://staterastudio.com/pocketbravery.html'
-                        });
-                    }}>Luta</button>
-                </div>);
-                break;
-            case 6:
-                typeWriter('Ótimo, agora me da só um segundo para que eu possa memorizar tudo.');
-                setfillspace((<></>));
-                document.cookie = JSON.stringify(infos);
-                break;
-            case 7:
-                typeWriter('tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.');
-                break;
-            case 8:
-                (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
-                break;
-
-
-            //segundo acesso
-            case -50:
-                typeWriter('Agora lembra da pergunta que fiz?');
-                break;
-            case -49:
-                typeWriter("Aqui vai uma Recomendação! Espero que goste.");
-                break;
-            case -48:
-                document.getElementById('robotbox')?.setAttribute('class', 'minimize')
-                setfillspace(
-                    <div className='videobox'>
-                        <iframe className='videoframe' src={`${JSON.parse(document.cookie).jogo}`}></iframe>
-                    </div>
-                )
-                break;
-        }
-
+        (block as HTMLElement).style.background = 'transparent'
     }
-    function typeWriter(falo) {
-        if (i < falo.length) {
-            (document.getElementById('typewritesound') as HTMLAudioElement).play();
-            (document.getElementById("type") as HTMLInputElement).innerHTML += falo.charAt(i);
-            i++;
-            setTimeout(() => { typeWriter(falo) }, speed);
-        } else {
-            (document.getElementById('typewritesound') as HTMLAudioElement).pause();
-            //colocar botão de volta
-            (document.getElementById("nextbutton") as HTMLInputElement).style.display = 'block';
-        }
-    };
+    return(
+        <div className="guessgame_container">
+            <section className="guessgame_image_section">
+                <div className="guessgame_image_container" id='guessgame_image_container'>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block" ></div>
+                            <div className="guessgame_block" id='middle_block'></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <div className="guessgame_block_line">
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                            <div className="guessgame_block"></div>
+                        </div>
+                        <img src="https://i0.wp.com/www.otakupt.com/wp-content/uploads/2021/07/KONOSUBA-new-anime-visual-1.jpg?resize=1920%2C1365&ssl=1" alt="" />
+                </div>
+                <div className="guessgame_form">
+                    <input type="text" />
+                    <button onClick={cleanblock}>Click</button>
+                </div>
+            </section>
 
-    return (
-        <div className='main_cookierobot_cotainer'>
-            <audio id='typewritesound' src={typewritesound} ></audio>
-            <div className='robotbox' id='robotbox'>
-                <img src={spr1} alt="robo" />
-            </div>
-            <div className='textbox' id='textbox'>
-                <div className='charname'>{infos.charname}</div>
-                <span className='typewriter' id='type'></span>
-                {fillspace}
-                <button id='nextbutton' onClick={nextaction}>next</button>
-            </div>
         </div>
     )
-
 }
