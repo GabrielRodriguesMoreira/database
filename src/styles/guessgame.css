@@ -122,7 +122,7 @@
     list-style: none;
     border: 1.5px solid var(--txtcolor);
     border-radius: 1.5rem;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 6px;
+    margin-bottom: 5px;
     background-color: rgba(255, 79, 79, 0.363);
 }

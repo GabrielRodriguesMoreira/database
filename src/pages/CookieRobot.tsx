@@ -1,24 +1,69 @@
 import "../styles/guessgame.css"
 import { createElement, useEffect, useState } from "react"
 
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { collection, addDoc, getDocs  } from "firebase/firestore";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_DATABASE,
+  authDomain: "unique-caldron-362117.firebaseapp.com",
+  projectId: "unique-caldron-362117",
+  storageBucket: "unique-caldron-362117.appspot.com",
+  messagingSenderId: "458607624724",
+  appId: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_ID
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+
+
 export function CookieRobot(){
     const [chances,setchances] = useState(0);
-    var name = 'Naruto'
+    const [image,setimage] = useState("")
+    const [name,setname] = useState("")
     var lineuseds = [4]
     var blocksuseds =[5]
 
+
     useEffect(() => {
-        //funcao apertar enter
-        document.querySelector('#response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
+        //carrregar database    
+
+    getImage()
+    },[]);
+    
+    async function getImage(){
+        const querySnapshot = await getDocs(collection(db, "images"));
+        var dbimage = querySnapshot.docs.map(doc => doc.data());
+
+        if(dbimage){
+            document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
                 if (e.key === 'Enter') {
-                cleanblock()
-                }
+                    cleanblock(dbimage[0].name);
+                    console.log(name)
+            }
             });
-          },[]);
+        }
 
 
-    function cleanblock(){
+        setimage(dbimage[0].image);
+        setname(dbimage[0].nome); 
+        console.log("amilton")
 
+        //funcao apertar enter
+
+    }
+
+
+
+    function cleanblock(nomerson:String){
 
         //deleteblock
         let elem = (document.getElementById("guessgame_image_container") as ParentNode);
@@ -31,14 +76,13 @@ export function CookieRobot(){
 
         let response = (document.getElementById("response") as HTMLInputElement);
 
-    if(chances<8){
+    if(chances<6){
             //acertar
-                //limpar imagem
-            if(response.value.toUpperCase() == name.toUpperCase()){
+            //limpar imagem
+            if(nomerson == name.toUpperCase()){
                 for(let i=0; i<=5;i++){
                     elem?.removeChild(elem?.firstChild!);
                 }
-
                 // desativar funcoes
                 response.setAttribute("disabled",'disabled');
                 let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
@@ -68,8 +112,6 @@ export function CookieRobot(){
         response.value = '';
 
     }
-
-
 
     return(
         <div className="guessgame_container">
@@ -135,7 +177,7 @@ export function CookieRobot(){
                             <div className="guessgame_block"></div>
                             <div className="guessgame_block"></div>
                         </div>
-                        <img src="https://tionitroblog.files.wordpress.com/2017/05/46e3b8b4cfec59be08b7b262ae7f611b.jpg" alt="" />
+                        <img src={image} alt="" />
                 </div>
             </section>
             <div className="guessgame_responses">
@@ -143,7 +185,7 @@ export function CookieRobot(){
                     <input type="text" id='response' />
                     <div className="guessgame_butto_counts">
                         <h2>{chances}/6</h2>
-                        <button onClick={cleanblock} id='guessgame_button'>Submit</button>
+                        <button onClick={()=>{cleanblock(name)}} id='guessgame_button'>Submit</button>
                     </div>
                 </div>
                 <ul className="history_list" id="history_list">
