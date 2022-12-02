@@ -32,54 +32,29 @@ export function CookieRobot(){
     var lineuseds = [4]
     var blocksuseds =[5]
 
+    const getData = new  Promise((resolve,reject) =>{
+        async function getImage(){
+            const querySnapshot = await getDocs(collection(db, "images"))   
+            var dbimage = querySnapshot.docs.map(doc => doc.data());
 
-    useEffect(() => {
-        //carrregar database    
-
-    getImage()
-    },[]);
-    
-    async function getImage(){
-        const querySnapshot = await getDocs(collection(db, "images"));
-        var dbimage = querySnapshot.docs.map(doc => doc.data());
-
-        if(dbimage){
-            document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
-                if (e.key === 'Enter') {
-                    cleanblock(dbimage[0].name);
-                    console.log(name)
-            }
-            });
+            setimage(dbimage[0].image);
+            setname(dbimage[0].nome);
+            resolve(dbimage[0].nome)
         }
+        getImage()
+    })
 
 
-        setimage(dbimage[0].image);
-        setname(dbimage[0].nome); 
-        console.log("amilton")
-
-        //funcao apertar enter
-
-    }
-
-
-
-    function cleanblock(nomerson:String){
+    function cleanblock(data){
 
         //deleteblock
         let elem = (document.getElementById("guessgame_image_container") as ParentNode);
-        let lineindex = Math.floor(Math.random() * 6);
-        let blockindex = Math.floor(Math.random() * 8);
-        while(lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
-            lineindex = Math.floor(Math.random() * 6);
-            blockindex = Math.floor(Math.random() * 8);
-        }
-
         let response = (document.getElementById("response") as HTMLInputElement);
 
     if(chances<6){
             //acertar
             //limpar imagem
-            if(nomerson == name.toUpperCase()){
+            if(response.value.toUpperCase() == data.toUpperCase()){
                 for(let i=0; i<=5;i++){
                     elem?.removeChild(elem?.firstChild!);
                 }
@@ -87,9 +62,16 @@ export function CookieRobot(){
                 response.setAttribute("disabled",'disabled');
                 let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
                 button.setAttribute("disabled",'disabled');
-
             } else {
                 //errar
+                //selecionar bloco aleatório
+                let lineindex = Math.floor(Math.random() * 6);
+                let blockindex = Math.floor(Math.random() * 8);
+                while(lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
+                    lineindex = Math.floor(Math.random() * 6);
+                    blockindex = Math.floor(Math.random() * 8);
+                }
+
                 //apagar blocos
                 lineuseds.push(lineindex);
                 blocksuseds.push(blockindex);
@@ -110,8 +92,22 @@ export function CookieRobot(){
     }
         //limpar input
         response.value = '';
-
     }
+
+
+    useEffect(() => {
+            //carrregar database    
+            getData.then((data)=>{
+                console.log(data)
+                document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
+                    if (e.key === 'Enter') {
+                        cleanblock(data);
+                }
+                });
+            })
+    },[]);
+
+
 
     return(
         <div className="guessgame_container">
