@@ -2,7 +2,7 @@ import "../styles/guessgame.css"
 import { useEffect } from "react"
 
 export function CookieRobot(){
-    var name = 'Konosuba'
+    var name = 'Naruto'
 
     function cleanblock(){
         let lineuseds = [4]
@@ -23,7 +23,7 @@ export function CookieRobot(){
         //acertar
         if(response.value.toUpperCase() == name.toUpperCase()){
             for(let i=0; i<=5;i++){
-                elem?.removeChild(elem?.firstChild);
+                elem?.removeChild(elem?.firstChild!);
             }
         } else {
             lineuseds.push(lineindex);
@@ -111,7 +111,7 @@ export function CookieRobot(){
                             <div className="guessgame_block"></div>
                             <div className="guessgame_block"></div>
                         </div>
-                        <img src="https://i0.wp.com/www.otakupt.com/wp-content/uploads/2021/07/KONOSUBA-new-anime-visual-1.jpg?resize=1920%2C1365&ssl=1" alt="" />
+                        <img src="https://tionitroblog.files.wordpress.com/2017/05/46e3b8b4cfec59be08b7b262ae7f611b.jpg" alt="" />
                 </div>
             </section>
             <div className="guessgame_form">
