@@ -63,15 +63,19 @@
     width: 700px;
     height: 466px;
 }
-
-.guessgame_form{
-    width: 80%;
+.guessgame_responses{
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    width: 80%;
     height: 100%;
     padding-top: 50px;
 }
+.guessgame_form{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
 .guessgame_form input{
     background-color: transparent;
     border: 2px solid var(--txtcolor);
@@ -80,22 +84,45 @@
     height: 40px;
     width: 70%;
     font-size: 18px;
+    padding-left: 3px;
 }
-
-.guessgame_form button{
+.guessgame_butto_counts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
+.guessgame_butto_counts h2{
+    margin: 0;
     color: var(--txtcolor);
+    font-size: 32px;
+}
+.guessgame_form button{
+    color: var(--bgcolor);
   width: 100px;
   height: 10px;
-  font-size: 14px;
+  font-size: 16px;
+  letter-spacing: 1px;
   outline: none;
   border: none;
   padding: 20px;
-  margin: 10px;
   border-radius: 2rem;
-  background-color: var(--bgcolor);
-  border: 2px solid var(--txtcolor);
+  background-color: var(--txtcolor);
+  border: none;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+}
+
+.history_list li{
+    color: var(--txtcolor);
+    font-size: 22px;
+    width: fit-content;
+    list-style: none;
+    border: 1.5px solid var(--txtcolor);
+    border-radius: 1.5rem;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 79, 79, 0.363);
 }
