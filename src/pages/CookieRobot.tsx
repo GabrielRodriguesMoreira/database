@@ -87,7 +87,7 @@ export function CookieRobot(){
                 parent?.appendChild(child)
 
                 //adicionar contador
-                setchances(chances+1);
+                setchances(chances=>chances+1);
             }
     }
         //limpar input
@@ -96,9 +96,8 @@ export function CookieRobot(){
 
 
     useEffect(() => {
-            //carrregar database    
+            //carrregar database e funcao enter 
             getData.then((data)=>{
-                console.log(data)
                 document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
                     if (e.key === 'Enter') {
                         cleanblock(data);
@@ -106,7 +105,6 @@ export function CookieRobot(){
                 });
             })
     },[]);
-
 
 
     return(
