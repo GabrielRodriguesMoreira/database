@@ -1,10 +1,12 @@
 
 .guessgame_container{
+    margin-top: 50px;
     width: 100%;
     height: 100%;
+    display: flex;
 }
 .guessgame_image_section{
-    margin-top: 50px;
+
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -60,4 +62,40 @@
 .guessgame_image_container img{
     width: 700px;
     height: 466px;
+}
+
+.guessgame_form{
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-top: 50px;
+}
+.guessgame_form input{
+    background-color: transparent;
+    border: 2px solid var(--txtcolor);
+    border-radius: 0.4rem;
+    color: var(--txtcolor);
+    height: 40px;
+    width: 70%;
+    font-size: 18px;
+}
+
+.guessgame_form button{
+    color: var(--txtcolor);
+  width: 100px;
+  height: 10px;
+  font-size: 14px;
+  outline: none;
+  border: none;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 2rem;
+  background-color: var(--bgcolor);
+  border: 2px solid var(--txtcolor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
