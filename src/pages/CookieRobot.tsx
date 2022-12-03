@@ -45,13 +45,13 @@ export function CookieRobot(){
     })
 
 
-    function cleanblock(data){
+    function cleanblock(data,chance){
 
         //deleteblock
         let elem = (document.getElementById("guessgame_image_container") as ParentNode);
         let response = (document.getElementById("response") as HTMLInputElement);
 
-    if(chances<6){
+    if(chance<6){
             //acertar
             //limpar imagem
             if(response.value.toUpperCase() == data.toUpperCase()){
@@ -100,7 +100,7 @@ export function CookieRobot(){
             getData.then((data)=>{
                 document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
                     if (e.key === 'Enter') {
-                        cleanblock(data);
+                        cleanblock(data,chances);
                 }
                 });
             })
@@ -175,11 +175,12 @@ export function CookieRobot(){
                 </div>
             </section>
             <div className="guessgame_responses">
+                <h1>ADIVINHE A SÉRIE</h1>
                 <div className="guessgame_form">
                     <input type="text" id='response' />
                     <div className="guessgame_butto_counts">
                         <h2>{chances}/6</h2>
-                        <button onClick={()=>{cleanblock(name)}} id='guessgame_button'>Submit</button>
+                        <button onClick={()=>{cleanblock(name,chances)}} id='guessgame_button'>Submit</button>
                     </div>
                 </div>
                 <ul className="history_list" id="history_list">

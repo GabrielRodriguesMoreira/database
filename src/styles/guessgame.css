@@ -13,8 +13,8 @@
     align-items: center;
 }
 .guessgame_image_container {
-    width: 700px;
-    height: 466px;
+    aspect-ratio: 3/2;
+    margin: 20px;
     overflow: hidden;
     background-color: rgb(82, 77, 77);
     display: flex;
@@ -66,14 +66,23 @@
 .guessgame_responses{
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 80%;
     height: 100%;
     padding-top: 50px;
+    position: relative;
+}
+.guessgame_responses h1{
+    margin-bottom: 20px;
+    color: var(--txtcolor);
+    font-size: 32px;
+
 }
 .guessgame_form{
     display: flex;
     align-items: flex-end;
     justify-content: center;
+    width: 90%;
 }
 
 .guessgame_form input{
@@ -96,6 +105,7 @@
     margin: 0;
     color: var(--txtcolor);
     font-size: 32px;
+
 }
 .guessgame_form button{
     color: var(--bgcolor);
@@ -114,7 +124,9 @@
   align-items: center;
   cursor: pointer;
 }
-
+.history_list{
+    min-height: 200px;
+}
 .history_list li{
     color: var(--txtcolor);
     font-size: 22px;
@@ -125,4 +137,17 @@
     padding: 6px;
     margin-bottom: 5px;
     background-color: rgba(255, 79, 79, 0.363);
+    position: absolute;
+    left: 60px;
+
+}
+
+@media only screen and (max-width: 700px) {
+    .guessgame_container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .guessgame_form{
+        width: 100%;
+    }
 }
