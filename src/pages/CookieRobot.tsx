@@ -31,37 +31,42 @@ export function CookieRobot(){
     const [name,setname] = useState("")
     var lineuseds = [4]
     var blocksuseds =[5]
+    var history = new Array();
 
-    const getData = new  Promise((resolve,reject) =>{
-        async function getImage(){
-            const querySnapshot = await getDocs(collection(db, "images"))   
-            var dbimage = querySnapshot.docs.map(doc => doc.data());
-
-            setimage(dbimage[0].image);
-            setname(dbimage[0].nome);
-            resolve(dbimage[0].nome)
+    async function getImage(){
+        const querySnapshot = await getDocs(collection(db, "images"))   
+        var dbimage = querySnapshot.docs.map(doc => doc.data());
+        setimage(dbimage[0].image);
+        setname(dbimage[0].nome);
+    }
+    
+    function endgame(elem,response){
+        for(let i=0; i<=5;i++){
+            elem?.removeChild(elem?.firstChild!);
         }
-        getImage()
-    })
 
+        // desativar funcoes
+        response.setAttribute("disabled",'disabled');
+        let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
+        button.setAttribute("disabled",'disabled');
 
-    function cleanblock(data,chance){
+        //salvar q venceu
+        document.cookie = `key1 = venceu;key2 = value2;expires = date`;
+
+    }
+
+function cleanblock(){
 
         //deleteblock
         let elem = (document.getElementById("guessgame_image_container") as ParentNode);
         let response = (document.getElementById("response") as HTMLInputElement);
 
-    if(chance<6){
+    if(chances<9999){
+
             //acertar
             //limpar imagem
-            if(response.value.toUpperCase() == data.toUpperCase()){
-                for(let i=0; i<=5;i++){
-                    elem?.removeChild(elem?.firstChild!);
-                }
-                // desativar funcoes
-                response.setAttribute("disabled",'disabled');
-                let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
-                button.setAttribute("disabled",'disabled');
+            if(response.value.toUpperCase() == name.toUpperCase()){
+                endgame(elem,response)
             } else {
                 //errar
                 //selecionar bloco aleatório
@@ -88,24 +93,42 @@ export function CookieRobot(){
 
                 //adicionar contador
                 setchances(chances=>chances+1);
+                localStorage.setItem("chances", String(chances));
+                if (Array.isArray(history)) {
+                    history.push("test");
+                    console.log("run")
+                  }
+
+                localStorage.setItem("history", JSON.stringify(history));
+                console.log(history.length);
+
             }
+    } else {
+        //fim das chances
+        endgame(elem,response)
     }
         //limpar input
         response.value = '';
-    }
-
+}
 
     useEffect(() => {
-            //carrregar database e funcao enter 
-            getData.then((data)=>{
-                document.getElementById('response')!.addEventListener('keypress', function (e:KeyboardEventInit) {
-                    if (e.key === 'Enter') {
-                        cleanblock(data,chances);
-                }
-                });
-            })
-    },[]);
+            //carrregar database
+            getImage()
+        if(localStorage.getItem("chances")){
+            let chancesX = localStorage.getItem("chances");
+            setchances(parseInt(chancesX!)+1)
 
+            let historyX = localStorage.getItem("history")
+            console.log(historyX)
+            historyX = JSON.parse(historyX!)
+
+            if (Array.isArray(historyX)) {
+                console.log(historyX)
+              }
+        }   
+
+    },[]);
+    
 
     return(
         <div className="guessgame_container">
@@ -180,7 +203,7 @@ export function CookieRobot(){
                     <input type="text" id='response' />
                     <div className="guessgame_butto_counts">
                         <h2>{chances}/6</h2>
-                        <button onClick={()=>{cleanblock(name,chances)}} id='guessgame_button'>Submit</button>
+                        <button onClick={()=>{cleanblock()}} id='guessgame_button'>Submit</button>
                     </div>
                 </div>
                 <ul className="history_list" id="history_list">
