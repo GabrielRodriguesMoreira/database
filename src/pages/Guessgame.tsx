@@ -51,8 +51,16 @@ export function Guessgame() {
 
     useEffect(() => {
         getImage()
-        if(localStorage.getItem("win")){
+        if (localStorage.getItem("win")) {
+
+            //receber historicos de palpites
+            let historyX = localStorage.getItem("history")
+            historyX = JSON.parse(historyX!)
+            for (let i = 0; i < historyX!.length; i++) {
+                addhistory(historyX![i])
+            }
             endgame();
+
         } else if (localStorage.getItem("chances")) {
             setchances(parseInt(localStorage.getItem("chances")!) + 1)
 
@@ -78,7 +86,7 @@ export function Guessgame() {
 
         }
 
-    
+
     }, [])
 
     //funcao principal
@@ -158,11 +166,11 @@ export function Guessgame() {
     }
 
     //endgame
-    function endgame(){
+    function endgame() {
         let input = (document.getElementById("response") as HTMLInputElement);
         const elem = (document.getElementById("guessgame_image_container") as ParentNode);
 
-        
+
         for (let i = 0; i <= 5; i++) {
             elem?.removeChild(elem?.firstChild!);
         }
