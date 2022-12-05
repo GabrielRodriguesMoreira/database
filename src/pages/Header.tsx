@@ -39,7 +39,7 @@ export function Header() {
 
             <div className='header_content'>
                 <div className='navlinks'>
-                    <Link to="/CookieRobot">PROJETO 1</Link>
+                    <Link to="/Guessgame">PROJETO 1</Link>
                     <Link to="/FutebolAPI">PROJETO 2</Link>
                     <Link to="/RandomStore">PROJETO 3</Link>
                     <Link to="/">PERFIL</Link>
@@ -65,7 +65,7 @@ export function Header() {
                     </label>
                 </section>
                 <section className='sidebar_links'>
-                    <Link id='project1' to="/CookieRobot">PROJETO 1</Link>
+                    <Link id='project1' to="/Guessgame">PROJETO 1</Link>
                     <Link id='project2' to="/FutebolAPI">PROJETO 2</Link>
                     <Link id='project3' to="/RandomStore">PROJETO 3</Link>
                     <Link className='selected' id='profile' to="/">PERFIL</Link>

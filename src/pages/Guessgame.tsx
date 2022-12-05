@@ -1,7 +1,5 @@
 import "../styles/guessgame.css"
-import { createElement, useEffect, useState } from "react"
-
-
+import { useEffect, useState } from "react"
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -24,121 +22,39 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 
-var lineuseds = [4]
-var blocksuseds = [5]
+//alredy used lines
+var lineuseds = new Array();
+//alredy used blocks
+var blocksuseds = new Array();
+//historico de palpites
 var history = new Array();
 
-export function CookieRobot() {
+
+
+
+
+export function Guessgame() {
+
+
+    //contagem de chances
     const [chances, setchances] = useState(0);
+    //imagem que vai ser utilizada
     const [image, setimage] = useState("")
+    //resposta correta
     const [name, setname] = useState("")
 
+    //palpite do input
+    const inputresponse = (document.getElementById("response") as HTMLInputElement);
+    //container
+    const elem = (document.getElementById("guessgame_image_container") as ParentNode);
 
-    async function getImage() {
-        const querySnapshot = await getDocs(collection(db, "images"))
-        var dbimage = querySnapshot.docs.map(doc => doc.data());
-        setimage(dbimage[0].image);
-        setname(dbimage[0].nome);
-    }
-
-    function endgame(elem) {
-        let response = (document.getElementById("response") as HTMLInputElement);
-
-        for (let i = 0; i <= 5; i++) {
-            elem?.removeChild(elem?.firstChild!);
-        }
-
-        // desativar funcoes
-        response.setAttribute("disabled", 'disabled');
-        let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
-        button.setAttribute("disabled", 'disabled');
-
-        //salvar q venceu
-        document.cookie = `key1 = venceu`;
-
-    }
-
-    function addhistory(response) {
-        //adicionar historico de respostas
-        let parent = document.getElementById("history_list")
-        let child = document.createElement("li")
-        child.setAttribute("className", "guessgame_history_text")
-        child.innerHTML = response;
-        parent?.appendChild(child)
-
-        //salvar historico de palavras
-        if (Array.isArray(history)) {
-            history.push(response);
-        }
-    }
-
-    function deleteblocks(elem, line, block) {
-
-        //apagar blocos
-        let linha = elem?.childNodes[line];
-        let bloco = linha?.childNodes[block];
-        (bloco as HTMLElement).style.background = 'transparent';
-
-    }
-
-    function cleanblock() {
-
-        //deleteblock
-        let elem = (document.getElementById("guessgame_image_container") as ParentNode);
-        let response = (document.getElementById("response") as HTMLInputElement);
-
-        if (chances < 6) {
-            //acertar
-            //limpar imagem
-            if (response.value.toUpperCase() == name.toUpperCase()) {
-                endgame(elem)
-            } else {
-                //errar
-                //selecionar bloco aleatório
-                let lineindex = Math.floor(Math.random() * 6);
-                let blockindex = Math.floor(Math.random() * 8);
-                while (lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
-                    lineindex = Math.floor(Math.random() * 6);
-                    blockindex = Math.floor(Math.random() * 8);
-                }
-                deleteblocks(elem, lineindex, blockindex)
-                lineuseds.push(lineindex);
-                blocksuseds.push(blockindex);
-
-                //save posiitons
-                localStorage.setItem("lines", JSON.stringify(lineuseds));
-                localStorage.setItem("blocks", JSON.stringify(blocksuseds));
-
-                //adicionar historico
-                addhistory(response.value)
-                localStorage.setItem("history", JSON.stringify(history));
-
-                //adicionar contador
-                setchances(chances => chances + 1);
-                localStorage.setItem("chances", String(chances));
-
-            }
-        } else {
-            //fim das chances
-            endgame(elem)
-        }
-        //limpar input
-        response.value = '';
-    }
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Enter") {
-            cleanblock()
-        }
-      });
 
     useEffect(() => {
-        //carrregar database
         getImage()
-        const elem = (document.getElementById("guessgame_image_container") as ParentNode);
-        if (localStorage.getItem("chances")) {
-            let chancesX = localStorage.getItem("chances");
-            setchances(parseInt(chancesX!) + 1)
+        if(localStorage.getItem("win")){
+            endgame();
+        } else if (localStorage.getItem("chances")) {
+            setchances(parseInt(localStorage.getItem("chances")!) + 1)
 
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
@@ -151,19 +67,115 @@ export function CookieRobot() {
             let lines: any = localStorage.getItem("lines");
             lines = JSON.parse(lines!)
             //receber blocos
-            let blocks = localStorage.getItem("blocks");
+            let blocks: any = localStorage.getItem("blocks");
             blocks = JSON.parse(blocks!)
-
 
 
             //deletar blocos ja utilizados
             lines!.forEach(element => {
-                deleteblocks(elem, element, blocks![lines!.indexOf(element)])
+                deleteblock(element, blocks![lines!.indexOf(element)])
             });
+
         }
 
-    }, []);
+    
+    }, [])
 
+    //funcao principal
+    function mainCheck() {
+        if (chances < 6) {
+
+            //acertar
+            if (inputresponse.value.toUpperCase() == name.toUpperCase()) {
+                endgame();
+            } else {
+                //errar
+                //selecionar bloco aleatório para remover
+                let lineindex = Math.floor(Math.random() * 6);
+                let blockindex = Math.floor(Math.random() * 8);
+                while (lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
+                    lineindex = Math.floor(Math.random() * 6);
+                    blockindex = Math.floor(Math.random() * 8);
+                }
+
+                history.push(inputresponse.value);
+
+                deleteblock(lineindex, blockindex)
+                addhistory(inputresponse.value)
+
+                //adicionar blocos e linhas selecionados na lista de ja utilizados
+                lineuseds.push(lineindex);
+                blocksuseds.push(blockindex);
+
+                //save posiitons
+                localStorage.setItem("lines", JSON.stringify(lineuseds));
+                localStorage.setItem("blocks", JSON.stringify(blocksuseds));
+
+                //adicionar historico
+                localStorage.setItem("history", JSON.stringify(history));
+
+                //adicionar contador
+                setchances(chances => chances + 1);
+                localStorage.setItem("chances", String(chances));
+
+
+
+            }
+
+        } else {
+            console.log('fim das chances')
+        }
+
+        inputresponse.value = '';
+    }
+
+    //receber dados do banco
+    async function getImage() {
+        const querySnapshot = await getDocs(collection(db, "images"))
+        var dbimage = querySnapshot.docs.map(doc => doc.data());
+        setimage(dbimage[0].image);
+        setname(dbimage[0].nome);
+    }
+
+    //adicionar historico de respostas
+    function addhistory(inputresponse) {
+
+        let parent = document.getElementById("history_list")
+        let child = document.createElement("li")
+        child.setAttribute("className", "guessgame_history_text")
+        child.innerHTML = inputresponse;
+        parent?.appendChild(child)
+
+    }
+
+    //apagar blocos
+    function deleteblock(line, block) {
+        const elem = (document.getElementById("guessgame_image_container") as ParentNode);
+
+        let linha = elem?.childNodes[line];
+        let bloco = linha?.childNodes[block];
+        (bloco as HTMLElement).style.background = 'transparent';
+    }
+
+    //endgame
+    function endgame(){
+        let input = (document.getElementById("response") as HTMLInputElement);
+        const elem = (document.getElementById("guessgame_image_container") as ParentNode);
+
+        
+        for (let i = 0; i <= 5; i++) {
+            elem?.removeChild(elem?.firstChild!);
+        }
+
+        // desativar funcoes
+        input.setAttribute("disabled", 'disabled');
+        let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
+        button.setAttribute("disabled", 'disabled');
+
+        //salvar q venceu
+        localStorage.setItem("win", "true");
+
+    }
 
     return (
         <div className="guessgame_container">
@@ -238,7 +250,7 @@ export function CookieRobot() {
                     <input type="text" id='response' />
                     <div className="guessgame_butto_counts">
                         <h2>{chances}/6</h2>
-                        <button onClick={() => { cleanblock() }} id='guessgame_button'>Submit</button>
+                        <button onClick={() => { mainCheck() }} id='guessgame_button'>Submit</button>
                     </div>
                 </div>
                 <ul className="history_list" id="history_list">
