@@ -74,10 +74,6 @@ export function CookieRobot() {
     function deleteblocks(elem, line, block) {
 
         //apagar blocos
-        lineuseds.push(line);
-        blocksuseds.push(block);
-        console.log(block);
-
         let linha = elem?.childNodes[line];
         let bloco = linha?.childNodes[block];
         (bloco as HTMLElement).style.background = 'transparent';
@@ -106,7 +102,8 @@ export function CookieRobot() {
                     blockindex = Math.floor(Math.random() * 8);
                 }
                 deleteblocks(elem, lineindex, blockindex)
-
+                lineuseds.push(lineindex);
+                blocksuseds.push(blockindex);
 
                 //save posiitons
                 localStorage.setItem("lines", JSON.stringify(lineuseds));
@@ -144,19 +141,23 @@ export function CookieRobot() {
                 addhistory(historyX![i])
             }
 
+            //receber linhas
             let lines: any = localStorage.getItem("lines");
             lines = JSON.parse(lines!)
-
+            //receber blocos
             let blocks = localStorage.getItem("blocks");
             blocks = JSON.parse(blocks!)
 
             const elem = (document.getElementById("guessgame_image_container") as ParentNode);
-            //console.log(blocks);
-            //console.log(lines)
+
+            //deletar blocos ja utilizados
             lines!.forEach(element => {
-
-                deleteblocks(elem,element,blocks![lines!.indexOf(element)])
-
+                //console.log(lines!.indexOf(element))
+                console.log(blocks?.length)
+                //console.log("linha"+element)
+                //console.log("bloco"+blocks![lines!.indexOf(element)]);
+                
+                deleteblocks(elem, element, blocks![lines!.indexOf(element)])
             });
         }
 
