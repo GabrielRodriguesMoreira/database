@@ -139,11 +139,16 @@ export function Guessgame() {
 
     //receber dados do banco
     async function getImage() {
+        let data = new Date();
+        let dia = data.getDay();
         const querySnapshot = await getDocs(collection(db, "images"))
         var dbimage = querySnapshot.docs.map(doc => doc.data());
-        setimage(dbimage[0].image);
-        setname(dbimage[0].nome);
+        setimage(dbimage[dia].image);
+        setname(dbimage[dia].nome);
+
+        
     }
+
 
     //adicionar historico de respostas
     function addhistory(inputresponse) {
