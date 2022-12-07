@@ -148,6 +148,7 @@ export function Guessgame() {
         if(date!=dia){
             localStorage.clear();
             import.meta.env.VITE_DATE = dia;
+            console.log(import.meta.env.VITE_DATE);
         }
         
     }
