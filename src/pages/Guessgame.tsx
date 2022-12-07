@@ -15,7 +15,7 @@ const firebaseConfig = {
     projectId: "unique-caldron-362117",
     storageBucket: "unique-caldron-362117.appspot.com",
     messagingSenderId: "458607624724",
-    appId: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_ID
+    appId: import.meta.env.VITE_APP_CONVERTKIT_DATA
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -31,7 +31,7 @@ var history = new Array();
 
 
 
-
+const checkday = import.meta.env.VITE_APP_CONVERTKIT_DATA;
 
 export function Guessgame() {
 
@@ -91,6 +91,7 @@ export function Guessgame() {
 
     //funcao principal
     function mainCheck() {
+        console.log(checkday);
         if (chances < 6) {
 
             //acertar
@@ -141,6 +142,13 @@ export function Guessgame() {
     async function getImage() {
         let data = new Date();
         let dia = data.getDay();
+
+        console.log(String(checkday))
+
+        if(dia!=checkday){
+            process.env.VITE_APP_CONVERTKIT_DATA = String(dia);
+        }
+
         const querySnapshot = await getDocs(collection(db, "images"))
         var dbimage = querySnapshot.docs.map(doc => doc.data());
         setimage(dbimage[dia].image);
