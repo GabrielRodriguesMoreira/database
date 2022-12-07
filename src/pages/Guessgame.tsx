@@ -30,9 +30,6 @@ var blocksuseds = new Array();
 var history = new Array();
 
 
-
-
-
 export function Guessgame() {
 
 
@@ -56,9 +53,9 @@ export function Guessgame() {
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
             historyX = JSON.parse(historyX!)
-            for (let i = 0; i < historyX!.length; i++) {
-                addhistory(historyX![i])
-            }
+            //for (let i = 0; i < historyX!.length; i++) {
+            //    addhistory(historyX![i])
+            //}
             endgame();
 
         } else if (localStorage.getItem("chances")) {
@@ -175,9 +172,9 @@ export function Guessgame() {
         let input = (document.getElementById("response") as HTMLInputElement);
         const elem = (document.getElementById("guessgame_image_container") as ParentNode);
 
-
         for (let i = 0; i <= 5; i++) {
-            elem?.removeChild(elem?.firstChild!);
+            let child = (elem?.firstChild! as ChildNode)
+            elem?.removeChild(child);
         }
 
         // desativar funcoes
