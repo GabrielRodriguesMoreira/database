@@ -54,9 +54,9 @@ export function Guessgame() {
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
             historyX = JSON.parse(historyX!)
-            //for (let i = 0; i < historyX!.length; i++) {
-            //    addhistory(historyX![i])
-            //}
+            for (let i = 0; i < historyX!.length; i++) {
+                addhistory(historyX![i])
+            }
             endgame();
 
         } else if (localStorage.getItem("chances")) {
@@ -145,6 +145,8 @@ export function Guessgame() {
         setimage(dbimage[dia].image);
         setname(dbimage[dia].nome);
 
+
+        //resetar dados quando mudar o dia
         if(date!=dia){
             localStorage.clear();
             import.meta.env.VITE_DATE = dia;
