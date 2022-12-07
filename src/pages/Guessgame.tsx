@@ -146,7 +146,7 @@ export function Guessgame() {
         console.log(String(checkday))
 
         if(dia!=checkday){
-            process.env.VITE_APP_CONVERTKIT_DATA = String(dia);
+            localStorage.clear();
         }
 
         const querySnapshot = await getDocs(collection(db, "images"))
