@@ -29,11 +29,11 @@ var blocksuseds = new Array();
 //historico de palpites
 var history = new Array();
 
-const date = import.meta.env.VITE_APP_CONVERTKIT_DATE;
-console.log(date)
+
+const date = import.meta.env.VITE_DATE
+
 export function Guessgame() {
 
-    console.log(date)
     //contagem de chances
     const [chances, setchances] = useState(0);
     //imagem que vai ser utilizada
@@ -83,6 +83,7 @@ export function Guessgame() {
             });
 
         }
+        
 
 
     }, [])
@@ -144,6 +145,10 @@ export function Guessgame() {
         setimage(dbimage[dia].image);
         setname(dbimage[dia].nome);
 
+        if(date!=dia){
+            localStorage.clear();
+            import.meta.env.VITE_DATE = dia;
+        }
         
     }
 
