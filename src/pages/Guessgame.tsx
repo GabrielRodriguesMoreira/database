@@ -30,8 +30,6 @@ var blocksuseds = new Array();
 var history = new Array();
 
 
-const date = import.meta.env.VITE_DATE
-
 export function Guessgame() {
 
     //contagem de chances
@@ -49,7 +47,7 @@ export function Guessgame() {
 
     useEffect(() => {
         getImage()
-        if (localStorage.getItem("win")) {
+        if (document.cookie) {
 
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
@@ -83,8 +81,6 @@ export function Guessgame() {
             });
 
         }
-        
-
 
     }, [])
 
@@ -147,12 +143,10 @@ export function Guessgame() {
 
 
         //resetar dados quando mudar o dia
-        if(date!=dia){
+        if (!document.cookie) {
             localStorage.clear();
-            import.meta.env.VITE_DATE = dia;
-            console.log(import.meta.env.VITE_DATE);
         }
-        
+
     }
 
 
@@ -192,7 +186,12 @@ export function Guessgame() {
         button.setAttribute("disabled", 'disabled');
 
         //salvar q venceu
-        localStorage.setItem("win", "true");
+        // Set the expiration date to the beginning of the next day
+        var date = new Date();
+        date.setDate(date.getDate() + 1);
+        date.setHours(0, 0, 0, 0);
+        // Set the cookie with the expiration date
+        document.cookie = "name=win; expires=" + date.toUTCString();
 
     }
 
