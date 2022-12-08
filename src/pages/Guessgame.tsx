@@ -102,10 +102,10 @@ export function Guessgame() {
                     blockindex = Math.floor(Math.random() * 8);
                 }
 
-                history.push(inputresponse.value);
+                history.push(inputValue);
 
                 deleteblock(lineindex, blockindex)
-                addhistory(inputresponse.value)
+                addhistory(inputValue)
 
                 //adicionar blocos e linhas selecionados na lista de ja utilizados
                 lineuseds.push(lineindex);
@@ -130,7 +130,7 @@ export function Guessgame() {
             console.log('fim das chances')
         }
 
-        inputresponse.value = '';
+        setInputValue('');
     }
 
     // Declare a state variable to track the value of the input
@@ -140,7 +140,7 @@ export function Guessgame() {
         if (event.key === 'Enter') {
             // If it is, run your mainCheck function
             mainCheck();
-            setInputValue('');
+
         }
 
     }
