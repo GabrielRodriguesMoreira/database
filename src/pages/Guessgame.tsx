@@ -30,6 +30,7 @@ var blocksuseds = new Array();
 var history = new Array();
 
 
+
 export function Guessgame() {
 
     //contagem de chances
@@ -130,6 +131,18 @@ export function Guessgame() {
         }
 
         inputresponse.value = '';
+    }
+
+    // Declare a state variable to track the value of the input
+    const [inputValue, setInputValue] = useState('');
+    const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        // Check if the key that was pressed is the enter key
+        if (event.key === 'Enter') {
+            // If it is, run your mainCheck function
+            mainCheck();
+            setInputValue('');
+        }
+
     }
 
     //receber dados do banco
@@ -265,7 +278,10 @@ export function Guessgame() {
             <div className="guessgame_responses">
                 <h1>ADIVINHE A SÉRIE</h1>
                 <div className="guessgame_form">
-                    <input type="text" id='response' />
+                    <input type="text" id='response' value={inputValue}
+                        onChange={event => setInputValue(event.target.value)}
+                        onKeyPress={handleKeyPress} />
+
                     <div className="guessgame_butto_counts">
                         <h2>{chances}/6</h2>
                         <button onClick={() => { mainCheck() }} id='guessgame_button'>Submit</button>
