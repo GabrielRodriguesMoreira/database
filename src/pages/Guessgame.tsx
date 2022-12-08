@@ -101,9 +101,7 @@ export function Guessgame() {
                     lineindex = Math.floor(Math.random() * 6);
                     blockindex = Math.floor(Math.random() * 8);
                 }
-
                 history.push(inputValue);
-
                 deleteblock(lineindex, blockindex)
                 addhistory(inputValue)
 
@@ -116,6 +114,7 @@ export function Guessgame() {
                 localStorage.setItem("blocks", JSON.stringify(blocksuseds));
 
                 //adicionar historico
+                console.log(history);
                 localStorage.setItem("history", JSON.stringify(history));
 
                 //adicionar contador
