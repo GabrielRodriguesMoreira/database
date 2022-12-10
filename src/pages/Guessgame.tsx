@@ -39,7 +39,8 @@ export function Guessgame() {
     const [image, setimage] = useState("")
     //resposta correta
     const [name, setname] = useState("")
-
+    //valor do input
+    const [inputValue, setInputValue] = useState('');
     //palpite do input
     const inputresponse = (document.getElementById("response") as HTMLInputElement);
     //container
@@ -48,25 +49,21 @@ export function Guessgame() {
 
     useEffect(() => {
         getImage()
+
+        //receber historicos de palpites
+        let historyX = localStorage.getItem("history")
+        historyX = JSON.parse(historyX!)
+        console.log(historyX)
+        for (let i = 0; i < historyX!.length; i++) {
+            addhistory(historyX![i])
+        }
+        
         if (document.cookie) {
-
-            //receber historicos de palpites
-            let historyX = localStorage.getItem("history")
-            historyX = JSON.parse(historyX!)
-            for (let i = 0; i < historyX!.length; i++) {
-                addhistory(historyX![i])
-            }
             endgame();
-
         } else if (localStorage.getItem("chances")) {
             setchances(parseInt(localStorage.getItem("chances")!) + 1)
 
-            //receber historicos de palpites
-            let historyX = localStorage.getItem("history")
-            historyX = JSON.parse(historyX!)
-            for (let i = 0; i < historyX!.length; i++) {
-                addhistory(historyX![i])
-            }
+
 
             //receber linhas
             let lines: any = localStorage.getItem("lines");
@@ -74,8 +71,7 @@ export function Guessgame() {
             //receber blocos
             let blocks: any = localStorage.getItem("blocks");
             blocks = JSON.parse(blocks!)
-
-
+            console.log(lines)
             //deletar blocos ja utilizados
             lines!.forEach(element => {
                 deleteblock(element, blocks![lines!.indexOf(element)])
@@ -101,9 +97,9 @@ export function Guessgame() {
                     lineindex = Math.floor(Math.random() * 6);
                     blockindex = Math.floor(Math.random() * 8);
                 }
-                history.push(inputValue);
+
                 deleteblock(lineindex, blockindex)
-                addhistory(inputValue)
+
 
                 //adicionar blocos e linhas selecionados na lista de ja utilizados
                 lineuseds.push(lineindex);
@@ -113,18 +109,19 @@ export function Guessgame() {
                 localStorage.setItem("lines", JSON.stringify(lineuseds));
                 localStorage.setItem("blocks", JSON.stringify(blocksuseds));
 
-                //adicionar historico
-                console.log(history);
-                localStorage.setItem("history", JSON.stringify(history));
+                
 
                 //adicionar contador
                 setchances(chances => chances + 1);
-                localStorage.setItem("chances", String(chances));
-
-
+                //localStorage.setItem("chances", String(chances));
 
             }
+            history.push(inputValue);
+            addhistory(inputValue);
 
+            //adicionar historico
+            localStorage.setItem("history", JSON.stringify(history));
+            
         } else {
             console.log('fim das chances')
         }
@@ -132,8 +129,7 @@ export function Guessgame() {
         setInputValue('');
     }
 
-    // Declare a state variable to track the value of the input
-    const [inputValue, setInputValue] = useState('');
+    //funcao enter
     const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         // Check if the key that was pressed is the enter key
         if (event.key === 'Enter') {
