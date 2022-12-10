@@ -50,20 +50,21 @@ export function Guessgame() {
     useEffect(() => {
         getImage()
 
-        //receber historicos de palpites
-        let historyX = localStorage.getItem("history")
-        historyX = JSON.parse(historyX!)
-        console.log(historyX)
-        for (let i = 0; i < historyX!.length; i++) {
-            addhistory(historyX![i])
+        if (localStorage.getItem("history")){
+            //receber historicos de palpites
+            let historyX = localStorage.getItem("history")
+            historyX = JSON.parse(historyX!)
+            console.log(historyX)
+            for (let i = 0; i < historyX!.length; i++) {
+                addhistory(historyX![i])
+            }
         }
-        
+
+
         if (document.cookie) {
             endgame();
         } else if (localStorage.getItem("chances")) {
             setchances(parseInt(localStorage.getItem("chances")!) + 1)
-
-
 
             //receber linhas
             let lines: any = localStorage.getItem("lines");
@@ -87,6 +88,13 @@ export function Guessgame() {
 
             //acertar
             if (inputresponse.value.toUpperCase() == name.toUpperCase()) {
+                //salvar q venceu
+                // Set the expiration date to the beginning of the next day
+                var date = new Date();
+                date.setDate(date.getDate() + 1);
+                date.setHours(0, 0, 0, 0);
+                // Set the cookie with the expiration date
+                document.cookie = "name=win; expires=" + date.toUTCString();
                 endgame();
             } else {
                 //errar
@@ -109,7 +117,7 @@ export function Guessgame() {
                 localStorage.setItem("lines", JSON.stringify(lineuseds));
                 localStorage.setItem("blocks", JSON.stringify(blocksuseds));
 
-                
+
 
                 //adicionar contador
                 setchances(chances => chances + 1);
@@ -121,7 +129,7 @@ export function Guessgame() {
 
             //adicionar historico
             localStorage.setItem("history", JSON.stringify(history));
-            
+
         } else {
             console.log('fim das chances')
         }
@@ -193,13 +201,7 @@ export function Guessgame() {
         let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
         button.setAttribute("disabled", 'disabled');
 
-        //salvar q venceu
-        // Set the expiration date to the beginning of the next day
-        var date = new Date();
-        date.setDate(date.getDate() + 1);
-        date.setHours(0, 0, 0, 0);
-        // Set the cookie with the expiration date
-        document.cookie = "name=win; expires=" + date.toUTCString();
+
 
     }
 
