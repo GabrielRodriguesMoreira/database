@@ -1,6 +1,6 @@
 import '../styles/profile.css'
 import profilepic from '../componenets/useless.png'
-import curriculo from '../componenets/Curriculo.pdf'
+import curriculo from '../componenets/Gabriel_Rodrigues_Curriculo.pdf'
 import React, { useEffect, useState } from 'react'
 import { AiOutlineGithub } from 'react-icons/ai';
 import { FiCodepen } from 'react-icons/fi';
