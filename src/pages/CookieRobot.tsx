@@ -1,249 +1,163 @@
-import "../styles/guessgame.css"
-import { createElement, useEffect, useState } from "react"
+import '../styles/cookierobot.css'
+import React, { useState, useEffect } from 'react'
+import typewritesound from '../componenets/typewrite.wav'
+import spr1 from '../componenets/roboto.gif'
 
-
-
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { collection, addDoc, getDocs } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_DATABASE,
-    authDomain: "unique-caldron-362117.firebaseapp.com",
-    projectId: "unique-caldron-362117",
-    storageBucket: "unique-caldron-362117.appspot.com",
-    messagingSenderId: "458607624724",
-    appId: import.meta.env.VITE_APP_CONVERTKIT_API_SECRET_ID
-};
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-
-var lineuseds = [4]
-var blocksuseds = [5]
-var history = new Array();
 
 export function CookieRobot() {
-    const [chances, setchances] = useState(0);
-    const [image, setimage] = useState("")
-    const [name, setname] = useState("")
-
-
-    async function getImage() {
-        const querySnapshot = await getDocs(collection(db, "images"))
-        var dbimage = querySnapshot.docs.map(doc => doc.data());
-        setimage(dbimage[0].image);
-        setname(dbimage[0].nome);
-    }
-
-    function endgame(elem) {
-        let response = (document.getElementById("response") as HTMLInputElement);
-
-        for (let i = 0; i <= 5; i++) {
-            elem?.removeChild(elem?.firstChild!);
-        }
-
-        // desativar funcoes
-        response.setAttribute("disabled", 'disabled');
-        let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
-        button.setAttribute("disabled", 'disabled');
-
-        //salvar q venceu
-        document.cookie = `key1 = venceu`;
-
-    }
-
-    function addhistory(response) {
-        //adicionar historico de respostas
-        let parent = document.getElementById("history_list")
-        let child = document.createElement("li")
-        child.setAttribute("className", "guessgame_history_text")
-        child.innerHTML = response;
-        parent?.appendChild(child)
-
-        //salvar historico de palavras
-        if (Array.isArray(history)) {
-            history.push(response);
-        }
-    }
-
-    function deleteblocks(elem, line, block) {
-
-        //apagar blocos
-        let linha = elem?.childNodes[line];
-        let bloco = linha?.childNodes[block];
-        (bloco as HTMLElement).style.background = 'transparent';
-
-    }
-
-    function cleanblock() {
-
-        //deleteblock
-        let elem = (document.getElementById("guessgame_image_container") as ParentNode);
-        let response = (document.getElementById("response") as HTMLInputElement);
-
-        if (chances < 6) {
-            //acertar
-            //limpar imagem
-            if (response.value.toUpperCase() == name.toUpperCase()) {
-                endgame(elem)
-            } else {
-                //errar
-                //selecionar bloco aleatório
-                let lineindex = Math.floor(Math.random() * 6);
-                let blockindex = Math.floor(Math.random() * 8);
-                while (lineuseds.includes(lineindex) && blocksuseds.includes(blockindex)) {
-                    lineindex = Math.floor(Math.random() * 6);
-                    blockindex = Math.floor(Math.random() * 8);
-                }
-                deleteblocks(elem, lineindex, blockindex)
-                lineuseds.push(lineindex);
-                blocksuseds.push(blockindex);
-
-                //save posiitons
-                localStorage.setItem("lines", JSON.stringify(lineuseds));
-                localStorage.setItem("blocks", JSON.stringify(blocksuseds));
-
-                //adicionar historico
-                addhistory(response.value)
-                localStorage.setItem("history", JSON.stringify(history));
-
-                //adicionar contador
-                setchances(chances => chances + 1);
-                localStorage.setItem("chances", String(chances));
-
-            }
-        } else {
-            //fim das chances
-            endgame(elem)
-        }
-        //limpar input
-        response.value = '';
-    }
-
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Enter") {
-            cleanblock()
-        }
-      });
-
+    const [action, setaction] = useState(0)
+    const [fillspace, setfillspace] = useState(<></>)
+    const [infos, setinfos] = useState({
+        name: '',
+        charname: '',
+        jogo: ''
+    })
+    var i = 0;
+    var speed = 30;
     useEffect(() => {
-        //carrregar database
-        getImage()
-        const elem = (document.getElementById("guessgame_image_container") as ParentNode);
-        if (localStorage.getItem("chances")) {
-            let chancesX = localStorage.getItem("chances");
-            setchances(parseInt(chancesX!) + 1)
+        console.log(document.cookie);
+        if (document.cookie.length > 0) {
+            setaction(-50);
+            setinfos(() => {
+                var obj = JSON.parse(document.cookie)
+                return obj
+            })
+            console.log(infos)
+            typeWriter(`Bem vindo de volta ${JSON.parse(document.cookie).name}`);
+        } else {
 
-            //receber historicos de palpites
-            let historyX = localStorage.getItem("history")
-            historyX = JSON.parse(historyX!)
-            for (let i = 0; i < historyX!.length; i++) {
-                addhistory(historyX![i])
-            }
-
-            //receber linhas
-            let lines: any = localStorage.getItem("lines");
-            lines = JSON.parse(lines!)
-            //receber blocos
-            let blocks = localStorage.getItem("blocks");
-            blocks = JSON.parse(blocks!)
+            typeWriter('Olá visitante');
+        }
+    }, [])
 
 
+    function nextaction() {
+        i = 0;
+        //tirar botão
+        (document.getElementById("nextbutton") as HTMLInputElement).style.display = 'none';
 
-            //deletar blocos ja utilizados
-            lines!.forEach(element => {
-                deleteblocks(elem, element, blocks![lines!.indexOf(element)])
-            });
+        //limpar caixa de texto
+        (document.getElementById("type") as HTMLInputElement).innerHTML = '';
+
+        //proxima ação
+        setaction(action + 1)
+
+        //ações
+        switch (action) {
+            //primeiro acesso
+            case 0:
+                typeWriter('Parece que é sua primeira vez aqui.');
+                break;
+            case 1:
+                typeWriter('Poderia me dizer seu nome?');
+                setfillspace((<input type="text" id='username' autoComplete='off' placeholder='type here' />));
+                break;
+            case 2:
+                setinfos({
+                    name: (document.getElementById('username') as HTMLInputElement).value,
+                    charname: '',
+                    jogo: '',
+                })
+                typeWriter(`Obrigado ${(document.getElementById('username') as HTMLInputElement).value}`);
+                setfillspace((<></>));
+                break;
+            case 3:
+                typeWriter('Mas parece que eu também não tenho um nome. Poderia me dar um?');
+                setfillspace((<input type="text" id='charname' autoComplete='off' placeholder='type here' />));
+                break;
+            case 4:
+                setinfos({
+                    name: infos.name,
+                    charname: (document.getElementById('charname') as HTMLInputElement).value,
+                    jogo: '',
+                })
+                setfillspace((<></>));
+                typeWriter('Perfeito!')
+                break;
+            case 5:
+                typeWriter('Antes de ir me responda apenas uma pergunta. De que tipo de jogo você mais gosta?');
+                setfillspace(<div className='animalbutton'>
+                    <button onClick={() => {
+                        setinfos({
+                            name: infos.name,
+                            charname: infos.charname,
+                            jogo: 'http://www.celestegame.com'
+                        });
+                    }}>Plataforma</button>
+
+                    <button onClick={() => {
+                        setinfos({
+                            name: infos.name,
+                            charname: infos.charname,
+                            jogo: 'https://www.coromon.com'
+                        });
+                    }}>Aventura</button>
+                    <button onClick={() => {
+                        setinfos({
+                            name: infos.name,
+                            charname: infos.charname,
+                            jogo: 'https://staterastudio.com/pocketbravery.html'
+                        });
+                    }}>Luta</button>
+                </div>);
+                break;
+            case 6:
+                typeWriter('Ótimo, agora me da só um segundo para que eu possa memorizar tudo.');
+                setfillspace((<></>));
+                document.cookie = JSON.stringify(infos);
+                break;
+            case 7:
+                typeWriter('tudo pronto, da próxima vez que você recarregar a página terei novidades. Dê uma olhada nos outros projetos depois volte aqui.');
+                break;
+            case 8:
+                (document.getElementById('textbox') as HTMLInputElement).style.display = 'none';
+                break;
+
+
+            //segundo acesso
+            case -50:
+                typeWriter('Agora lembra da pergunta que fiz?');
+                break;
+            case -49:
+                typeWriter("Aqui vai uma Recomendação! Espero que goste.");
+                break;
+            case -48:
+                document.getElementById('robotbox')?.setAttribute('class', 'minimize')
+                setfillspace(
+                    <div className='videobox'>
+                        <iframe className='videoframe' src={`${JSON.parse(document.cookie).jogo}`}></iframe>
+                    </div>
+                )
+                break;
         }
 
-    }, []);
-
+    }
+    function typeWriter(falo) {
+        if (i < falo.length) {
+            (document.getElementById('typewritesound') as HTMLAudioElement).play();
+            (document.getElementById("type") as HTMLInputElement).innerHTML += falo.charAt(i);
+            i++;
+            setTimeout(() => { typeWriter(falo) }, speed);
+        } else {
+            (document.getElementById('typewritesound') as HTMLAudioElement).pause();
+            //colocar botão de volta
+            (document.getElementById("nextbutton") as HTMLInputElement).style.display = 'block';
+        }
+    };
 
     return (
-        <div className="guessgame_container">
-            <section className="guessgame_image_section">
-                <div className="guessgame_image_container" id='guessgame_image_container'>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block" ></div>
-                        <div className="guessgame_block" id='middle_block'></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <div className="guessgame_block_line">
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                        <div className="guessgame_block"></div>
-                    </div>
-                    <img src={image} alt="" />
-                </div>
-            </section>
-            <div className="guessgame_responses">
-                <h1>ADIVINHE A SÉRIE</h1>
-                <div className="guessgame_form">
-                    <input type="text" id='response' />
-                    <div className="guessgame_butto_counts">
-                        <h2>{chances}/6</h2>
-                        <button onClick={() => { cleanblock() }} id='guessgame_button'>Submit</button>
-                    </div>
-                </div>
-                <ul className="history_list" id="history_list">
-                </ul>
+        <div className='main_cookierobot_cotainer'>
+            <audio id='typewritesound' src={typewritesound} ></audio>
+            <div className='robotbox' id='robotbox'>
+                <img src={spr1} alt="robo" />
+            </div>
+            <div className='textbox' id='textbox'>
+                <div className='charname'>{infos.charname}</div>
+                <span className='typewriter' id='type'></span>
+                {fillspace}
+                <button id='nextbutton' onClick={nextaction}>next</button>
             </div>
         </div>
     )
+
 }

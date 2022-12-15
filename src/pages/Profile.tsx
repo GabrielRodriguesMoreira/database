@@ -16,7 +16,10 @@ import { BsTelephoneFill } from 'react-icons/bs';
 import { GoLocation } from 'react-icons/go';
 import { AiFillStar } from 'react-icons/ai';
 import { AiOutlineStar } from 'react-icons/ai';
-
+import { DiGit } from 'react-icons/di';
+import { FaVuejs } from 'react-icons/fa';
+import { SiAdobephotoshop } from 'react-icons/si';
+import { AiOutlineConsoleSql } from 'react-icons/ai';
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
@@ -132,13 +135,13 @@ export function Profile() {
                 <div className='profile_conhecimentos'>
                     <div className='conhecimentos_icons' >
                         <button onTouchStartCapture={() => { hoverin('css_description') }} onMouseEnter={() => { hoverin('css_description') }} onMouseLeave={() => { hoverout('css_description') }}> <DiCss3 /></button>
-                        <div>
-
-                            <button onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}> <DiReact /></button>
-                            <button onMouseEnter={() => { hoverin('javascript_description') }} onMouseLeave={() => { hoverout('javascript_description') }}> <TbBrandJavascript /></button>
-                        </div>
-
+                        <button onMouseEnter={() => { hoverin('react_description') }} onMouseLeave={() => { hoverout('react_description') }}> <DiReact /></button>
+                        <button onMouseEnter={() => { hoverin('javascript_description') }} onMouseLeave={() => { hoverout('javascript_description') }}> <TbBrandJavascript /></button>
                         <button onMouseEnter={() => { hoverin('html_description') }} onMouseLeave={() => { hoverout('html_description') }}> <AiOutlineHtml5 /></button>
+                        <button onMouseEnter={() => { hoverin('git_description') }} onMouseLeave={() => { hoverout('git_description') }}> <DiGit /></button>
+                        <button onMouseEnter={() => { hoverin('vue_description') }} onMouseLeave={() => { hoverout('vue_description') }}> <FaVuejs /></button>
+                        <button onMouseEnter={() => { hoverin('sql_description') }} onMouseLeave={() => { hoverout('sql_description') }}> <AiOutlineConsoleSql /></button>
+                        <button onMouseEnter={() => { hoverin('photoshop_description') }} onMouseLeave={() => { hoverout('photoshop_description') }}> <SiAdobephotoshop /></button>
                     </div>
                     <div className='conhecimentos_description' id='conhecimentos_description'>
                         <div id='conhecimentos_description_default' >
@@ -163,7 +166,27 @@ export function Profile() {
                         <div id='react_description' style={{ display: 'none' }}>
                             <h1>REACT</h1>
                             <p>É uma biblioteca JavaScript de código aberto com foco em criar interfaces de usuário em páginas web</p>
-                            <p>Tempo de uso: 1 anos</p>
+                            <p>Tempo de uso: 1 ano</p>
+                        </div>
+                        <div id='vue_description' style={{ display: 'none' }}>
+                            <h1>Vue.js</h1>
+                            <p>Vue.js é um framework JavaScript de código-aberto, focado no desenvolvimento de interfaces de usuário e aplicativos de página única.</p>
+                            <p>Tempo de uso: 6 meses</p>
+                        </div>
+                        <div id='git_description' style={{ display: 'none' }}>
+                            <h1>GIT</h1>
+                            <p>Git é um sistema de controle de versões distribuído, usado principalmente no desenvolvimento de software.</p>
+                            <p>Tempo de uso: 2 anos</p>
+                        </div>
+                        <div id='sql_description' style={{ display: 'none' }}>
+                            <h1>SQL</h1>
+                            <p>É a linguagem de pesquisa declarativa padrão para banco de dados relacional.</p>
+                            <p>Tempo de uso: 1 ano</p>
+                        </div>
+                        <div id='photoshop_description' style={{ display: 'none' }}>
+                            <h1>Photoshop</h1>
+                            <p>Adobe Photoshop é um software caracterizado como editor de imagens bidimensionais.</p>
+                            <p>Tempo de uso: 2 anos</p>
                         </div>
                     </div>
                 </div>

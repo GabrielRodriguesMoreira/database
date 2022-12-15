@@ -20,7 +20,7 @@
         const [time, settime] = useState(0)
         const { data: data, isFetch } = useAxios('https://api.api-futebol.com.br/v1/campeonatos/10/tabela', options)
         const teams = Object(data)
-
+        console.log(teams)
         if (teams) {
             /* criando a lista de busca */
             let value = (teams?.[0]?.['time']?.nome_popular);

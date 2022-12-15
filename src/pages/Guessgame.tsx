@@ -178,7 +178,6 @@ export function Guessgame() {
     //apagar blocos
     function deleteblock(line, block) {
         const elem = (document.getElementById("guessgame_image_container") as ParentNode);
-
         let linha = elem?.childNodes[line];
         let bloco = linha?.childNodes[block];
         (bloco as HTMLElement).style.background = 'transparent';

@@ -85,28 +85,43 @@
 }
 .conhecimentos_icons{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items:center;
   width: 170px;
   height: 170px;
   border: 2px solid var(--txtcolor);
   border-radius: 50%;
   box-shadow: 0px 0px 10px -1px var(--txtcolor);
+  flex-wrap: wrap;
+  padding: 0 5px;
 }
-.conhecimentos_icons div{
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-}
+
 .conhecimentos_icons button{
   border: none;
-  font-size: 35px;
+  font-size: 27px;
   background-color: transparent;
   transition: 0.3s all;
   cursor: pointer;
   color: var(--txtcolor);
   padding: 0;
+}
+.conhecimentos_icons button:first-child{
+  width: 100%;
+}
+.conhecimentos_icons button:nth-child(2), .conhecimentos_icons button:nth-child(6){
+  margin-right: 18%;
+}
+.conhecimentos_icons button:nth-child(3), .conhecimentos_icons button:nth-child(7){
+  margin-left: 18%;
+}
+.conhecimentos_icons button:nth-child(4){
+  margin-right: 30%;
+}
+.conhecimentos_icons button:nth-child(5){
+  margin-left: 30%;
+}
+.conhecimentos_icons button:last-child{
+  width: 100%;
 }
 .conhecimentos_icons button:hover{
   transform: scale(170%);
@@ -367,10 +382,12 @@
     margin: 0;
   }
   .conhecimentos_icons{
+
     width: 80px;
     height: 80px;
   }
   .conhecimentos_icons button{
+    display: none;
     font-size: 18px;
   }
   .conhecimentos_description{
