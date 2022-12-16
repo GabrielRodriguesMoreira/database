@@ -1,4 +1,5 @@
 import "../styles/guessgame.css"
+import '../styles/futebolapi.css'
 import { useEffect, useState } from "react"
 
 // Import the functions you need from the SDKs you need
@@ -46,6 +47,11 @@ export function Guessgame() {
     //container
     const elem = (document.getElementById("guessgame_image_container") as ParentNode);
 
+
+    //resetar dados quando mudar o dia
+    if (!document.cookie) {
+        localStorage.clear();
+    }
 
     useEffect(() => {
         getImage()
@@ -154,13 +160,6 @@ export function Guessgame() {
         var dbimage = querySnapshot.docs.map(doc => doc.data());
         setimage(dbimage[dia].image);
         setname(dbimage[dia].nome);
-
-
-        //resetar dados quando mudar o dia
-        if (!document.cookie) {
-            localStorage.clear();
-        }
-
     }
 
 
@@ -266,7 +265,8 @@ export function Guessgame() {
                         <div className="guessgame_block"></div>
                         <div className="guessgame_block"></div>
                     </div>
-                    <img src={image} alt="" />
+                    {image ? <img src={image} alt="" /> : <div className="loader"></div>}
+
                 </div>
             </section>
             <div className="guessgame_responses">
