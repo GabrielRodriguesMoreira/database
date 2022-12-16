@@ -197,6 +197,11 @@ export function Guessgame() {
         let button = (document.getElementById("guessgame_button") as HTMLButtonElement)
         button.setAttribute("disabled", 'disabled');
 
+        //mudar cor palpite correto
+        setTimeout(() => {
+            const child = document.querySelector<HTMLElement>("#history_list :last-child")
+            child!.style.backgroundColor = 'rgba(73, 255, 73, 0.363)';
+        }, 30)
 
 
     }
