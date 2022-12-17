@@ -124,9 +124,8 @@ export function Guessgame() {
                 localStorage.setItem("blocks", JSON.stringify(blocksuseds));
 
             }
-            history.push(inputValue);
             sethistory([...history, inputValue]);
-
+            
             //adicionar historico de palpites
             localStorage.setItem("history", JSON.stringify(history));
 
