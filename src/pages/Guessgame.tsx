@@ -27,8 +27,7 @@ const db = getFirestore(app);
 var lineuseds = new Array();
 //alredy used blocks
 var blocksuseds = new Array();
-//historico de palpites
-var history = new Array();
+
 
 
 
@@ -46,7 +45,8 @@ export function Guessgame() {
     const inputresponse = (document.getElementById("response") as HTMLInputElement);
     //container
     const elem = (document.getElementById("guessgame_image_container") as ParentNode);
-
+    //historico de palpites
+    const [history, sethistory] = useState(new Array());
 
     //resetar dados quando mudar o dia
     if (!document.cookie) {
@@ -59,10 +59,10 @@ export function Guessgame() {
         if (localStorage.getItem("history")) {
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
+
             historyX = JSON.parse(historyX!)
-            for (let i = 0; i < historyX!.length; i++) {
-                addhistory(historyX![i])
-            }
+            sethistory((historyX as any));
+
         }
 
         if (document.cookie === 'name=win') {
@@ -125,7 +125,7 @@ export function Guessgame() {
 
             }
             history.push(inputValue);
-            addhistory(inputValue);
+            sethistory([...history, inputValue]);
 
             //adicionar historico de palpites
             localStorage.setItem("history", JSON.stringify(history));
@@ -163,16 +163,9 @@ export function Guessgame() {
     }
 
 
-    //adicionar historico de respostas
-    function addhistory(inputresponse) {
 
-        let parent = document.getElementById("history_list")
-        let child = document.createElement("li")
-        child.setAttribute("className", "guessgame_history_text")
-        child.innerHTML = inputresponse;
-        parent?.appendChild(child)
+        
 
-    }
 
     //apagar blocos
     function deleteblock(line, block) {
@@ -287,6 +280,9 @@ export function Guessgame() {
                     </div>
                 </div>
                 <ul className="history_list" id="history_list">
+                    {history.map(palpite => {
+                        return <li className="">{palpite} </li>
+                    })}
                 </ul>
             </div>
         </div>
