@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { collection, addDoc, getDocs } from "firebase/firestore";
+import { BsCloudy } from "react-icons/bs";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,8 +22,6 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
-
 //alredy used lines
 var lineuseds = new Array();
 //alredy used blocks
@@ -53,13 +52,13 @@ export function Guessgame() {
         localStorage.clear();
     }
 
+    //startpage
     useEffect(() => {
         getImage()
 
         if (localStorage.getItem("history")) {
             //receber historicos de palpites
             let historyX = localStorage.getItem("history")
-
             historyX = JSON.parse(historyX!)
             sethistory((historyX as any));
 
@@ -67,10 +66,10 @@ export function Guessgame() {
 
         if (document.cookie === 'name=win') {
             console.log(document.cookie)
-            setchances(parseInt(localStorage.getItem("chances")!) + 1)
+            setchances(parseInt(localStorage.getItem("chances")!))
             endgame();
         } else if (localStorage.getItem("chances")) {
-            setchances(parseInt(localStorage.getItem("chances")!) + 1)
+            setchances(parseInt(localStorage.getItem("chances")!))
             //receber linhas
             let lines: any = localStorage.getItem("lines");
             lines = JSON.parse(lines!)
@@ -84,6 +83,16 @@ export function Guessgame() {
         }
     }, [])
 
+    //statecahnge
+    useEffect(() => {
+        if (history.length>0) {
+            //adicionar historico de palpites
+            localStorage.setItem("history", JSON.stringify(history));
+            //adicionar contador
+            localStorage.setItem("chances", String(chances));
+            console.log(chances)
+        }
+    })
     //funcao principal
     function mainCheck() {
 
@@ -94,7 +103,6 @@ export function Guessgame() {
         document.cookie = "name=try; expires=" + date.toUTCString();
 
         if (chances < 6) {
-
             //acertar
             if (inputresponse.value.toUpperCase() == name.toUpperCase()) {
                 //salvar q venceu
@@ -124,14 +132,8 @@ export function Guessgame() {
                 localStorage.setItem("blocks", JSON.stringify(blocksuseds));
 
             }
-            sethistory([...history, inputValue]);
-            
-            //adicionar historico de palpites
-            localStorage.setItem("history", JSON.stringify(history));
-
-            //adicionar contador
+            sethistory([...history, inputValue])
             setchances(chances => chances + 1);
-            localStorage.setItem("chances", String(chances));
 
         } else {
             console.log('fim das chances')
@@ -160,11 +162,6 @@ export function Guessgame() {
         setimage(dbimage[dia].image);
         setname(dbimage[dia].nome);
     }
-
-
-
-        
-
 
     //apagar blocos
     function deleteblock(line, block) {
