@@ -1,12 +1,11 @@
 import '../styles/header.css'
 import logo from '../componenets/logo.webp'
-import { HiMenu } from 'react-icons/hi';
-import { AiOutlineMenuUnfold } from 'react-icons/ai';
+import { BsFillPersonFill } from 'react-icons/bs';
+import { MdFilterFrames } from 'react-icons/md';
+import { BiFootball } from 'react-icons/bi';
+import { FaPaintBrush } from 'react-icons/fa';
 import { Link } from 'react-router-dom'
-type Header = {
-    id: string;
 
-}
 
 export function Header() {
 
@@ -31,48 +30,16 @@ export function Header() {
     }
 
     return (
-        <div className='main_header_container'>
-            <div className='logo'>
-                <div className='logo_img'><img src={logo} alt="logo" /></div>
-                <text >Gabriel <br /> Rodrigues</text>
-            </div>
-
-            <div className='header_content'>
-                <div className='navlinks'>
-                    <Link to="/Guessgame">PROJETO 1</Link>
-                    <Link to="/FutebolAPI">PROJETO 2</Link>
-                    <Link to="/RandomStore">PROJETO 3</Link>
-                    <Link to="/">PERFIL</Link>
-                    <label className="switch">
-                        <input type="checkbox" id='checkboxcolor' onClick={() => { colormode('checkboxcolor') }} />
-                        <span className="slider"></span>
-                    </label>
-                </div>
-                <button className='menu_icon' onClick={togglesidebar}><HiMenu /></button>
-            </div>
-            <Sidebar />
+        <div>
+            <header>
+                <ul>
+                <Link id='project1' to="/"><li><BsFillPersonFill></BsFillPersonFill></li></Link>
+                <Link id='project1' to="/Guessgame"><li><MdFilterFrames></MdFilterFrames></li></Link>
+                <Link id='project1' to="/FutebolAPI"><li><BiFootball></BiFootball></li></Link>
+                <Link id='project1' to="/RandomStore"><li><FaPaintBrush></FaPaintBrush></li></Link>
+                </ul>
+            </header>
         </div>
     )
-
-    function Sidebar() {
-        return (
-            <div className='sidebar' id='sidebar'>
-                <section className='sidebar_icons'>
-                    <button onClick={togglesidebar} className='close_sidebar_button'><AiOutlineMenuUnfold /></button>
-                    <label className="switch">
-                        <input type="checkbox" id='checkboxcolor2' onClick={() => { colormode('checkboxcolor2') }} />
-                        <span className="slider"></span>
-                    </label>
-                </section>
-                <section className='sidebar_links'>
-                    <Link id='project1' to="/Guessgame">PROJETO 1</Link>
-                    <Link id='project2' to="/FutebolAPI">PROJETO 2</Link>
-                    <Link id='project3' to="/RandomStore">PROJETO 3</Link>
-                    <Link className='selected' id='profile' to="/">PERFIL</Link>
-                </section>
-            </div>
-
-        )
-    }
 
 }
