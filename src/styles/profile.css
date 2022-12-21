@@ -1,3 +1,96 @@
-.main_profile_container{
-  display: none;
+.main_profile_container {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_infos {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(37, 37, 37, 0.6);
+  border-radius: 0.7rem;
+  backdrop-filter: blur(3px);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  color: white;
+}
+.first_Row{
+  width: 100%;
+  display: flex;
+}
+.profile_infos_left, .profile_infos_right{
+  height: 85%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.profilepic{
+  max-width: 80px;
+  aspect-ratio: 1 / 1;
+  border: 2px solid black;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profilepic img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.profile_infos_left h2{
+  font-size: 17px;
+}
+.profile_infos_left h3{
+  font-style: italic;
+  font-size: 11px;
+  color: rgb(121, 121, 121);
+}
+.profile_infos_left button{
+  width: 100%;
+  border-radius: 0.7rem;
+  border: none;
+  background-color: rgb(98, 228, 98);
+  padding: 5px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.profile_infos_left button p {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 12px;
+}
+
+.profile_links {
+  padding: 5px 10px;
+  font-size: 20px;
+  width: 90%;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid white;
+
+  position: absolute;
+  bottom: 15px;
+}
+.profile_links a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--txtcolor);
+  transition: 0.4s all;
+}
+.profile_links a:hover{
+  transform: scale(170%) !important;
 }

@@ -33,10 +33,10 @@ export function Header() {
         <div>
             <header>
                 <ul>
-                <Link id='project1' to="/"><li><BsFillPersonFill></BsFillPersonFill></li></Link>
-                <Link id='project1' to="/Guessgame"><li><MdFilterFrames></MdFilterFrames></li></Link>
-                <Link id='project1' to="/FutebolAPI"><li><BiFootball></BiFootball></li></Link>
-                <Link id='project1' to="/RandomStore"><li><FaPaintBrush></FaPaintBrush></li></Link>
+                    <li><Link id='project1' to="/"><BsFillPersonFill></BsFillPersonFill></Link></li>
+                    <li> <Link id='project1' to="/Guessgame"><MdFilterFrames></MdFilterFrames></Link></li>
+                    <li><Link id='project1' to="/FutebolAPI"><BiFootball></BiFootball></Link></li>
+                    <li> <Link id='project1' to="/RandomStore"><FaPaintBrush></FaPaintBrush></Link></li>
                 </ul>
             </header>
         </div>
