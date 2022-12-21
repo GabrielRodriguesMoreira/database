@@ -22,9 +22,9 @@ body {
   flex: 1 1 auto;
 }
 
-@media (screen>700) {
+@media (screen>800) {
   .content{
-    margin-left: 60px;
+    margin-left: 80px;
     margin-left: 0;
   }
 }

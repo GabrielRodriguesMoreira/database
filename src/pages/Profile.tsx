@@ -118,15 +118,16 @@ export function Profile() {
                 <div className='profilepic'><img src={profilepic} alt="" /></div>
                <h2>Gabriel Rodrigues</h2>
                <h3>Front-end Developer</h3>
-               <button>Baixar CV</button>
+               <button>Baixar CV  <HiDownload></HiDownload></button>
                 <div className='profile_links'>
                     <a target="_blank" href='https://github.com/GabrielRodriguesMoreira'> <AiOutlineGithub /></a>
                     <a target="_blank" href="https://codepen.io/gabrielrodriguesmoreira"> <FiCodepen /></a>
                     <a target="_blank" href="https://wa.me/+558587373084"> <BsWhatsapp /></a>
                     <a target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"> <AiOutlineLinkedin /></a>
                 </div>
-
             </section>
+
+            <section className='profile_dados'></section>
         </div>
     )
 
