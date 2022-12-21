@@ -1,4 +1,5 @@
 .main_profile_container {
+
   width: 100%;
   height: 100%;
   padding: 20px;
@@ -6,39 +7,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .profile_infos {
   width: 100%;
   height: 300px;
-  background-color: rgba(37, 37, 37, 0.6);
-  border-radius: 0.7rem;
-  backdrop-filter: blur(3px);
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 12px;
   position: relative;
   color: white;
-}
-.first_Row{
-  width: 100%;
-  display: flex;
-}
-.profile_infos_left, .profile_infos_right{
-  height: 85%;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 10px;
+
+
+background: rgba(37, 37, 37, 0.2);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(5px);
+-webkit-backdrop-filter: blur(5px);
+border: 1px solid rgba(37, 37, 37, 0.3);
 }
 
-.profilepic{
-  max-width: 80px;
+.profilepic {
+  max-width: 100px;
   aspect-ratio: 1 / 1;
-  border: 2px solid black;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.3));
   border-radius: 50%;
   overflow: hidden;
 }
@@ -47,23 +43,29 @@
   width: 100%;
   object-fit: cover;
 }
-.profile_infos_left h2{
-  font-size: 17px;
+
+.profile_infos h2 {
+  font-size: 20px;
+  color: black;
 }
-.profile_infos_left h3{
+
+.profile_infos h3 {
   font-style: italic;
-  font-size: 11px;
-  color: rgb(121, 121, 121);
+  font-size: 15px;
+  color: rgb(54, 54, 54);
 }
-.profile_infos_left button{
+
+.profile_infos button {
   width: 100%;
   border-radius: 0.7rem;
   border: none;
-  background-color: rgb(98, 228, 98);
+  background-color: rgba(255, 255, 255, 0.5);
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.5));
   padding: 5px;
   font-size: 20px;
   cursor: pointer;
 }
+
 .profile_infos_left button p {
   display: flex;
   align-items: center;
@@ -79,18 +81,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid white;
-
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.5));
   position: absolute;
   bottom: 15px;
 }
+
 .profile_links a {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: var(--txtcolor);
+  color: rgba(255, 255, 255, 0.8);
   transition: 0.4s all;
+
 }
-.profile_links a:hover{
+
+.profile_links a:hover {
   transform: scale(170%) !important;
 }

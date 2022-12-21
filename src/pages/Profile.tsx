@@ -115,25 +115,16 @@ export function Profile() {
     return (
         <div className='main_profile_container'>
             <section className='profile_infos'>
-                <section className='first_Row'>
-                    <div className='profile_infos_left'>
-                        <div className='profilepic'>
-                            <img src={profilepic} alt="" />
-                        </div>
-                        <h2>Gabriel Rodrigues</h2>
-                        <h3>Front-end Developer</h3>
-                        <button className='download CV'><GrDocumentText></GrDocumentText> <p>Baixar CV </p> </button>
-                    </div>
-                    <div className='profile_infos_right'>
-
-                    </div>
-                </section>
-                <section className='profile_links'>
+                <div className='profilepic'><img src={profilepic} alt="" /></div>
+               <h2>Gabriel Rodrigues</h2>
+               <h3>Front-end Developer</h3>
+               <button>Baixar CV</button>
+                <div className='profile_links'>
                     <a target="_blank" href='https://github.com/GabrielRodriguesMoreira'> <AiOutlineGithub /></a>
                     <a target="_blank" href="https://codepen.io/gabrielrodriguesmoreira"> <FiCodepen /></a>
                     <a target="_blank" href="https://wa.me/+558587373084"> <BsWhatsapp /></a>
                     <a target="_blank" href="https://www.linkedin.com/in/gabriel-rodrigues-moreira-00a0081a0/"> <AiOutlineLinkedin /></a>
-                </section>
+                </div>
 
             </section>
         </div>
