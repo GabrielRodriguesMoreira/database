@@ -217,7 +217,7 @@ export function Profile() {
                     </div>
                     <div className='profile_left_content_block4'>
                         <h1 style={{ borderBottom: "3px solid var(--txtcolor)", padding: "3px" }}>DESCRIÇÃO</h1>
-                        <p style={{ paddingLeft: "15px" }}>{tecs[currentTec].text}</p>
+                        <p style={{ paddingLeft: "15px" }}>{tecs[currentTec].text} </p>
                     </div>
 
                 </div>
