@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+
         <div className='content'>
           <Routes>
             <Route path="/" element={<Profile />} />
@@ -20,6 +20,7 @@ function App() {
             <Route path="/Guessgame" element={<Guessgame />} />
           </Routes>
         </div>
+        <Header />
       </Router>
     </div>
   )
