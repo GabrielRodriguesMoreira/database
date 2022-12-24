@@ -13,11 +13,10 @@ body {
 body * {
   font-family: var(--Montserrat);
   box-sizing: border-box;
-}
-h1,
-h2 {
   margin: 0;
+  padding: 0;
 }
+
 .App {
   display: flex;
   flex-direction: column;
